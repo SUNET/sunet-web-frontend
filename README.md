@@ -9,31 +9,31 @@ To setup the frontend first you will need to install the compiling components be
 
 ### Prerequisites
 
-#####ReactJS
+##### ReactJS
 ReactJS is a JavaScript library for building user interface and was developed in 2011 on Facebook. It is today one of the three most used libraries and is used in this project as a base for the whole page.
 * https://reactjs.org/
 
-#####Next.js
+##### Next.js
 Takes care of the server side routing for ReactJS so that we router records and pages to the right place.
 * https://nextjs.org/
 
-#####Yarn
+##### Yarn
 Yarn is a package manager who handles the compilation and error management of the ReactJS project.
 * https://yarnpkg.com
 
-#####Bootstrap
+##### Bootstrap
 Bootstrap is a front-end framework for CSS design systems. For this project we use only a few components such as their grid system and reset.
 * https://getbootstrap.com
 
-#####SASS
+##### SASS
 Our own CSS compiled using SASS (Syntactically Awesome Style Sheets) to make the use and implementation faster and easier.
 * https://sass-lang.com
 
-#####PM2
+##### PM2
 PM2 Runtime is a Production Process Manager for Node.js applications with a built-in Load Balancer. It allows you to keep applications alive forever, to reload them without downtime and facilitate common Devops tasks.
 * https://pm2.io
 
-###Installing
+### Installing
 
 After you have installed all prerequisites is in place you will need to compile the ReactJS with Yarn. You can set the base URL in the configuration.
 
