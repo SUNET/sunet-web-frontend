@@ -1,0 +1,80 @@
+html {
+  font-size: $main-font-size;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color: $dark;
+  line-height: 1.5;
+}
+
+// headers
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Proxima Nova";
+  text-rendering: optimizeLegibility;
+  margin-top: 52px;
+  line-height: 1.2;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+h1 {
+  @include x-rem(font-size, 2.8);
+  @include media-breakpoint-down(md) {
+    @include x-rem(font-size, 3);
+  }
+}
+h2 {
+  @include x-rem(font-size, 2.2);
+  @include media-breakpoint-down(md) {
+    @include x-rem(font-size, 2.3);
+  }
+}
+h3 {
+  @include x-rem(font-size, 2);
+}
+h4 {
+  @include x-rem(font-size, 1.7);
+}
+h5 {
+  @include x-rem(font-size, 1.5);
+}
+h6 {
+  @include x-rem(font-size, 1.4);
+}
+
+
+// main paragraph
+h1, h2, h3, h4 {
+  & + p {
+    margin-top: 8px;
+  }
+}
+
+p {
+  margin-top: 38px;
+  margin-bottom: 0;
+  font-family: "Proxima Nova";
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+}
+
+// links
+a {
+  color: $dark;
+  text-decoration: none;
+  transition: color 0.5s ease;
+  &:hover {
+    text-decoration: none;
+    color: $pri_orange;
+    border-bottom: 1px solid $pri_orange;
+  }
+}
+
+header a {
+  border-bottom: 1px solid $light;
+  transition: all 0.5s ease;
+}

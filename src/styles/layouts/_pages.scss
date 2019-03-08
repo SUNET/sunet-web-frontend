@@ -1,0 +1,78 @@
+.m-80 {
+	margin-top: 80px;
+}
+.single {
+	article {
+		margin-bottom: 160px;
+		h1 {
+			@include x-rem(font-size, 3.6);
+			line-height: 44px;
+			margin-top: 0;
+		}
+		p.intro-1 {
+			@include x-rem(font-size, 2.8);
+			line-height: 42px;
+			margin-top: 24px;
+		}
+		h2 {
+			@include x-rem(font-size, 2.8);
+			line-height: 38px;
+			margin-top: 56px;
+		}
+		p.intro-2 {
+			@include x-rem(font-size, 2.4);
+			line-height: 36px;
+			margin-top: 24px;
+		}
+		h3 {
+			@include x-rem(font-size, 2.4);
+			line-height: 34px;
+			margin-top: 56px;
+		}
+		p {
+			@include x-rem(font-size, 2);
+			line-height: 32px;
+			margin-top: 24px;
+		}
+		pre {
+  	  white-space: normal;
+  	  background-color: $thi_grey;
+  	  margin: 24px 0 0 0;
+			code {
+  	  	display: block;
+  	  	padding: 30px;
+				font-family: "Akkurat";
+				white-space: pre;
+			}
+		}
+		p.image-caption {
+			@include x-rem(font-size, 1.4);
+			line-height: 22px;	
+			margin-top: 40px;
+		}
+		ul,
+		ol {
+			margin-top: 30px;
+		}
+		img {
+			margin-top: 88px;
+		}
+	}
+}
+.related-segment {
+	background-color: $sec_orange;
+	margin-top: 160px;
+	padding: 120px 0;
+	h2 {
+		@include x-rem(font-size, 2.8);
+		line-height: 38px;
+		margin-top: 0;
+	}
+	ul {
+		margin-top: 24px;
+		li {
+			@include x-rem(font-size, 2);
+			line-height: 32px;
+		}
+	}
+}

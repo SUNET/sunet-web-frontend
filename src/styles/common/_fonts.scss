@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('/static/fonts/ProximaNova-Bold.eot');
+    src: url('/static/fonts/ProximaNova-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/static/fonts/ProximaNova-Bold.woff2') format('woff2'),
+        url('/static/fonts/ProximaNova-Bold.woff') format('woff'),
+        url('/static/fonts/ProximaNova-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('/static/fonts/ProximaNova-BoldIt.eot');
+    src: url('/static/fonts/ProximaNova-BoldIt.eot?#iefix') format('embedded-opentype'),
+        url('/static/fonts/ProximaNova-BoldIt.woff2') format('woff2'),
+        url('/static/fonts/ProximaNova-BoldIt.woff') format('woff'),
+        url('/static/fonts/ProximaNova-BoldIt.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('/static/fonts/ProximaNova-RegularIt.eot');
+    src: url('/static/fonts/ProximaNova-RegularIt.eot?#iefix') format('embedded-opentype'),
+        url('/static/fonts/ProximaNova-RegularIt.woff2') format('woff2'),
+        url('/static/fonts/ProximaNova-RegularIt.woff') format('woff'),
+        url('/static/fonts/ProximaNova-RegularIt.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('/static/fonts/ProximaNova-Regular.eot');
+    src: url('/static/fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+        url('/static/fonts/ProximaNova-Regular.woff2') format('woff2'),
+        url('/static/fonts/ProximaNova-Regular.woff') format('woff'),
+        url('/static/fonts/ProximaNova-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Akkurat';
+    src: url('/static/fonts/Akkurat-Mono.eot');
+    src: url('/static/fonts/Akkurat-Mono.eot?#iefix') format('embedded-opentype'),
+        url('/static/fonts/Akkurat-Mono.woff2') format('woff2'),
+        url('/static/fonts/Akkurat-Mono.woff') format('woff'),
+        url('/static/fonts/Akkurat-Mono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

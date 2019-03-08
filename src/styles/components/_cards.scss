@@ -1,0 +1,119 @@
+.cards {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	.card {
+		background-color: $light;
+  	width: 32%;
+		margin-bottom: 50px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+		flex-direction: column;
+		height: 300px;
+		box-shadow: 0px 4px 14px rgba(89, 89, 89, 0.0668025);
+		border-radius: 10px;
+		border: 1px solid transparent;
+		transition: border-color 0.5s ease;
+		@include media-breakpoint-down(md) {
+    	width: 48%;
+  	}
+  	@include media-breakpoint-down(sm) {
+    	width: 100%;
+  	}
+		&:last-child {
+			margin-bottom: 0;
+		}
+		.card-tags {
+			span {
+				display: block;
+				font-family: "Akkurat";
+				text-transform: uppercase;
+				@include x-rem(font-size, 1.2);
+			}
+		}
+		.card-content {
+			.card-intro {
+				margin-top: 8px !important;
+				overflow: hidden;
+   			text-overflow: ellipsis;
+   			display: -webkit-box;
+   			line-height: 24px;
+    		max-height: 96px;
+   			-webkit-line-clamp: 4; /* number of lines to show */
+   			-webkit-box-orient: vertical;
+			}
+			.header-container {
+				h2 {
+					margin-top: 0;
+					transition: all 0.5s ease;
+					border-bottom: 1px solid $light;
+					display: initial;
+				}
+			}
+		}
+		&:hover {
+			border: 1px solid $pri_orange;
+			cursor: pointer;
+			.card-content {
+				h2 {
+					border-bottom: 1px solid $pri_orange;
+					color: $pri_orange;
+				}
+			}
+		}
+	}
+	&.list {
+		flex-direction: column;
+		.card {
+			width: 100%;
+			background-color: initial;
+			border: none;
+			box-shadow: none;
+			margin-bottom: 25px;
+			height: auto;
+			border-bottom: 1px solid $sec_grey;
+			border-radius: 0;
+			padding: 0 0 25px 0;
+			flex-direction: row-reverse;
+    	justify-content: space-between;
+    	.card-tags {
+    		align-self: center;
+    		width: 10%;
+    		span {
+    			text-align: right;
+    		}
+    	}
+    	.card-content {
+    		display: flex;
+    		align-items: center;
+    		width: 90%;
+    		.header-container {
+    			width: 15%;
+    			margin-right: 0;
+    		}
+    		.card-intro {
+    			width: 85%;
+    			padding: 20px;
+    		}
+    		h2 {
+    			border-bottom: 1px solid $pri_grey;
+    		}
+    		p {
+    			width: 60%;
+    			margin-right: 10%;
+    			margin-top: 0;
+    		}
+    	}
+    	&:hover {
+    		.card-content {
+    			.header-container {
+    				h2 {
+    					border-bottom: 1px solid $pri_orange;
+    				}
+    			}
+    		}
+    	}
+		}
+	}
+}

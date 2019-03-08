@@ -1,0 +1,6 @@
+.hero {
+	padding-bottom: 80px;
+	p {
+		@include x-rem(font-size, 2.8);
+	}
+}

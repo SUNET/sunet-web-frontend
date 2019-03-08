@@ -1,0 +1,58 @@
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.btn-load-container {
+	display: flex;
+	justify-content: center;
+	.btn-load {
+		margin-top: 100px;
+		background-color: $light;
+		padding: 14px 30px;
+		box-shadow: 0px 5px 17px rgba(89, 89, 89, 0.07);
+		border-radius: 20px;
+		font-weight: bold;
+		@include x-rem(font-size, 1.6);
+		border: 1px solid $light;
+		transition: all 0.5s ease;
+		&:hover {
+			border: 1px solid $pri_orange;
+		}
+	}
+}
+
+.btn-more {
+	background-color: $pri_grey;
+	padding: 14px 30px;
+	box-shadow: 0px 5px 17px rgba(89, 89, 89, 0.07);
+	border-radius: 20px;
+	font-weight: bold;
+	@include x-rem(font-size, 1.6);
+	border: 1px solid $pri_grey;
+	margin-top: 20px;
+	display: inline-block;
+	transition: all 0.5s ease;
+	&:hover {
+		border: 1px solid $pri_orange;
+	}
+}
+
+.cookie-btn {
+	background-color: $light;
+	padding: 10px 24px;
+	box-shadow: 0px 5px 17px rgba(89, 89, 89, 0.07);
+	border-radius: 20px;
+	font-weight: bold;
+	@include x-rem(font-size, 1.6);
+	border: 1px solid $light;
+	transition: all 0.5s ease;
+	&:hover {
+		border: 1px solid $pri_orange;
+	}
+}

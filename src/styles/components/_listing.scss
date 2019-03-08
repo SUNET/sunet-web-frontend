@@ -1,0 +1,65 @@
+.listing {
+	padding-top: 100px;
+	padding-bottom: 100px;
+	.filter-container {
+		margin-bottom: 46px;
+		ul.filter-toggle {
+			max-width: 600px;
+			margin: 0 auto;
+			@include list-unstyled;
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 0;
+			a {
+				padding: 10px 20px;
+				background-color: $light;
+				border-radius: 20px;
+				box-shadow: 0px 5px 17px rgba(89, 89, 89, 0.07);
+				font-weight: bold;
+				@include x-rem(font-size, 1.6);
+				border: 1px solid $light;
+				transition: all 0.5s ease;
+				&:hover {
+					border: 1px solid $pri_orange;
+				}
+				&.active {
+					color: $pri_orange;
+					border: 1px solid $pri_orange;
+				}
+			}
+		}
+		ul.listStyle-toggle {
+			@include list-unstyled;
+			position: absolute;
+			top: 8px;
+			right: 15px;
+			justify-content: space-between;
+			margin-bottom: 0;
+			display: flex;
+			a {
+				cursor: pointer;
+				margin-right: 20px;
+				svg path,
+				svg rect {
+					transition: fill .5s ease;
+				}
+				&:last-child {
+					margin-right: 0;
+				}
+				&:hover {
+					border: none;
+					svg path,
+					svg rect {
+						fill: $pri_orange;
+					}
+				}
+				&.on {
+					svg path,
+					svg rect {
+						fill: $pri_orange;
+					}
+				}
+			}
+		}
+	}
+}

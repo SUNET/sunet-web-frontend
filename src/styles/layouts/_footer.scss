@@ -1,0 +1,81 @@
+footer {
+	padding-top: 70px;
+	padding-bottom: 70px;
+	.accordion {
+		.accordion-item {
+			.title {
+				width: 100%;
+				text-align: left;
+				cursor: pointer;
+				padding: 30px 0;
+				border: none;
+				outline: none;
+				&:after {
+    			content: '\2795';
+    			font-size: 18px;
+    			color: $pri_orange;
+    			float: right;
+    			margin-left: 5px;
+				}
+			}
+			.panel {
+				max-height: 0;
+    		-webkit-transition: max-height 0.15s ease-out;
+    		-o-transition: max-height 0.15s ease-out;
+    		transition: max-height 0.15s ease-out;
+    		overflow: hidden;
+			}
+			border-bottom: 1px solid $sec_grey;
+		}
+		.accordion-item.active {
+			.title:after {
+    		content: '\2796';
+			}
+			.panel {
+				max-height: 500px;
+    		-webkit-transition: max-height 0.25s ease-in;
+    		-o-transition: max-height 0.25s ease-in;
+    		transition: max-height 0.25s ease-in;
+    		p {
+    			margin-top: 0;
+					margin-bottom: 30px;
+    		}
+			}
+		}
+	}
+	.footer-meta {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-top: 60px;	
+		.box {
+			width: 32%;
+			p {
+				margin-top: 0;
+			}
+			a {
+				display: inline-block;
+			}
+		}
+		@include media-breakpoint-down(md) {
+    	flex-direction: column;
+    	.box {
+    		width: 100%;
+    	} 	
+  	}
+	}
+}
+
+.vr-footer {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	position: relative;
+	svg {
+		position: absolute;
+		bottom: 15px;
+		left: 20px;
+	}
+	a {
+		font-weight: bold;
+	}
+}

@@ -1,0 +1,54 @@
+.banner {
+	height: 100px;
+	.header-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 100px;
+		a.brand {
+			position: absolute;
+    	left: 30px;
+    	border-bottom: none;
+			&:hover {
+				border-bottom: none;
+			}
+		}
+		nav {
+			display: flex;
+			@extend .list-unstyled;
+		}
+		.nav-primary a {
+			margin: 0 26px 0 0;
+			@include x-rem(font-size, 1.8);
+			&:last-child {
+				margin-right: 0;
+			}
+			&.current-menu-item a {
+				color: $pri_orange;
+    		border-bottom: 1px solid $pri_orange;
+			}
+		}
+		.nav-secondary {
+			position: absolute;
+			right: 30px;
+		}
+		.nav-secondary {
+			margin-bottom: 0;
+			a {
+				margin: 0 24px 0 0;
+				@include x-rem(font-size, 1.4);
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+}
+
+.info-banner {
+	display: none;
+	.btn-close {
+		position: absolute;
+		right: 30px;
+	}
+}
