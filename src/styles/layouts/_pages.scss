@@ -73,6 +73,9 @@
 		li {
 			@include x-rem(font-size, 2);
 			line-height: 32px;
+			a {
+				margin-left: 10px;
+			}
 		}
 	}
 }

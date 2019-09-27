@@ -1,34 +1,21 @@
 import Layout from "../components/Layout.js";
 import React, { Component } from "react";
 import Link from "next/link";
-import fetch from "isomorphic-unfetch";
 import Error from "next/error";
 import PageWrapper from "../components/PageWrapper.js";
-import Menu from "../components/Menu.js";
-import { Config } from "../config.js";
+import categories from '../json/categories.json';
+import posts from '../json/posts.json';
+import { getPageBySlug } from '../src/utils';
 
 class Category extends Component {
-    static async getInitialProps(context) {
+    static getInitialProps(context) {
         const { slug } = context.query;
-        const categoriesRes = await fetch(
-            `${Config.apiUrl}/wp-json/wp/v2/categories?slug=${slug}`
-        );
-        const categories = await categoriesRes.json();
-        if (categories.length > 0) {
-            const postsRes = await fetch(
-                `${Config.apiUrl}/wp-json/wp/v2/posts?_embed&categories=${
-                    categories[0].id
-                }`
-            );
-            const posts = await postsRes.json();
-            return { categories, posts };
-        }
-        return { categories };
+        const category = getPageBySlug(categories, slug);
+        // TODO: get posts with the category choosen
+        return { category, posts: [] }
     }
-    render() {
-        if (this.props.categories.length == 0)
-            return <Error statusCode={404} />;
 
+    render() {
         const posts = this.props.posts.map((post, index) => {
             return (
                 <ul key={index}>
@@ -45,8 +32,7 @@ class Category extends Component {
         });
         return (
             <Layout {...this.props}>
-                
-                <h1>{this.props.categories[0].name} Posts</h1>
+                <h1>{this.props.category.name} Posts</h1>
                 {posts}
             </Layout>
         );

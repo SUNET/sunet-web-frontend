@@ -1,25 +1,24 @@
 import Layout from "../components/Layout.js";
 import React, { Component } from "react";
-import fetch from "isomorphic-unfetch";
-import Error from "next/error";
 import PageWrapper from "../components/PageWrapper.js";
-import AboutMenu from "../components/AboutMenu.js";
-import { Config } from "../config.js";
+import SideBarMenu from "../components/SideBarMenu.js";
+import pages from '../json/pages.json';
+import omList from '../json/om.json';
+import { getPageBySlug } from '../src/utils';
 
 class Om extends Component {
-
+	
 	static async getInitialProps(context) {
-		
-		const pageRes = await fetch(
-			`${Config.apiUrl}/wp-json/postlight/v1/page?slug=om`
-		);
-		const page = await pageRes.json();
-		
-		return { page };
-		
+		let { slug } = context.query;
+
+		// If no slug is specified, return the default om-sunet page
+		if (!slug) return { omPage: getPageBySlug(pages, 'om') };
+
+		return { omPage: getPageBySlug(omList, slug) };
 	}
 
 	render() {
+		const { omPage } = this.props;
 
 		return (
 			<Layout {...this.props}>
@@ -28,12 +27,12 @@ class Om extends Component {
 					<div className="row single m-80">
 						<aside className="sidebar col-lg-3">
 							<div className="service">
-								<AboutMenu menu={this.props.aboutNav} />
+								<SideBarMenu menu={this.props.aboutNav} appendToUrl="sunet" />
 							</div>
 						</aside>
 						<article className="col-lg-7">
-							<h1>{this.props.page.title.rendered}</h1>
-							<div dangerouslySetInnerHTML={ {__html: this.props.page.content.rendered} } />
+							<h1>{omPage.title.rendered}</h1>
+							<div dangerouslySetInnerHTML={ {__html: omPage.content.rendered} } />
 						</article>
 					</div>
 				</div>

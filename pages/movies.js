@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import Error from "next/error";
 import PageWrapper from "../components/PageWrapper.js";
-import Menu from "../components/Menu.js";
 import { Config } from "../config.js";
 
 class Movies extends Component {

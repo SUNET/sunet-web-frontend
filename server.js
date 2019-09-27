@@ -18,7 +18,7 @@ app
 
         server.get("/tjanster", (req, res) => {
             const actualPage = "/tjanster";
-            const queryParams = { slug: req.params.slug, apiRoute: "tjanster" };
+            const queryParams = { slug: req.params.slug, category: req.query.kategori, apiRoute: "tjanster" };
             app.render(req, res, actualPage, queryParams);
         });
 
@@ -59,7 +59,19 @@ app
         });
 
         server.get("/om-sunet/:slug", (req, res) => {
-            const actualPage = "/om-page";
+            const actualPage = "/om";
+            const queryParams = { slug: req.params.slug, apiRoute: "om" };
+            app.render(req, res, actualPage, queryParams);
+        });
+
+        server.get("/om", (req, res) => {
+            const actualPage = "/om";
+            const queryParams = { slug: req.params.slug, apiRoute: "om" };
+            app.render(req, res, actualPage, queryParams);
+        });
+
+        server.get("/om/:slug", (req, res) => {
+            const actualPage = "/om";
             const queryParams = { slug: req.params.slug, apiRoute: "om" };
             app.render(req, res, actualPage, queryParams);
         });

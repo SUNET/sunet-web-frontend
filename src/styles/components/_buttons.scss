@@ -20,7 +20,10 @@ button, input[type="submit"], input[type="reset"] {
 		font-weight: bold;
 		@include x-rem(font-size, 1.6);
 		border: 1px solid $light;
-		transition: all 0.5s ease;
+		transition: all 0.5s ease;  
+		@include media-breakpoint-down(sm) {
+			margin-top: 30px;
+		} 
 		&:hover {
 			border: 1px solid $pri_orange;
 		}

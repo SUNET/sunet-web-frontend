@@ -1,31 +1,28 @@
 import Layout from "../components/Layout.js";
 import React, { Component } from "react";
-import fetch from "isomorphic-unfetch";
 import Error from "next/error";
 import PageWrapper from "../components/PageWrapper.js";
-import Menu from "../components/Menu.js";
-import { Config } from "../config.js";
+import pages from '../json/pages.json';
+import { getPageBySlug } from '../src/utils';
 
 class Page extends Component {
-    static async getInitialProps(context) {
-        const { slug, apiRoute } = context.query;
-        const res = await fetch(
-            `${Config.apiUrl}/wp-json/postlight/v1/${apiRoute}?slug=${slug}`
-        );
-        const page = await res.json();
+    static getInitialProps(context) {
+        const { slug } = context.query;
+        const page = getPageBySlug(pages, slug);
         return { page };
     }
 
     render() {
-        if (!this.props.page.title) return <Error statusCode={404} />;
+        const { page } = this.props;
+        if (!page.title) return <Error statusCode={404} />;
 
         return (
             <Layout {...this.props}>
                 <h2>Page</h2>
-                <h1>{this.props.page.title.rendered}</h1>
+                <h1>{page.title.rendered}</h1>
                 <div
                     dangerouslySetInnerHTML={{
-                        __html: this.props.page.content.rendered
+                        __html: page.content.rendered
                     }}
                 />
             </Layout>

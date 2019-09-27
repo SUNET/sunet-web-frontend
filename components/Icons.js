@@ -3,8 +3,8 @@ import React, { Component } from "react";
 export class Logo extends Component {
   render() {
     return (
-    	<svg width="30" height="38" viewBox="0 0 30 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title">
-				<title id="title">Sunet Logo</title>
+    	<svg width="30" height="38" viewBox="0 0 30 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Till startsidan">
+				<title>Till startsidan</title>
 				<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="31" width="12" height="7">
 					<path fillRule="evenodd" clipRule="evenodd" d="M0.649658 31.2283H11.3042V37.9974H0.649658V31.2283Z" fill="white"/>
 				</mask>
@@ -15,8 +15,8 @@ export class Logo extends Component {
 				<path fillRule="evenodd" clipRule="evenodd" d="M16.2292 34.9898C16.6244 35.5655 17.0147 36.1575 17.4002 36.7657H17.4291C17.3873 36.1314 17.3665 35.4842 17.3665 34.8239V31.3502H18.1568V37.8781H17.3713L14.8415 34.2384C14.4045 33.6042 14.0142 33.0123 13.6705 32.4626H13.6416C13.6833 33.0578 13.7042 33.7522 13.7042 34.5458V37.8781H12.9187V31.3502H13.6994L16.2292 34.9898Z" fill="#1D1C1A"/>
 				<path fillRule="evenodd" clipRule="evenodd" d="M20.5757 37.1609H23.8815V37.8781H19.7903V31.3502H23.7032V32.0674H20.5757V34.1751H23.3562V34.8922H20.5757V37.1609Z" fill="#1D1C1A"/>
 				<path fillRule="evenodd" clipRule="evenodd" d="M27.5438 37.8781H26.7583V32.0674H24.6042V31.3502H29.6977V32.0674H27.5438V37.8781Z" fill="#1D1C1A"/>
-				<path fillRule="evenodd" clipRule="evenodd" d="M3.22449 15.3644V3.63203C3.22449 3.54653 3.40511 3.3064 3.54687 3.3064H29.9235V0.0408936C19.4294 0.0408936 3.54687 0.0408936 3.54687 0.0408936C2.22247 0.0408936 0 0.507732 0 3.63203V15.3644C0 17.5793 1.3585 18.9557 3.54687 18.9557H19.9275V15.6909H3.54687C3.39665 15.6909 3.22449 15.5167 3.22449 15.3644Z" fill="black"/>
-				<path fillRule="evenodd" clipRule="evenodd" d="M26.7392 11.4358V23.168C26.7392 23.2536 26.5585 23.4938 26.4169 23.4938H0.0402832V26.7591C10.5344 26.7591 26.4169 26.7591 26.4169 26.7591C27.7413 26.7591 29.9639 26.2922 29.9639 23.168V11.4358C29.9639 9.22087 28.6053 7.84448 26.4169 7.84448H10.0363V11.1093H26.4169C26.5669 11.1093 26.7392 11.2835 26.7392 11.4358Z" fill="black"/>
+				<path fillRule="evenodd" clipRule="evenodd" d="M3.22449 15.3644V3.63203C3.22449 3.54653 3.40511 3.3064 3.54687 3.3064H29.9235V0.0408936C19.4294 0.0408936 3.54687 0.0408936 3.54687 0.0408936C2.22247 0.0408936 0 0.507732 0 3.63203V15.3644C0 17.5793 1.3585 18.9557 3.54687 18.9557H19.9275V15.6909H3.54687C3.39665 15.6909 3.22449 15.5167 3.22449 15.3644Z" fill="#D3452E"/>
+				<path fillRule="evenodd" clipRule="evenodd" d="M26.7392 11.4358V23.168C26.7392 23.2536 26.5585 23.4938 26.4169 23.4938H0.0402832V26.7591C10.5344 26.7591 26.4169 26.7591 26.4169 26.7591C27.7413 26.7591 29.9639 26.2922 29.9639 23.168V11.4358C29.9639 9.22087 28.6053 7.84448 26.4169 7.84448H10.0363V11.1093H26.4169C26.5669 11.1093 26.7392 11.2835 26.7392 11.4358Z" fill="#D3452E"/>
 			</svg>  
     )
   }
@@ -25,8 +25,8 @@ export class Logo extends Component {
 export class Grid extends Component {
   render() {
     return (
-    	<svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title">
-			<title id="title">Sunet grid</title>
+    	<svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Visa som grid">
+			<title>Visa som grid</title>
 				<rect x="10" width="8" height="4" fill="black"/>
 				<rect x="10" y="8" width="8" height="4" fill="black"/>
 				<rect x="10" y="16" width="8" height="4" fill="black"/>
@@ -44,8 +44,8 @@ export class Grid extends Component {
 export class List extends Component {
   render() {
     return (
-    	<svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title">
-			<title id="title">Sunet list</title>
+    	<svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Visa som lista">
+			<title>Visa som lista</title>
 				<rect width="28" height="4" fill="black"/>
 				<rect y="8" width="28" height="4" fill="black"/>
 				<rect y="16" width="28" height="4" fill="black"/>

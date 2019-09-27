@@ -1,26 +1,43 @@
 .cards {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	flex-wrap: wrap;
 	.card {
 		background-color: $light;
-  	width: 32%;
+		width: 32%;
 		margin-bottom: 50px;
-    padding: 30px;
-    display: flex;
-    justify-content: space-between;
+		margin-right:2%;
+		padding: 30px;
+		display: flex;
+		justify-content: space-between;
 		flex-direction: column;
+		font-weight: 400;
 		height: 300px;
 		box-shadow: 0px 4px 14px rgba(89, 89, 89, 0.0668025);
 		border-radius: 10px;
 		border: 1px solid transparent;
 		transition: border-color 0.5s ease;
+
+		@include media-breakpoint-up(lg) {
+			&:nth-child(3n) {
+				margin-right:0;
+			}
+		}
+
 		@include media-breakpoint-down(md) {
-    	width: 48%;
-  	}
-  	@include media-breakpoint-down(sm) {
-    	width: 100%;
-  	}
+			width: 48%;
+			margin-right:4%;
+
+			&:nth-child(even) {
+				margin-right:0;
+			}
+		}
+		@include media-breakpoint-down(sm) {
+			margin-bottom: 30px;
+			margin-right:0;
+			height: 250px;
+			width: 100%;
+		}
 		&:last-child {
 			margin-bottom: 0;
 		}
@@ -36,12 +53,12 @@
 			.card-intro {
 				margin-top: 8px !important;
 				overflow: hidden;
-   			text-overflow: ellipsis;
-   			display: -webkit-box;
-   			line-height: 24px;
-    		max-height: 96px;
-   			-webkit-line-clamp: 4; /* number of lines to show */
-   			-webkit-box-orient: vertical;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				line-height: 24px;
+				max-height: 96px;
+				-webkit-line-clamp: 4; /* number of lines to show */
+				-webkit-box-orient: vertical;
 			}
 			.header-container {
 				h2 {
@@ -54,7 +71,7 @@
 		}
 		&:hover {
 			border: 1px solid $pri_orange;
-			cursor: pointer;
+			cursor:pointer;
 			.card-content {
 				h2 {
 					border-bottom: 1px solid $pri_orange;
@@ -76,44 +93,71 @@
 			border-radius: 0;
 			padding: 0 0 25px 0;
 			flex-direction: row-reverse;
-    	justify-content: space-between;
-    	.card-tags {
-    		align-self: center;
-    		width: 10%;
-    		span {
-    			text-align: right;
-    		}
-    	}
-    	.card-content {
-    		display: flex;
-    		align-items: center;
-    		width: 90%;
-    		.header-container {
-    			width: 15%;
-    			margin-right: 0;
-    		}
-    		.card-intro {
-    			width: 85%;
-    			padding: 20px;
-    		}
-    		h2 {
-    			border-bottom: 1px solid $pri_grey;
-    		}
-    		p {
-    			width: 60%;
-    			margin-right: 10%;
-    			margin-top: 0;
-    		}
-    	}
-    	&:hover {
-    		.card-content {
-    			.header-container {
-    				h2 {
-    					border-bottom: 1px solid $pri_orange;
-    				}
-    			}
-    		}
-    	}
+    		justify-content: space-between;
+			.card-tags {
+				align-self: center;
+				width: 10%;
+				span {
+					text-align: right;
+				}
+			}
+			.card-content {
+				display: flex;
+				align-items: center;
+				width: 90%;
+				.header-container {
+					width: 15%;
+					margin-right: 0;
+				}
+				.card-intro {
+					width: 85%;
+					padding: 20px;
+				}
+				h2 {
+					border-bottom: 1px solid $pri_grey;
+				}
+				p {
+					width: 60%;
+					margin-right: 10%;
+					margin-top: 0;
+				}
+			}
+			&:hover {
+				.card-content {
+					.header-container {
+						h2 {
+							border-bottom: 1px solid $pri_orange;
+						}
+					}
+				}
+			}
+		}
+		&.events {
+			.card {
+				.header-container {
+					h3 {
+						margin-top:0;
+					}
+				}
+				.card-tags,
+				.card-content {
+					padding-top:20px;
+					p {
+						margin-top:0;
+					}
+				}
+				.card-tags,
+				.header-container {
+					align-self: flex-start;
+				}
+				.card-intro {
+					padding-top: 0;
+					margin-top: 0 !important;
+					overflow: auto;
+					max-height: none;
+					-webkit-line-clamp: unset;
+				}
+			}
 		}
 	}
 }

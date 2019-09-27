@@ -20,6 +20,9 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   font-weight: bold;
   margin-bottom: 0;
+  @include media-breakpoint-down(sm) {
+    margin-top: 32px;
+  }
 }
 h1 {
   @include x-rem(font-size, 2.8);
@@ -64,9 +67,17 @@ p {
 
 // links
 a {
+  border-bottom: 1px solid $dark;
   color: $dark;
+  font-weight: 700;
   text-decoration: none;
   transition: color 0.5s ease;
+
+  &.external {
+    svg { 
+      position: static; 
+    }
+  }
   &:hover {
     text-decoration: none;
     color: $pri_orange;
@@ -76,5 +87,6 @@ a {
 
 header a {
   border-bottom: 1px solid $light;
+  font-weight: 400;
   transition: all 0.5s ease;
 }

@@ -1,43 +1,37 @@
-	import React, { Component } from 'react';
-	import { Config } from "../config.js";
-	import {Grid, List} from "./Icons.js";
-	import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
-	class AllEvenemangList extends Component {
-
-		constructor() {
-			super();
-			this.state = {
-				evenemang: []
-			};
-		}
-
-		componentDidMount() {
-			let evenemangURL = `${Config.apiUrl}/wp-json/wp/v2/evenemang/?_embed`
-			fetch(evenemangURL)
-				.then(res => res.json())
-				.then(res => {
-					this.setState({
-					evenemang: res
-				})
-			})
-		}
-
-		render() {
-
-			let evenemang = this.state.evenemang.map((evenemang, index) => {
-				return <div key={index}>{evenemang.title.rendered}</div>
-			});
-
+const AllEvenemangList = ({ evenemang, count }) => {
+	function renderEvenemang() {
+		return evenemang.map((item, index) => {
 			return (
-			
-				<div className="bg-grey">
-					{evenemang}
+				<Link href={`/evenemang/${item.slug}`} as={`/evenemang/${item.slug}`} key={item.id}>
+				<div className="card">
+					<div className="card-tags">
+						<span>{item.date.split('T')[0]}</span>
+					</div>
+					<div className="card-content">
+						<div className="header-container">
+							<h3>
+								{item.title && item.title.rendered}
+							</h3>
+						</div>
+						<div
+							className="card-intro"
+							dangerouslySetInnerHTML={{ __html: item.excerpt && item.excerpt.rendered }}
+						/>
+					</div>
 				</div>
-			
-			)
-		}	
-
+				</Link>
+			);
+		});
 	}
 
-	export default AllEvenemangList;
+	return (
+		<div className="row">
+			<div className="col-12 cards list events">{renderEvenemang()}</div>
+		</div>
+	);
+};
+
+export default AllEvenemangList;
