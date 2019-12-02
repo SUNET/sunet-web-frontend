@@ -1,0 +1,23 @@
+[
+    {
+        "name": "tjanster",
+        "routes": {
+            "sv": "tjanster",
+            "en": "services"
+        }
+    },
+    {
+        "name": "evenemang",
+        "routes": {
+            "sv": "evenemang",
+            "en": "events"
+        }
+    },
+    {
+        "name": "person",
+        "routes": {
+            "sv": "kontakt/medarbetare",
+            "en": "contact/employees"
+        }
+    }
+]

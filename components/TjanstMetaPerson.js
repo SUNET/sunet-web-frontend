@@ -1,12 +1,8 @@
-const TjanstMetaPerson = ({ tjanst, person }) => {
-    if (!tjanst.acf.person[0]) return '';
+const TjanstMetaPerson = ({ person }) => {
+    if (!person || !person.acf) return null;
 
     return (
         <div className="meta-contact">
-            <img 
-                src={person.acf.image} 
-                alt={`bild på ${person.acf.title.rendered}`} 
-            />
             <h2>{ person.title.rendered }</h2>
             <span className="meta-contact--title">{ person.acf.title }</span>
             <div>

@@ -9,7 +9,8 @@
 			line-height: 44px;
 			margin-top: 0;
 		}
-		p.intro-1 {
+		p.intro-1,
+		> div > p:first-child {
 			@include x-rem(font-size, 2.8);
 			line-height: 42px;
 			margin-top: 24px;
@@ -35,12 +36,13 @@
 			margin-top: 24px;
 		}
 		pre {
-  	  white-space: normal;
-  	  background-color: $thi_grey;
-  	  margin: 24px 0 0 0;
+			white-space: pre;
+			background-color: $thi_grey;
+			margin: 24px 0 0 0;
+			padding: $grid-gutter-width-base;
 			code {
-  	  	display: block;
-  	  	padding: 30px;
+  	  			display: block;
+  	  	        padding: 30px;
 				font-family: "Akkurat";
 				white-space: pre;
 			}
@@ -56,6 +58,16 @@
 		}
 		img {
 			margin-top: 88px;
+		}
+	}
+	blockquote {
+		font-size: $font-size-base;
+		padding: $grid-gutter-width-base;
+		background-color: $thi_grey;
+		margin: 24px 0 0 0;
+		padding: $grid-gutter-width-base;
+		p {
+			margin-top:0;
 		}
 	}
 }

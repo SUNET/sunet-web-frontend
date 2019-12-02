@@ -1,13 +1,17 @@
 import React, {Component, Fragment} from 'react';
-import Accordion from '../components/Accordion.js';
-import ExternalHref from '../components/ExternalHref.js';
 import Link from 'next/link';
-import footer from '../json/footer-page.json';
+import ExternalHref from './ExternalHref';
+import Accordion from '../components/Accordion.js';
+import withLocale from './withLocale'
 
 class Footer extends Component {
-
+	getFooter(lang) {
+		const slug = lang === "en " ? "footer" : "sidfot";
+		return this.props.pages.find(page => page.slug === slug)
+	}
 	render() {
-		return (
+		const footer = this.getFooter(this.props.lang);
+		return footer && (
 			<Fragment>
 				<footer className="bg-grey bg-stripe">
 					<div className="container">
@@ -26,13 +30,13 @@ class Footer extends Component {
 								<div className="box">
 									{ footer.acf.footer_info 
 										&& footer.acf.footer_info.links 
-										&& footer.acf.footer_info.links.map(link => {
+										&& footer.acf.footer_info.links.map((link, index) => {
 											
 											const href = link.url.replace('//','').split('/');
 											href[0] = '';
 											return ( 
-												<div key={link.url}>
-													<a href={href.join('/')}>{link.text}</a>
+												<div key={`${index}-${link.url}`}>
+													<Link href={href.join('/')} as={href.join('/')}><a>{link.text}</a></Link>
 												</div>
 												)
 											}
@@ -45,18 +49,22 @@ class Footer extends Component {
 				</footer>
 
 				{
-				// <div className="container-fluid vr-footer">
-				//	<div className="container">
-				//		<div className="row justify-content-center">
-				//			<div className="col-lg-9">
-				//				<ExternalHref 
-				// 					href='/' 
-				// 					text='Sunet är en del av Vetenskapsrådet' 
-				// 				/>
-				// 			</div>
-				// 		</div>
-				// 	</div>
-				// </div>
+				<div className="container-fluid vr-footer">
+					<div className="container">
+						<div className="row justify-content-center">
+							<div className="col-lg-9">
+								{this.props.locale.lang === "sv" && <ExternalHref 
+									href='https://www.vr.se' 
+									text='Sunet är en del av Vetenskapsrådet' 
+								/> }
+								{ this.props.locale.lang === "en" && <ExternalHref 
+									href='https://www.vr.se/english.html' 
+									text='Sunet is part of Swedish Research Council' 
+								/> }
+							</div>
+						</div>
+					</div>
+				</div>
 				}
 
 			</Fragment>
@@ -64,4 +72,4 @@ class Footer extends Component {
 	}
 }
 
-export default Footer;
+export default withLocale(Footer);

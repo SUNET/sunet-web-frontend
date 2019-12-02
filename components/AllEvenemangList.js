@@ -1,14 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
+import withLocale from './withLocale'
 
-const AllEvenemangList = ({ evenemang, count }) => {
+const routes = {
+	"en": "about-sunet/events",
+	"sv": "/om-sunet/evenemang",
+}
+
+
+
+
+
+const AllEvenemangList = ({ evenemang, locale }) => {
+	
 	function renderEvenemang() {
-		return evenemang.map((item, index) => {
+		return evenemang.map((item) => {
 			return (
-				<Link href={`/evenemang/${item.slug}`} as={`/evenemang/${item.slug}`} key={item.id}>
+				<Link href={`${routes[locale.lang]}/${item.slug}`} as={`${routes[locale.lang]}/${item.slug}`} key={item.id}>
 				<div className="card">
 					<div className="card-tags">
-						<span>{item.date.split('T')[0]}</span>
+						<span>{item.acf && item.acf.text_date}</span>
 					</div>
 					<div className="card-content">
 						<div className="header-container">
@@ -27,6 +38,7 @@ const AllEvenemangList = ({ evenemang, count }) => {
 		});
 	}
 
+
 	return (
 		<div className="row">
 			<div className="col-12 cards list events">{renderEvenemang()}</div>
@@ -34,4 +46,5 @@ const AllEvenemangList = ({ evenemang, count }) => {
 	);
 };
 
-export default AllEvenemangList;
+export default withLocale(AllEvenemangList);
+
