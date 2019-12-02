@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import Head from "next/head";
-import MainMenu from "./MainMenu.js";
 import HiddenNav from "./HiddenNav";
+import Navigation from './Navigation';
 import {Logo} from "./Icons.js";
+import withLocale from "./withLocale";
 import stylesheet from '../src/styles/style.scss'
 
 const Header = props => {
-
 	return (
 		<Fragment>
 			<Head>
@@ -17,20 +17,17 @@ const Header = props => {
 				/>
 				<meta charSet="utf-8" />
 				<title>Sunet</title>
+				<meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
+					
 			</Head>
 			<HiddenNav />
 			<header className="banner">
-				<div className="container-fluid">
-					<div className="row justify-content-center header-content">
+				<div className="container">
+					<div className="row header-content">
 						<a className="brand" href="/"><Logo/></a>
-						<div className="col-lg-7">
-							<nav className="nav-primary">
-								<MainMenu menu={props.mainNav} />
-							</nav>
-						</div>
-						<nav className="nav-secondary">
-							<MainMenu menu={props.globalNav} />
-						</nav>
+						<div className="col-lg-10 offset-lg-2">
+							<Navigation displaySubNavigation={props.router.query.apiRoute === 'page'} nav={props.nav} pages={props.pages} />
+							</div>
 					</div>
 				</div>
 			</header>
@@ -38,4 +35,4 @@ const Header = props => {
 	);
 }
 
-export default Header;
+export default withLocale(Header);

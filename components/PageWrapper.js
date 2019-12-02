@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import headerMenu from '../json/header-menu.json';
-import headerSecondary from '../json/header-secondary-menu.json';
-import aboutMenu from '../json/about-menu.json';
-import contactMenu from '../json/contakt-menu.json';
+import fetch from 'isomorphic-unfetch';
+import config from '../config.js'
+import { buildCompleteMenu } from '../src/utils/menu-builder'
 
 const PageWrapper = Comp => {
-	return class extends Component {
+	 return class extends Component {
 		static async getInitialProps(args) {
-			const navs = {
-				mainNav: headerMenu,
-				globalNav: headerSecondary,
-				aboutNav: aboutMenu,
-				contactNav: contactMenu
-			}
+			const { lang, subsection, section, slug } = args.query;
+			const pagesRes = await fetch(`${config.apiUrl}pages.json`);
+			const pages = await pagesRes.json();			
+			const nav = subsection ? 
+				await buildCompleteMenu(subsection, lang)
+				: await buildCompleteMenu(slug, lang);
 
-			return { 
-				...navs, 
+			return {
+				pages,
+				nav, 
 				...(Comp.getInitialProps ? await Comp.getInitialProps(args) : null)
 			};
 		}
@@ -24,6 +24,7 @@ const PageWrapper = Comp => {
 			return <Comp { ...this.props } />
 		}
 	}
+	
 }
 
 export default PageWrapper;

@@ -1,31 +1,41 @@
 import Layout from "../components/Layout.js";
 import React, { Component } from "react";
 import Error from "next/error";
+import fetch from 'isomorphic-unfetch';
+import config from '../config.js'
 import PageWrapper from "../components/PageWrapper.js";
-import pages from '../json/pages.json';
-import { getPageBySlug } from '../src/utils';
 
 class Page extends Component {
-    static getInitialProps(context) {
-        const { slug } = context.query;
-        const page = getPageBySlug(pages, slug);
-        return { page };
+    static async getInitialProps(context) {
+        const { section, slug, lang } = context.query;
+        const res = await fetch(`${config.apiUrl}pages.json`);
+        const pages = await res.json();
+        const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
+
+        return {
+            error: !page,
+            page, 
+            slug, 
+            section,
+            lang,
+        };
     }
 
     render() {
-        const { page } = this.props;
-        if (!page.title) return <Error statusCode={404} />;
+        const { error, page } = this.props;
+        if (error) return <Error statusCode={404} />;
 
         return (
             <Layout {...this.props}>
-                <h2>Page</h2>
-                <h1>{page.title.rendered}</h1>
-                <div
-                    dangerouslySetInnerHTML={{
-                        __html: page.content.rendered
-                    }}
-                />
-            </Layout>
+				<div className="container">
+					<div className="row single m-80">
+						<article className="col-lg-8 offset-lg-2">
+							<h1>{ page.title && page.title.rendered }</h1>
+							<div dangerouslySetInnerHTML={{  __html: page.content && page.content.rendered }} />
+						</article>
+					</div>
+				</div>
+			</Layout>
         );
     }
 }

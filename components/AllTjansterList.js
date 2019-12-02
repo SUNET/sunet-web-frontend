@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { withRouter } from 'next/router'
+import withLocale from './withLocale';
 import ListToggle from "./filter/ListToggle.js";
 import TjanstLink from './TjanstLink.js';
-import tjanster from '../json/tjanster.json';
-import categories from '../json/categories.json';
+import postTypes from '../post-types.json';
 
 class AllTjansterList extends Component {
 
@@ -11,50 +10,58 @@ class AllTjansterList extends Component {
 		super(props);
 		this.state = { 
 			gridID: 1,
-			categoryId: parseInt(props.router.query.category)
+			category: props.category,
 		};
+	}
+
+	static async getInitialProps(context) {
+
+	}
+
+	getSlug = () => {
+		const slug = postTypes.find(item => item.name === "tjanster").routes[this.props.locale.lang]
+		return `/${this.props.locale.slug}${slug}`;
 	}
 
 	changeGrid = gridID => {
 		this.setState({ gridID })
 	};
 
-	changeCategory = (event, categoryId) => {
+	changeCategory = (event, category) => {
 		event.preventDefault()
-		if (categoryId && categoryId !== this.state.categoryId) 
-			history.pushState(null, '', `?kategori=${categoryId}`)
-		else history.pushState(null, '', '/tjanster/')
+		if (category && category !== this.state.category) 
+			history.pushState(null, '', `${this.getSlug()}/${category}`)
+		else history.pushState(null, '', this.getSlug())
 		
-		this.setState({categoryId})
+		this.setState({category})
 	}
 
 	
 
 	renderTjanster() {
-		return tjanster.map(tjanst => {
-			
-			const category = categories.find(category => category.id === tjanst.categories[0]);
-			if (!this.state.categoryId 
-				|| tjanst.categories.indexOf(this.state.categoryId) !== -1
-				|| tjanst.categories === this.state.categoryId) {
+		const currentCategory = this.props.categories.find(item => item.slug === this.state.category);
+		return this.props.tjanster
+			.filter(tjanst => tjanst.lang === this.props.locale.lang && (!this.state.category || tjanst.categories.indexOf(currentCategory.id) !== -1))
+			.map(tjanst => {
+				
 				return <TjanstLink
 					tjanst={tjanst}
-					category={category}
+					category={this.props.categories.find(item => item.id === tjanst.categories[0])}
 					key={tjanst.slug}
 				/>
-			} return null;
+			
 		});
 	}
 
 	renderCategories() {
-		return categories.map(category => {
+		return this.props.categories.filter(category => category.lang === this.props.locale.lang).map(category => {
 			if (category.count === 0) return;
 
 			return (
 				<a 
-					className={`${category.slug} ${category.id === this.state.categoryId ? 'active' : null}`} 
-					key={category.id} href={`?kategori=${category.id}`} 
-					onClick={event => this.changeCategory(event, category.id)}>
+					className={`${category.slug} ${category.slug === this.state.category ? 'active' : null}`} 
+					key={category.id} href={`${this.getSlug()}/${category.slug}`} 
+					onClick={event => this.changeCategory(event, category.slug)}>
 					<li>{category.name}</li>
 				</a>
 			)
@@ -68,8 +75,8 @@ class AllTjansterList extends Component {
 					<div className="row">
 						<div className="col filter-container">
 							<div className="filter-toggle">
-								<a href="/tjanster/" 
-									className={`all ${!this.state.categoryId ? 'active': ''}`} 
+								<a href={this.getSlug()} 
+									className={`all ${!this.state.category ? 'active': ''}`} 
 									onClick={event => this.changeCategory(event, null)}>
 										<li>Visa alla</li></a>
 								{this.renderCategories()}
@@ -91,4 +98,4 @@ class AllTjansterList extends Component {
 	}
 }
 
-export default withRouter(AllTjansterList);
+export default withLocale(AllTjansterList);

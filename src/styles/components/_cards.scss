@@ -12,7 +12,7 @@
 		justify-content: space-between;
 		flex-direction: column;
 		font-weight: 400;
-		height: 300px;
+		height: 250px;
 		box-shadow: 0px 4px 14px rgba(89, 89, 89, 0.0668025);
 		border-radius: 10px;
 		border: 1px solid transparent;
@@ -35,7 +35,6 @@
 		@include media-breakpoint-down(sm) {
 			margin-bottom: 30px;
 			margin-right:0;
-			height: 250px;
 			width: 100%;
 		}
 		&:last-child {
@@ -96,7 +95,7 @@
     		justify-content: space-between;
 			.card-tags {
 				align-self: center;
-				width: 10%;
+				width: 20%;
 				span {
 					text-align: right;
 				}
@@ -104,14 +103,22 @@
 			.card-content {
 				display: flex;
 				align-items: center;
-				width: 90%;
+				width: 80%;
+				flex-wrap:wrap;
 				.header-container {
-					width: 15%;
+					width: 100%;
 					margin-right: 0;
+
+				@include media-breakpoint-up(lg) {
+					width:30%;
+				}
 				}
 				.card-intro {
-					width: 85%;
-					padding: 20px;
+					width: 100%;
+					@include media-breakpoint-up(lg) {
+						width:70%;
+						padding: 20px;
+					}
 				}
 				h2 {
 					border-bottom: 1px solid $pri_grey;
@@ -132,7 +139,8 @@
 				}
 			}
 		}
-		&.events {
+		&.events,
+		&.persons {
 			.card {
 				.header-container {
 					h3 {
@@ -156,6 +164,16 @@
 					overflow: auto;
 					max-height: none;
 					-webkit-line-clamp: unset;
+				}
+			}
+		}
+		&.persons {
+			.card {
+				.card-tags {
+					width:50%;
+					@include media-breakpoint-up(lg) {
+						width:30%;
+					}
 				}
 			}
 		}

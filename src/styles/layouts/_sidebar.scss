@@ -1,9 +1,4 @@
 .sidebar {
-	&.col-lg-3 {
-		max-width: 20.8333333%;
-		-ms-flex: 0 0 20.8333333%;
-    flex: 0 0 20.8333333%;
-	}
 	ul {
 		@include list-unstyled;
 		.current-menu-item {
@@ -76,5 +71,12 @@
     	text-decoration: none;
     	color: $pri_orange;
   	}
+	}
+	a {
+		border:0;
+		&.active {
+			color: $pri_orange;
+			border-bottom: 1px solid $pri_orange;
+		}
 	}
 }

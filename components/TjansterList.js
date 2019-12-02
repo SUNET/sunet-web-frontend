@@ -1,22 +1,20 @@
 import React from 'react';
+import withLocale from './withLocale'
 import TjanstLink from './TjanstLink.js';
-import tjanster from '../json/tjanster.json';
-import categories from '../json/categories.json';
 
-const TjansterList = () => {
+
+const TjansterList = ({locale, tjanster, categories}) => {
 
 	function renderTjanster() {
 		return tjanster.map(tjanst => {
-			if (tjanst.acf.sticky !== 'Ja') return;
-
-			// The tjanst will only have one category, even tho it currently is an array.
 			const category = categories.find(category => category.id === tjanst.categories[0]);
-
-			return <TjanstLink
-				tjanst={tjanst}
-				category={category}
-				key={tjanst.slug}
-			/>
+			if (tjanst.acf.sticky == "Ja") {
+				return <TjanstLink
+					tjanst={tjanst}
+					category={category}
+					key={tjanst.slug}
+				/>
+			}
 		})
 	}
 
@@ -25,13 +23,14 @@ const TjansterList = () => {
 			<div className="container listing">
 				<div className="row">
 					<div className="col cards">
-						{renderTjanster()}
+					{ renderTjanster() }
 					</div>
 				</div>
 				<div className="row">
 					<div className="col">
 						<div className="btn-load-container">
-							<a href="/tjanster" className="btn-load" aria-label="Till tjänster">Till alla tjänster</a>
+							<a href={locale.lang === "en" ? "/en/services" : "/tjanster"} className="btn-load" aria-label={locale.lang === "en" ? "All services" : "Till alla tjänster"}>
+							{locale.lang === "en" ? "All services" : "Till alla tjänster"}</a>
 						</div>
 					</div>
 				</div>
@@ -40,4 +39,4 @@ const TjansterList = () => {
 	)
 }
 
-export default TjansterList;
+export default withLocale(TjansterList);

@@ -4,19 +4,22 @@ import Error from "next/error";
 import PageWrapper from "../components/PageWrapper.js";
 import TjanstMeta from "../components/TjanstMeta.js";
 import TjanstRelatedLinks from "../components/TjanstRelatedLinks.js";
-import tjanster from "../json/tjanster.json";
-import persons from "../json/person.json";
-import { getPageBySlug } from '../src/utils';
+import { getTjanster, getPersoner } from "../src/utils/index.js";
+
 
 class Tjanst extends Component {
 	
-	static getInitialProps(context) {
-		let { slug } = context.query;
+	static async getInitialProps(context) {
+		let { slug, lang } = context.query;
+
+        const tjanster = await getTjanster(lang)
+		const tjanst = tjanster.find(page => page.slug === slug && page.lang === lang);
 		
-		const tjanst = getPageBySlug(tjanster, slug);
+        const persons = await getPersoner(lang)
+        
 
 		let personId = -1;
-		if (typeof tjanst.acf.person[0] !== 'undefined'
+		if (tjanst && tjanst.acf && typeof tjanst.acf.person[0] !== 'undefined'
 			&& tjanst.hasOwnProperty('acf')
 			&& tjanst.acf.hasOwnProperty('person')
 			&& tjanst.acf.person.length > 0
@@ -36,7 +39,7 @@ class Tjanst extends Component {
 
 		return (
 			<Layout {...this.props}>
-				<div className="container-fluid">
+				<div className="container">
 					<div className="row single m-80">
 
 						<aside className="sidebar col-lg-3">
@@ -48,7 +51,6 @@ class Tjanst extends Component {
 						
 						<article className="col-lg-7">
 							<h1>{tjanst.title.rendered}</h1>
-							<p className="intro-1">{tjanst.acf.intro}</p>
 							<div dangerouslySetInnerHTML={ {__html: tjanst.acf.content} } />
 						</article>
 
