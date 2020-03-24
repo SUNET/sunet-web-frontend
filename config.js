@@ -1,1 +1,1 @@
-export default { apiUrl: 'http://sunet-content.dostojev.ski/' }
+export default { apiUrl: 'http://172.16.20.205/' }
