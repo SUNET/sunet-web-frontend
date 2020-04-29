@@ -26,7 +26,7 @@ const Header = props => {
 					<div className="row header-content">
 						<a className="brand" href="/"><Logo/></a>
 						<div className="col-lg-10 offset-lg-2">
-							<Navigation displaySubNavigation={props.router.query.apiRoute === 'page'} nav={props.nav} pages={props.pages} />
+							<Navigation displaySubNavigation={props.router.query.apiRoute === 'page' || props.router.query.apiRoute === 'evenemang' || props.router.query.apiRoute === 'personer'} nav={props.nav} pages={props.pages} />
 							</div>
 					</div>
 				</div>

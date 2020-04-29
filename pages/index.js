@@ -50,8 +50,8 @@ class Index extends Component {
 	
 				<TjansterList tjanster={this.props.tjanster} categories={this.props.categories} />
 	
-				{ this.props.segment_bottom && (<div className="container">
-					<div className="row info flex-wrap-reverse">
+				{ false && this.props.segment_bottom && (<div className="container">
+					<div className="row info flex-wrap-reverse">				
 						<div className="col-lg-4 col-md-12">
 							<h1>{this.props.segment_bottom.header}</h1>
 							<p dangerouslySetInnerHTML={{ __html: this.props.segment_bottom.text}} />
@@ -67,13 +67,13 @@ class Index extends Component {
 					</div>
 				</div>) }
 	
-				<div className="bg-grey">
+				<div >
 					<div className="container listing">
 						<EvenemangList evenemang={this.props.evenemang} count={3} />
 						<div className="row">
 							<div className="col">
 								<div className="btn-load-container">
-									<a href="/evenemang" className="btn-load" aria-label={this.props.eventLinkText}>
+									<a href="/om-sunet/evenemang" className="btn-more" aria-label={this.props.eventLinkText}>
 										{this.props.eventLinkText}
 									</a>
 								</div>

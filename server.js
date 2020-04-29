@@ -9,9 +9,32 @@ app
     .prepare()
     .then(() => {
         const server = express();
+            server.use(function(req, res, next) {
+                res.header("Access-Control-Allow-Origin", "*");
+                next();
+              });
+
             server.get('/', (req, res) => {
                 const actualPage = "/index";
                 const queryParams = { slug: 'startsida', lang: 'sv', apiRoute: "index" };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get('/services', (req, res)=>{
+                const actualPage = '/tjanster';
+                const queryParams = { slug: 'services', apiRoute: 'tjanster', category: req.params.category, lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get('/services/:category', (req, res)=>{
+                const actualPage = '/tjanster';
+                const queryParams = { slug: 'services', apiRoute: 'tjanster', category: req.params.category, lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/services/:category/:slug`, (req, res) =>{
+                const actualPage = "/tjanst";
+                const queryParams = { slug: req.params.slug, apiRoute: 'tjanster', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
@@ -21,13 +44,12 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
-
             server.get(`/tjanster/:category`, (req, res)=>{
                 const actualPage = `/tjanster`;
-                const queryParams = { slug: item.slug, apiRoute: 'tjanster', category: req.params.category, lang: 'sv' };
+		const queryParams = { slug: 'tjanster', apiRoute: 'tjanster', category: req.params.category, lang: 'sv' }; 
+//                const queryParams = { slug: item.slug, apiRoute: 'tjanster', category: req.params.category, lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
-            
 
             server.get(`/tjanster/:category/:slug`, (req, res) =>{
                 const actualPage = "/tjanst";
@@ -61,14 +83,14 @@ app
 
             server.get(`/en/services`, (req, res)=>{
                 const actualPage = `/tjanster`;
-                const queryParams = { slug: 'services', apiRoute: 'tjanster', category: req.query.kategori, lang: 'en' };
+                const queryParams = { slug: 'services', apiRoute: 'tjanster', category: req.params.category, lang: 'en' };
                 app.render(req, res, actualPage, queryParams);
             })
 
            
             server.get(`/en/services/:category`, (req, res)=>{
                 const actualPage = `/tjanster`;
-                const queryParams = { slug: item.slug, apiRoute: 'tjanster', category: req.params.category, lang: 'en' };
+                const queryParams = { slug: 'services', apiRoute: 'tjanster', category: req.params.category, lang: 'en' };
                 app.render(req, res, actualPage, queryParams);
             })
             
@@ -126,6 +148,8 @@ app
         });
     })
     .catch(ex => {
+	console.log("catch(ex ");
+	console.log(ex);
         console.error(ex.stack);
         process.exit(1);
     });

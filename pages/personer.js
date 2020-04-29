@@ -6,14 +6,30 @@ import fetch from 'isomorphic-unfetch';
 import config from '../config.js'
 import { getPersoner } from '../src/utils/index.js';
 
+
+function compareName(a, b) {
+    
+    var nameA = a.title.rendered;
+    var nameB = b.title.rendered;
+    
+    if (nameA < nameB) {
+	return -1;
+    }
+    if (nameA > nameB) {
+	return 1;
+    }
+    
+    return 0;
+}
+
+
 class Personer extends Component {
 	static async getInitialProps(context) {
 		const { lang, slug, section } = context.query;
-
 		const res = await fetch(`${config.apiUrl}pages.json`);
-        const pages = await res.json();
+                const pages = await res.json();
 		const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
-		const personer = await getPersoner(lang)
+	    const personer = await getPersoner(lang);
 		
 		return {
 			slug,
@@ -41,7 +57,7 @@ class Personer extends Component {
 					<div className="container listing">
 						<div className="row">
 							<div className="col-12 cards list persons">
-								{this.props.personer.filter((person) => person.acf).map((person) => {
+			{this.props.personer.sort(compareName).filter((person) => person.acf).map((person) => {
 									return (
 											<div className="card">
 												<div className="card-tags">

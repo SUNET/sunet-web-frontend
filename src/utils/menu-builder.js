@@ -42,7 +42,8 @@ export async function buildMainMenu (currentSlug, lang) {
         .map(item => {
             const path = getPath(item.url);
     
-            const isCustomPostType = postTypes.some(type => type.routes[lang] === item.post_name)
+            const isCustomPostType = postTypes.some(type => type.routes[lang] === item.post_name);
+//            const isCustomPostType = false;
             const isActive = (path.indexOf(currentSlug) !== -1
                 || source.items.some(i => getPath(i.url).indexOf(currentSlug) !== -1  && item.ID.toString() === i.menu_item_parent))
 

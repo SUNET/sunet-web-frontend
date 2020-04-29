@@ -1,1 +1,1 @@
-export default { apiUrl: 'http://172.16.20.205/' }
+export default { apiUrl: process.env.NODE_APIURL || 'https://web-qa.sunet.se/content/'}

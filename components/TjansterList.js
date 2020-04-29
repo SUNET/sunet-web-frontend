@@ -29,7 +29,7 @@ const TjansterList = ({locale, tjanster, categories}) => {
 				<div className="row">
 					<div className="col">
 						<div className="btn-load-container">
-							<a href={locale.lang === "en" ? "/en/services" : "/tjanster"} className="btn-load" aria-label={locale.lang === "en" ? "All services" : "Till alla tjänster"}>
+							<a href={locale.lang === "en" ? "/en/services" : "/services"} className="btn-load" aria-label={locale.lang === "en" ? "All services" : "Till alla tjänster"}>
 							{locale.lang === "en" ? "All services" : "Till alla tjänster"}</a>
 						</div>
 					</div>
