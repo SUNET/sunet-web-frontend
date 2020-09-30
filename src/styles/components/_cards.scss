@@ -18,6 +18,31 @@
 		border: 1px solid transparent;
 		transition: border-color 0.5s ease;
 
+		&.molnbaserade-tjanster {
+			background-image: url(/static/images/molnbaserade-tjanster.png);
+			background-repeat: no-repeat;
+			background-position: top right;
+		}
+
+		&.nat {
+			background-image: url(/static/images/nat.png);
+			background-repeat: no-repeat;
+			background-position: top right;
+		}
+
+		&.sakerhet {
+			background-image: url(/static/images/sakerhet.png);
+			background-repeat: no-repeat;
+			background-position: top right;
+		}
+
+		&.identifiering {
+			background-image: url(/static/images/identifiering.png);
+			background-repeat: no-repeat;
+			background-position: top right;
+		}
+
+
 		@include media-breakpoint-up(lg) {
 			&:nth-child(3n) {
 				margin-right:0;

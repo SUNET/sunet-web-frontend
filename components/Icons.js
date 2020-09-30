@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class Logo extends Component {
   render() {
     return (
-    	<svg width="30" height="38" viewBox="0 0 30 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Till startsidan">
+    	<svg width="75" height="95" viewBox="0 0 30 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Till startsidan">
 				<title>Till startsidan</title>
 				<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="31" width="12" height="7">
 					<path fillRule="evenodd" clipRule="evenodd" d="M0.649658 31.2283H11.3042V37.9974H0.649658V31.2283Z" fill="white"/>

@@ -1,6 +1,7 @@
 .listing {
 	padding-top: 100px;
 	padding-bottom: 100px;
+	position: relative;
 	@include media-breakpoint-down(sm) {
 		padding: 30px 15px;
 	}

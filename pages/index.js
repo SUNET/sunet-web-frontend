@@ -69,9 +69,11 @@ class Index extends Component {
 	
 				<div >
 					<div className="container listing">
+					<h2 className="vinjett">Evenemang</h2>
 						<EvenemangList evenemang={this.props.evenemang} count={3} />
 						<div className="row">
 							<div className="col">
+							
 								<div className="btn-load-container">
 									<a href="/om-sunet/evenemang" className="btn-more" aria-label={this.props.eventLinkText}>
 										{this.props.eventLinkText}
