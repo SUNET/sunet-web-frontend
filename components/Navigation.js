@@ -38,16 +38,19 @@ class Navigation extends Component {
     }
     render() {
         return(
-            <nav>
+            <>
                 <button className={`menu-button ${this.state.active ? 'active': ''}`} onClick={this.toggleNavigation} 
                     title={ this.props.locale.lang === "en" ? "Menu" : "Meny" }>
                     { this.props.locale.lang === "en" ? "Menu" : "Meny" }
                 </button>
                 <div className={`nav-wrapper${this.state.active ? " active" : ""} `}>
+                    <nav aria-label="Huvudmeny">
                 <ul className="main-nav">
                 { this.props.nav.items.map(topItem => <NavigationItem displaySubNavigation={this.props.displaySubNavigation} pathname={this.props.locale.pathname} current={this.props.locale.pathname.indexOf(this.getPath(topItem.url)) !== -1} key={topItem.ID} item={topItem}/>
                 )}
                 </ul>
+                </nav>
+                <nav aria-label="Global meny">
                <ul className="global-nav">
                     { this.props.nav.secondaryItems.map(item => {
                        return item.object === "page" ?
@@ -64,9 +67,10 @@ class Navigation extends Component {
                      <li className="global-nav-item">
                     <LanguageNavigation pages={this.props.pages}/></li>
                </ul>
+               </nav>
                </div>
-            </nav>
-        );
+            
+       </> );
     }
     
 }

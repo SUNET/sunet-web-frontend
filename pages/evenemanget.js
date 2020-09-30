@@ -33,13 +33,13 @@ class Evenemanget extends Component {
 			<Layout {...this.props}>
 
 				<div className="container">
-					<div className="row single m-80">
+					<main aria-labelledby="main-title" className="row single m-80">
 				
 						<article className="col-lg-8 offset-lg-2">
-							<h1>{evenemang.title.rendered}</h1>
+							<h1 id="main-title">{evenemang.title.rendered}</h1>
 							<div dangerouslySetInnerHTML={ {__html: evenemang.content.rendered} } />
 						</article>
-					</div>
+					</main>
 				</div>
 
 			</Layout>

@@ -14,7 +14,7 @@ const SideBarMenu = ({ menu }) => {
 
 		if (item.object === 'custom') {
 			return (
-				<Link href={slug} key={item.ID}>
+				<Link href={slug} key={item.ID} aria-label={item.isActive}>
 					<li>{item.title}</li>
 				</Link>
 			);

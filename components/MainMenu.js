@@ -32,7 +32,7 @@ const MainMenu = ({ menu }) => {
 		return menuLinkWithAs(`${item.object}/${getSlug(item.url)}`, item);
 	});
 
-	return <div>{menuItems}</div>
+	return <nav aria-label="Undermeny">{menuItems}</nav>
 }
 
 export default MainMenu;

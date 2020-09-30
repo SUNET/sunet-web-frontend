@@ -49,10 +49,12 @@ class Tjanst extends Component {
 							/>
 						</aside>
 						
-						<article className="col-lg-7">
-							<h1>{tjanst.title.rendered}</h1>
-							<div dangerouslySetInnerHTML={ {__html: tjanst.acf.content} } />
-						</article>
+						<main className="col-lg-7"  aria-labelledby="main-title">
+							<article>
+								<h1 id="main-title">{tjanst.title.rendered}</h1>
+								<div dangerouslySetInnerHTML={ {__html: tjanst.acf.content} } />
+							</article>
+						</main>
 
 					</div>
 				</div>
