@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import Error from "next/error";
 import PageWrapper from "../components/PageWrapper.js";
-import { Config } from "../config.js";
+import config from "../config.js";
 
 class Preview extends Component {
     constructor() {
@@ -17,7 +17,7 @@ class Preview extends Component {
         const { id, wpnonce } = this.props.url.query;
         fetch(
             `${
-                Config.apiUrl
+                config.apiUrl
             }/wp-json/postlight/v1/post/preview?id=${id}&_wpnonce=${wpnonce}`,
             { credentials: "include" } // required for cookie nonce auth
         )
