@@ -16,16 +16,15 @@ class Footer extends Component {
 				<footer className="bg-grey bg-stripe">
 					<div className="container">
 						
-						<div className="row justify-content-center">
-							<div className="col-lg-9">
+						<div className="row">
+							<div className="col-lg-7">
 								{footer.acf.accordion && footer.acf.accordion.map((item, index) => (<Accordion title={item.title} text={item.content} key={`${index}-${item.title}`} />))}
 								
 							</div>
-						</div>
-
-						<div className="row justify-content-center">
-							<div className="col-lg-9 footer-meta">
+						
+							<div className="col-lg-3 offset-lg-2">
 								<div className="box" dangerouslySetInnerHTML={ {__html: footer.acf.footer_info && footer.acf.footer_info.address} }></div>
+								<br/><br/>
 								<div className="box" dangerouslySetInnerHTML={ {__html: footer.acf.footer_info && footer.acf.footer_info.address_meta} }></div>
 								<div className="box">
 									{ footer.acf.footer_info 
@@ -45,14 +44,9 @@ class Footer extends Component {
 								</div>
 							</div>
 						</div>
-					</div>
-				</footer>
-
-				{
-				<div className="container-fluid vr-footer">
-					<div className="container">
-						<div className="row justify-content-center">
+						<div className="row footer-meta">
 							<div className="col-lg-9">
+								<br/>
 								{this.props.locale.lang === "sv" && <ExternalHref 
 									href='https://www.vr.se' 
 									text='Sunet är en del av Vetenskapsrådet' 
@@ -64,8 +58,7 @@ class Footer extends Component {
 							</div>
 						</div>
 					</div>
-				</div>
-				}
+				</footer>
 
 			</Fragment>
 		);

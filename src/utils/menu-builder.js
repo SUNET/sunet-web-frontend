@@ -55,6 +55,7 @@ export async function buildMainMenu (currentSlug, lang) {
                 slug: path,
                 url: item.url,
                 class: isActive ? "current-menu-item" : "",
+                isActive,
                 
             };
         });
@@ -88,6 +89,7 @@ export async function buildSidebarMenu  (parentName, currentSlug, lang) {
                 slug: path,
                 url: item.url,
                 class: isActive ? "active": "",
+                isActive,
             };
         });
     return {

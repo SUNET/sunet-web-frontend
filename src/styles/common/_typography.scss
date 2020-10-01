@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 h1 {
-  @include x-rem(font-size, 2.8);
+  @include x-rem(font-size, 3.8);
   @include media-breakpoint-down(md) {
     @include x-rem(font-size, 3);
   }
@@ -89,4 +89,22 @@ header a {
   border-bottom: 1px solid $light;
   font-weight: 400;
   transition: all 0.5s ease;
+}
+
+a:focus, 
+button:focus, 
+input:focus, 
+select:focus {
+  outline: 2px transparent solid;
+  box-shadow: 0 0 0 2px #F9F9D1, 0 0 0 4px #396196, 0 0 4px 8px #F9F9D1;
+}
+
+.vinjett {
+  padding:5px 10px;
+  font-weight:bold;
+  color:#fff;
+  position: absolute;
+  top:-52px;
+  background:#D3452F;
+  border-radius: 0 0 3px 3px;
 }

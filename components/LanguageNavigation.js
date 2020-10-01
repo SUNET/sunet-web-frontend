@@ -38,7 +38,7 @@ class LanguageNavigation extends Component {
     render() {
 	return ("")
 //        return (<div>
-//           <a href={getPathToTranslation(this.props.locale.lang, this.props.locale.pathname, this.props.pages)}>{getLabel(this.props.locale.lang)}</a>
+//           <a href={getPathToTranslation(this.props.locale.lang, this.props.locale.pathname, this.props.pages)} lang="{this.props.locale.lang}">{getLabel(this.props.locale.lang)}</a>
 //            <span>&shy;</span>
 //        </div>)
     } 

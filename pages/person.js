@@ -39,10 +39,12 @@ class Person extends Component {
                             <SideBarMenu menu={buildSidebarMenu(sidebar)} />
 							</div>
 						</aside>
-						<article className="col-lg-7">
-							<MetaPerson person={person} />
-							<div dangerouslySetInnerHTML={ {__html: person.content && person.content.rendered} } />
-						</article>
+						<main className="col-lg-7">
+							<article>
+								<MetaPerson person={person} />
+								<div dangerouslySetInnerHTML={ {__html: person.content && person.content.rendered} } />
+							</article>
+						</main>
 					</div>
 				</div>
 

@@ -7,7 +7,8 @@
 		height: 100px;
 		a.brand {
 			position: absolute;
-    	left: 30px;
+		left: 30px;
+		top:30px;
     	border-bottom: none;
 			&:hover {
 				border-bottom: none;
@@ -40,7 +41,7 @@
 		.sub-nav-item.current > a {
 			color: $pri_orange;
 			font-weight:500;
-			// border-bottom: 1px solid $pri_orange;
+			border-bottom: 1px solid $pri_orange;
 		}
 
 		
