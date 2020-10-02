@@ -3,7 +3,7 @@ import { getSlug } from '../src/utils';
 
 const SideBarMenu = ({ menu }) => {
 	const menuLinkWithAs = (slug, item) => (
-		<Link as={`/${slug}`} href={`/${slug}`} key={item.ID}>
+		<Link as={`/${slug}`} href={`/${slug}`} key={item.ID} aria-label={item.title}>
 			<li>
 				<a className={item.class}>{item.title}</a>
 			</li>
@@ -14,7 +14,7 @@ const SideBarMenu = ({ menu }) => {
 
 		if (item.object === 'custom') {
 			return (
-				<Link href={slug} key={item.ID} aria-label={item.isActive}>
+				<Link href={slug} key={item.ID} aria-label={item.title}>
 					<li>{item.title}</li>
 				</Link>
 			);

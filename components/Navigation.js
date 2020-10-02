@@ -12,7 +12,7 @@ class Navigation extends Component {
 
     getPath = url => {
         url = new URL(url);
-        return url.pathname
+        return url.pathname.replace(/\//g, '')
     }
 
     isCurrent = (itemPath, path) => {
@@ -46,7 +46,12 @@ class Navigation extends Component {
                 <div className={`nav-wrapper${this.state.active ? " active" : ""} `}>
                     <nav aria-label="Huvudmeny">
                 <ul className="main-nav">
-                { this.props.nav.items.map(topItem => <NavigationItem displaySubNavigation={this.props.displaySubNavigation} pathname={this.props.locale.pathname} current={this.props.locale.pathname.indexOf(this.getPath(topItem.url)) !== -1} key={topItem.ID} item={topItem}/>
+                { this.props.nav.items.map(topItem => <NavigationItem 
+                    displaySubNavigation={this.props.displaySubNavigation} 
+                    pathname={this.props.locale.pathname} 
+                    current={this.props.locale.pathname.indexOf(this.getPath(topItem.url)) !== -1} 
+                    key={topItem.ID} 
+                    item={topItem}/>
                 )}
                 </ul>
                 </nav>
