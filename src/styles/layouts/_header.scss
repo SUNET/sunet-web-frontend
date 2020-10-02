@@ -7,11 +7,18 @@
 		height: 100px;
 		a.brand {
 			position: absolute;
-		left: 30px;
-		top:30px;
-    	border-bottom: none;
+			left: 30px;
+			top:30px;
+    		border-bottom: none;
 			&:hover {
 				border-bottom: none;
+			}
+			@include media-breakpoint-down(md) {
+				left: 20px;
+				top:10px;
+				svg {
+					width: 50px;
+				}
 			}
 		}
 		.main-nav,

@@ -104,7 +104,11 @@ select:focus {
   font-weight:bold;
   color:#fff;
   position: absolute;
-  top:-52px;
+  top:-32px;
   background:#D3452F;
   border-radius: 0 0 3px 3px;
+  
+  @include media-breakpoint-up(md) {
+    top: -52px;
+  }
 }

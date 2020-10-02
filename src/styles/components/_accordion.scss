@@ -6,6 +6,11 @@
     outline: none;
     transition: 150ms height ease-in-out;
 
+    &:last-child {
+        margin-bottom: 60px;
+        
+    }
+
     .top {
         align-items: center;
         display: flex;
