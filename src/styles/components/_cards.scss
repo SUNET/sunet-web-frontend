@@ -163,6 +163,13 @@
 					}
 				}
 			}
+
+			&.molnbaserade-tjanster,
+			&.nat,
+			&.sakerhet,
+			&.identifiering {
+				background-image: none;
+			}
 		}
 		&.events,
 		&.persons {
