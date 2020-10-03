@@ -95,7 +95,7 @@
     .sub-nav {
         max-height:0;
         overflow:hidden;
-        transform: max-height ease-in-out .2s;
+        transition: max-height ease-in-out .2s;
     }
 
     .main-nav-item.active {
