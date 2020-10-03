@@ -11,6 +11,7 @@ class Page extends Component {
         const res = await fetch(`${config.apiUrl}pages.json`);
         const pages = await res.json();
         const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
+        const title = page.title.rendered;
 
         return {
             error: !page,
@@ -18,6 +19,7 @@ class Page extends Component {
             slug, 
             section,
             lang,
+            title,
         };
     }
 

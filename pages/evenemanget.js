@@ -10,10 +10,12 @@ import SideBarMenu from "../components/SideBarMenu.js";
 class Evenemanget extends Component {
 	
 	static async getInitialProps(context) {
+		
 		const {slug, lang, section, subsection } = context.query
         const res = await fetch(`${config.apiUrl}evenemang.json`);
         const pages = await res.json();
-        const evenemang = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
+		const evenemang = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
+		const title = evenemang.title.rendered;
 
 		return { 
 			evenemang,
@@ -22,6 +24,7 @@ class Evenemanget extends Component {
 			section, 
 			subsection,
 			lang,
+			title,
 		 };
 	}
 

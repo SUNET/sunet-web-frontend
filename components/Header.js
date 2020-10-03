@@ -16,7 +16,7 @@ const Header = props => {
 					content="width=device-width, initial-scale=1"
 				/>
 				<meta charSet="utf-8" />
-				<title>Sunet</title>
+				<title>{!!props.title ? `${props.title} | ` : ""}Sunet</title>
 				<meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
 					
 			</Head>

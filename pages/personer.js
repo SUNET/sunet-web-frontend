@@ -29,7 +29,8 @@ class Personer extends Component {
 		const res = await fetch(`${config.apiUrl}pages.json`);
                 const pages = await res.json();
 		const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
-	    const personer = await getPersoner(lang);
+		const personer = await getPersoner(lang);
+		const title = page.title.rendered;
 		
 		return {
 			slug,

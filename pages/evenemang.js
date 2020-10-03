@@ -20,6 +20,7 @@ class Evenemang extends Component {
 			page,
 			error: !page,
 			evenemang,
+			title: 'Evenemang',
 		}
 	}
 

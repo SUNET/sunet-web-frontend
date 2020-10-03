@@ -21,6 +21,7 @@ class Tjanster extends Component {
 			categories,
 			slug,
 			lang,
+			title: "Tjänster",
 		}
 	}
 

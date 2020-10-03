@@ -15,7 +15,8 @@ class Tjanst extends Component {
         const tjanster = await getTjanster(lang)
 		const tjanst = tjanster.find(page => page.slug === slug && page.lang === lang);
 		
-        const persons = await getPersoner(lang)
+		const persons = await getPersoner(lang)
+		const title = tjanst.title.rendered;
         
 
 		let personId = -1;
@@ -30,7 +31,7 @@ class Tjanst extends Component {
 		
 		let person = persons.find(person => person.id === personId);
 
-		return { tjanst, person };
+		return { tjanst, person, title };
 	}
 
 	render() {

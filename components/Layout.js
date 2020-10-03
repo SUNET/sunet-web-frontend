@@ -8,6 +8,7 @@ const Layout = props => {
 		<Header 
 			nav={props.nav}
 			pages={props.pages}
+			title={props.title}
 		/>
     	{props.children}
     	<Footer pages={props.pages} />
