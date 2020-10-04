@@ -15,13 +15,13 @@ class Accordion extends Component {
     }
 
     componentDidMount () {
-        const element = this.accordionRef.current;
-        const elementDefaultHeight = getComputedStyle(element).height;
-        const elementFullHeight = element.scrollHeight + 'px';
+        // const element = this.accordionRef.current;
+        // const elementDefaultHeight = getComputedStyle(element).height;
+        // const elementFullHeight = element.scrollHeight + 'px';
 
         this.setState({ 
-            elementDefaultHeight,
-            elementFullHeight
+            // elementDefaultHeight,
+            // elementFullHeight
         });
     }
 
@@ -32,13 +32,13 @@ class Accordion extends Component {
     open() {
         this.setState({ isOpen: true });
         const element = this.accordionRef.current;
-        element.style.height = this.state.elementFullHeight;
+        // element.style.height = this.state.elementFullHeight;
     }
 
     close() {
         this.setState({ isOpen: false });
         const element = this.accordionRef.current;
-        element.style.height = this.state.elementDefaultHeight;
+        // element.style.height = this.state.elementDefaultHeight;
     }
 
     handleKeyPress = e => {
@@ -48,7 +48,7 @@ class Accordion extends Component {
     render () {
         const { isOpen } = this.state;
         const { title, text } = this.props;
-        const tabIndex = isOpen ? "": { "aria-hidden": true, tabIndex: -1 }
+        const tabIndex = isOpen ? "" : { "aria-hidden": true, tabIndex: -1 }
 
         return (
             <div 
@@ -58,10 +58,13 @@ class Accordion extends Component {
                 ref={ this.accordionRef }
             >
                 <div className="top">
-                    <div>{ title }</div>
+                    <button>{ title }</button>
                     { isOpen ? <MdRemove aria-label="Dölj text" /> : <MdAdd aria-label="Visa text" /> }
                 </div>
-               <div {...tabIndex} dangerouslySetInnerHTML={{ __html: text }} />
+                {isOpen && (
+                    <div {...tabIndex} dangerouslySetInnerHTML={{ __html: text }} />
+                )}
+               
             </div>
         )
     }

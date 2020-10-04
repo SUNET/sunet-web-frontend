@@ -18,6 +18,7 @@ class Footer extends Component {
 						
 						<div className="row">
 							<div className="col-lg-7">
+								<noscript>Den här sidan innehåller funktioner som kräver javascript för att fungera korrekt.</noscript>
 								{footer.acf.accordion && footer.acf.accordion.map((item, index) => (<Accordion title={item.title} text={item.content} key={`${index}-${item.title}`} />))}
 								
 							</div>

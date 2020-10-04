@@ -1,10 +1,12 @@
 .accordion{
     border-bottom: 1px solid $sec_grey;
     cursor: pointer;
-    height: 80px;
-    overflow: hidden;
     outline: none;
     transition: 150ms height ease-in-out;
+    max-height:80px;
+    overflow: hidden;
+    transition: max-height ease-in-out .2s;
+    transition-delay: .1s;
 
     &:last-child {
         margin-bottom: 60px;
@@ -16,7 +18,7 @@
         display: flex;
         height: 80px;
         justify-content: space-between;
-        > div {
+        > button {
             font-size:1.5rem;
         }
     }
@@ -30,6 +32,7 @@
     }
 
     &.open {
+        max-height:1000px;
         .top {
             color: $pri_orange;
             font-weight: 700;

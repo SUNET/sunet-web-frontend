@@ -33,6 +33,7 @@ class Navigation extends Component {
                     }
                     
                 }
+                this.props.toggleMenu();
             }
         )
     }

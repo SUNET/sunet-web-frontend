@@ -73,3 +73,22 @@ button, input[type="submit"], input[type="reset"] {
 		background-position-y: 4px;
 	}
 }
+
+.main-content-link {
+	position: absolute;
+	left:2px;
+	top:2px;
+	font-weight:normal;
+	font-size:13px;
+	display:inline-block;
+	color: #fff;
+	border-color: #fff;
+
+	@include media-breakpoint-up(lg) {
+		right:10px;
+		top:5px;
+		left:auto;
+		color: #aaa;
+		border-color: #aaa;
+	}
+}
