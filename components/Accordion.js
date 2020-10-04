@@ -42,12 +42,13 @@ class Accordion extends Component {
     }
 
     handleKeyPress = e => {
-        e.key === 'Enter' ? this.onOpenClose() : () => null;
+        if(e.key === 'Enter') this.onOpenClose();
     }
 
     render () {
         const { isOpen } = this.state;
         const { title, text } = this.props;
+        const tabIndex = isOpen ? "": { "aria-hidden": true, tabIndex: -1 }
 
         return (
             <div 
@@ -55,13 +56,12 @@ class Accordion extends Component {
                 onClick={ this.onOpenClose } 
                 onKeyPress={ this.handleKeyPress }
                 ref={ this.accordionRef }
-                tabIndex={ 0 }
             >
                 <div className="top">
                     <div>{ title }</div>
                     { isOpen ? <MdRemove aria-label="Dölj text" /> : <MdAdd aria-label="Visa text" /> }
                 </div>
-               <div dangerouslySetInnerHTML={{ __html: text }} />
+               <div {...tabIndex} dangerouslySetInnerHTML={{ __html: text }} />
             </div>
         )
     }

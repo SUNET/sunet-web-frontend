@@ -95,8 +95,8 @@ a:focus,
 button:focus, 
 input:focus, 
 select:focus {
-  outline: 2px transparent solid;
-  box-shadow: 0 0 0 2px #F9F9D1, 0 0 0 4px #396196, 0 0 4px 8px #F9F9D1;
+  outline: 2px transparent solid!important;
+  box-shadow: 0 0 0 2px #F9F9D1, 0 0 0 4px #396196, 0 0 4px 8px #F9F9D1!important;
 }
 
 .vinjett {

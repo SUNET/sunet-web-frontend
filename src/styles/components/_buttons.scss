@@ -59,3 +59,17 @@ button, input[type="submit"], input[type="reset"] {
 		border: 1px solid $pri_orange;
 	}
 }
+
+.location-link {
+	display:inline-block;
+	padding-left:20px;
+	background-image: url('/static/images/location-icon.png');
+	background-repeat: no-repeat;
+	background-size: 15px;
+	background-position-y: 2px;
+	transition: background-position-y ease-in-out .4s;
+
+	&:hover {
+		background-position-y: 4px;
+	}
+}

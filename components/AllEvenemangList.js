@@ -17,6 +17,7 @@ const AllEvenemangList = ({ evenemang, locale }) => {
 		return evenemang.map((item) => {
 			return (
 				<Link href={`${routes[locale.lang]}/${item.slug}`} as={`${routes[locale.lang]}/${item.slug}`} key={item.id}>
+					<a>
 				<div className="card">
 					<div className="card-tags">
 						<span>{item.acf && item.acf.text_date}</span>
@@ -33,6 +34,7 @@ const AllEvenemangList = ({ evenemang, locale }) => {
 						/>
 					</div>
 				</div>
+				</a>
 				</Link>
 			);
 		});

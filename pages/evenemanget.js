@@ -41,10 +41,17 @@ class Evenemanget extends Component {
 						<article className="col-lg-8 offset-lg-2">
 							<h1 id="main-title">{evenemang.title.rendered}</h1>
 							<div dangerouslySetInnerHTML={ {__html: evenemang.content.rendered} } />
+							{ evenemang.acf 
+							&& evenemang.acf.url_for_location 
+							&& ( 
+								<div>
+									<a href={evenemang.acf.url_for_location} className="location-link">Hitta hit</a>
+								</div>
+							)}
 						</article>
 					</main>
 				</div>
-
+				
 			</Layout>
 		);
 	}
