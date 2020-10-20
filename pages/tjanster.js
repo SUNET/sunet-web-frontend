@@ -14,8 +14,17 @@ class Tjanster extends Component {
 		const tjanster = await getTjanster(lang);
 		const categories = await getCategories();
 
+	    var hascaterror = false;
+	    
+	    if (category) {
+		var curCategory = categories.find(item => item.slug === category);
+		if (!curCategory) hascaterror = true;
+	    }
+
+            if (!tjanster || !categories || hascaterror ) context.res.statusCode = 404;
+
 		return { 
-			error: !tjanster && !categories,
+			error: !tjanster || !categories || hascaterror,
 			category,
 			tjanster,
 			categories,
@@ -32,7 +41,8 @@ class Tjanster extends Component {
 	render () {
 		const {error, category, slug, lang} = this.props;
 		const tjansterPage = this.getPage(slug, lang);
-		if(error) return <Error code="404" />
+	        if(error || !tjansterPage) return <Error statusCode={404} />;
+
 		return (
 			<Layout {...this.props}>
 				<div className="container">

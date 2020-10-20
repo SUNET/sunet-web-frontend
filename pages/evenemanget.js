@@ -9,13 +9,16 @@ import SideBarMenu from "../components/SideBarMenu.js";
 
 class Evenemanget extends Component {
 	
-	static async getInitialProps(context) {
-		
-		const {slug, lang, section, subsection } = context.query
+    static async getInitialProps(context) {
+	
+	const {slug, lang, section, subsection } = context.query
         const res = await fetch(`${config.apiUrl}evenemang.json`);
         const pages = await res.json();
-		const evenemang = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
-		const title = evenemang.title.rendered;
+	const evenemang = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
+	
+	const title = evenemang ? evenemang.title.rendered : "";
+
+        if (!evenemang) context.res.statusCode = 404;
 
 		return { 
 			evenemang,

@@ -11,8 +11,11 @@ class Page extends Component {
         const res = await fetch(`${config.apiUrl}pages.json`);
         const pages = await res.json();
         const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
-        const title = page.title.rendered;
+	
+        const title = page ? page.title.rendered : "";
 
+	if (!page) context.res.statusCode = 404;
+	
         return {
             error: !page,
             page, 
@@ -25,7 +28,9 @@ class Page extends Component {
 
     render() {
         const { error, page } = this.props;
-        if (error) return <Error statusCode={404} />;
+        if (error) {
+	    return <Error statusCode={404} />;
+	}
 
         return (
             <Layout {...this.props}>

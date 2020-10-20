@@ -14,8 +14,12 @@ class Person extends Component {
 
 		const personer = await getPersoner(lang)
 		const person = personer.find(page => page.slug === slug && (!lang || page.lang === lang));
-		const title = person.title.rendered
 
+	    const title = person ? person.title.rendered : "";
+
+            if (!person) context.res.statusCode = 404;
+
+	    
 		return {
             error: !person, 
             person,

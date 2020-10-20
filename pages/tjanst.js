@@ -15,9 +15,12 @@ class Tjanst extends Component {
         const tjanster = await getTjanster(lang)
 		const tjanst = tjanster.find(page => page.slug === slug && page.lang === lang);
 		
-		const persons = await getPersoner(lang)
-		const title = tjanst.title.rendered;
-        
+	    const title = tjanst ? tjanst.title.rendered : "";
+
+            if (!tjanst) context.res.statusCode = 404;
+
+	    const persons = await getPersoner(lang)
+	        
 
 		let personId = -1;
 		if (tjanst && tjanst.acf && typeof tjanst.acf.person[0] !== 'undefined'
@@ -36,7 +39,7 @@ class Tjanst extends Component {
 
 	render() {
 		const { tjanst, person } = this.props;
-		if (!tjanst.title) return <Error statusCode={404} />;
+		if (!tjanst) return <Error statusCode={404} />;
 
 		return (
 			<Layout {...this.props}>
