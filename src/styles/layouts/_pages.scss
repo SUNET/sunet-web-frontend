@@ -1,19 +1,22 @@
 .m-80 {
 	margin-top: 80px;
 }
+.m-52 {
+	margin-top: 52px;
+}
 .single {
 	article {
 		margin-bottom: 160px;
 		h1 {
-			@include x-rem(font-size, 3.6);
-			line-height: 44px;
+			@include x-rem(font-size, 3.8);
+			line-height: 1.2;
 			margin-top: 0;
 		}
 		p.intro-1,
 		> div > p:first-child {
 			@include x-rem(font-size, 2.8);
-			line-height: 1.2;
-			margin-top: 24px;
+			line-height: 1.25;
+			margin-top: 8px;
 		}
 		h2 {
 			@include x-rem(font-size, 2.8);

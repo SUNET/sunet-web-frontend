@@ -35,7 +35,7 @@ class Page extends Component {
         return (
             <Layout {...this.props}>
 				<div className="container">
-					<main aria-labelledby="main-title" className="row single m-80">
+					<main aria-labelledby="main-title" className="row single m-52">
 						<article className="col-lg-8 offset-lg-2">
 							<h1 id="main-title">{ page.title && page.title.rendered }</h1>
 							<div dangerouslySetInnerHTML={{  __html: page.content && page.content.rendered }} />

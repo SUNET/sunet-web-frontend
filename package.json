@@ -37,6 +37,6 @@
         "react-dom": "^16.2.0",
         "sass-loader": "^6.0.6",
         "webpack": "^4.20.2",
-	"babel-loader": "8.0.6"
+        "babel-loader": "8.0.6"
     }
 }
