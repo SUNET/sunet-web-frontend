@@ -41,6 +41,11 @@
 			background-repeat: no-repeat;
 			background-position: top right;
 		}
+		&.samverkan {
+			background-image: url(/static/images/samverkan.png);
+			background-repeat: no-repeat;
+			background-position: top right;
+		}
 
 
 		@include media-breakpoint-up(lg) {
@@ -168,7 +173,8 @@
 			&.molnbaserade-tjanster,
 			&.nat,
 			&.sakerhet,
-			&.identifiering {
+			&.identifiering,
+			&.samverkan {
 				background-image: none;
 			}
 		}
