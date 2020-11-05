@@ -6,11 +6,16 @@ import fetch from 'isomorphic-unfetch';
 import config from '../config.js'
 import { getPersoner } from '../src/utils/index.js';
 
+function getLastName(name) {
+	if(!name) return "";
+	var splitName = name.split(" ");
+	return splitName[splitName.length -1];
+}
 
 function compareName(a, b) {
     
-    var nameA = a.title.rendered;
-    var nameB = b.title.rendered;
+    var nameA = getLastName(a.title.rendered);
+    var nameB = getLastName(b.title.rendered);
     
     if (nameA < nameB) {
 	return -1;
@@ -41,11 +46,12 @@ class Personer extends Component {
 			personer,
 		};
 	}
-
+	
 	render() {
 		const { page, error, path } = this.props;
 		return (
 			<Layout {...this.props}>
+				
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-8 offset-lg-2 hero">
@@ -58,7 +64,7 @@ class Personer extends Component {
 					<div className="container listing">
 						<div className="row">
 							<div className="col-12 cards list persons">
-			{this.props.personer.sort(compareName).filter((person) => person.acf).map((person) => {
+								{this.props.personer.sort(compareName).filter((person) => person.acf).map((person) => {
 									return (
 											<div className="card">
 												<div className="card-tags">
@@ -71,7 +77,7 @@ class Personer extends Component {
 												</div>
 												<div className="card-content">
 													<div className="header-container">
-														<h3>{person.title && person.title.rendered}</h3>
+															<h3>{person.title && person.title.rendered}</h3>
 													</div>
 													<p className="card-intro">{person.acf.title}</p>
 												</div>
