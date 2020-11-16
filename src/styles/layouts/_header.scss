@@ -99,10 +99,11 @@
 	.sub-nav {				
 		display:none;
 		position: absolute;
-		left: -16.666%;
-		width: 130px;
+		left: -21.666%;
+		width: 180px;
 		top: 120px;
 		line-height: 189%;
+		white-space: nowrap;
 	}
 
 	.main-nav-item.current.show-sub {
