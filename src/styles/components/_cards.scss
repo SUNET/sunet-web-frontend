@@ -41,8 +41,8 @@
 			background-repeat: no-repeat;
 			background-position: top right;
 		}
-		&.samverkan {
-			background-image: url(/static/images/samverkan.png);
+		&.samarbete {
+			background-image: url(/static/images/samarbete.png);
 			background-repeat: no-repeat;
 			background-position: top right;
 		}
@@ -174,7 +174,7 @@
 			&.nat,
 			&.sakerhet,
 			&.identifiering,
-			&.samverkan {
+			&.samarbete {
 				background-image: none;
 			}
 		}
