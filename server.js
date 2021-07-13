@@ -75,6 +75,12 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
+            server.get(`/prenumerera`, (req, res)=>{
+                const actualPage = `/subscribe`;
+                const queryParams = { slug: 'subscribe', apiRoute: 'subscribe', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
             server.get('/en', (req, res) => {
                 const actualPage = "/index";
                 const queryParams = { slug: 'startpage', lang: 'en', apiRoute: "index" };

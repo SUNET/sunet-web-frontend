@@ -69,7 +69,10 @@ class NewsletterSubscription extends Component {
               <h1>Prenumerera på vårt nyhetsbrev</h1>
               <h2>Håll dig uppdaterad om vad som händer inom Sunet. Fyll i din e-postadress nedan för att börja prenumerera.</h2>
               {!this.state.acceptedConds && (
-                <br key="0" /><span key="1">XXX successfullySubscribed</span>
+                <>
+                  <br key="0" />
+                  <span key="1">XXX successfullySubscribed</span>
+                </>
               )}
               <p>Du behöver också ta del av informationen om behandling av personuppgifter och samtycka till att Vetenskapsrådet, där Sunet är en avdelning, behandlar dina personuppgifter.</p>
               <p>E-POST (OBLIGATORISK):</p>
@@ -77,24 +80,29 @@ class NewsletterSubscription extends Component {
                 <p>
                   <input type="email" name="email" id="email-input" />
                   {!this.state.emailEntered && (
-                    <br key="0" /><span key="1">XXX this is required</span>
+                    <>
+                      <br key="0" />
+                      <span key="1">XXX this is required</span>
+                    </>
                   )}
                 </p>
                 <p>
                   <input type="checkbox" name="conditions" id="conditions-input" />
                   Jag har läst <a href="https://sunet.se/om-sunet/information-om-behandling-av-personuppgifter/">informationen</a> och samtycker till Vetenskapsrådets behandling av mina personuppgifter.
                   {!this.state.acceptedConds && (
-                    <br key="0" /><span key="1">XXX this is required</span>
+                    <>
+                      <br key="0" />
+                      <span key="1">XXX this is required</span>
+                    </>
                   )}
                 </p>
                 <div>
                   <Recaptcha
                     sitekey={config.recaptchaKey}
-                    render="explicit"
                     verifyCallback={this.verification}
                   />
                 </div>
-                <button id="submit-button" onClick={this.subscribe}>PRENUMERERA</button>
+                <button id="submit-button" onClick={this.subscribe.bind(this)}>PRENUMERERA</button>
               </form>
               <p>Vill du avsluta din prenumeration? Maila till info@sunet.se så tar vi bort dig från listan.</p>
             </Layout>
