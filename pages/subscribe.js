@@ -96,10 +96,12 @@ class NewsletterSubscription extends Component {
                     </>
                   )}
                 </p>
+                <script src="https://www.google.com/recaptcha/api.js" async defer />
                 <div>
                   <Recaptcha
                     sitekey={config.recaptchaKey}
                     verifyCallback={this.verification}
+                    type="checkbox"
                   />
                 </div>
                 <button id="submit-button" onClick={this.subscribe.bind(this)}>PRENUMERERA</button>
