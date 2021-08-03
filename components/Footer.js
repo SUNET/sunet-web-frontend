@@ -10,7 +10,7 @@ class Footer extends Component {
 		return this.props.pages.find(page => page.slug === slug)
 	}
 	render() {
-		const footer = this.getFooter(this.props.lang);
+		const footer = this.getFooter(this.props.locale.lang);
 		return footer && (
 			<Fragment>
 				<footer className="bg-grey bg-stripe">
