@@ -74,6 +74,18 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
+            server.get(`/om-sunet/newsroom`, (req, res)=>{
+                const actualPage = `/newsroom`;
+                const queryParams = { slug: 'newsroom', apiRoute: 'newsroom', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/om-sunet/newsroom/:slug`, (req, res) =>{
+                const actualPage = "/news";
+                const queryParams = { slug: req.params.slug, apiRoute: 'newsroom', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
             server.get(`/kontakt/medarbetare`, (req, res)=>{
                 const actualPage = `/personer`;
                 const queryParams = { slug: 'medarbetare', section: "kontakt", apiRoute: 'personer', lang: 'sv' };

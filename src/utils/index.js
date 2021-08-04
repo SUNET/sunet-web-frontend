@@ -46,6 +46,12 @@ export async function getEvenemang(lang) {
 	return evenemang.filter(item => item.lang === lang)
 }
 
+export async function getNews(lang) {
+    const res = await fetch(`${config.apiUrl}posts.json`);
+	const news = await res.json();
+	return news.filter(item => item.lang === lang)
+}
+
 
 export async function getTjanster(lang) {
     const res = await fetch(`${config.apiUrl}tjanster.json`);
