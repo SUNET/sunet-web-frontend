@@ -46,3 +46,10 @@ export async function getTjanster(lang) {
     const tjanster = await res.json();
     return tjanster.filter(item => item.lang === lang);
 }
+
+
+export async function getProjekt(lang) {
+    const res = await fetch(`${config.apiUrl}projekt.json`);
+    const projekt = await res.json();
+    return projekt.filter(item => item.lang === lang);
+}
