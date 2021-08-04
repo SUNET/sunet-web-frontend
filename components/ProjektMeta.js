@@ -1,6 +1,5 @@
 import ProjektMetaPerson from './ProjektMetaPerson.js';
 import ProjektMetaWiki from './ProjektMetaWiki.js';
-import ProjektMetaPrice from './ProjektMetaPrice.js';
 
 const ProjektMeta = ({ projekt, person }) => {
 
@@ -11,9 +10,6 @@ const ProjektMeta = ({ projekt, person }) => {
                 person={ person }
             />
             <ProjektMetaWiki 
-                projekt={ projekt } 
-            />
-            <ProjektMetaPrice 
                 projekt={ projekt } 
             />
         </div>
