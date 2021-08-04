@@ -102,3 +102,10 @@ export async function getJiraCustom(lang) {
     const fields = await res.json();
     return fields;
 }
+
+
+export async function getProjekt(lang) {
+    const res = await fetch(`${config.apiUrl}projekt.json`);
+    const projekt = await res.json();
+    return projekt.filter(item => item.lang === lang);
+}
