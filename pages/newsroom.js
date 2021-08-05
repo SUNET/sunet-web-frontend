@@ -20,7 +20,7 @@ class Newsroom extends Component {
 			page,
 			error: !page,
 			news,
-			title: 'Newsroom XXX',
+			title: 'Nyhetsrum',
 		}
 	}
 

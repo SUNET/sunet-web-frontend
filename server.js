@@ -74,15 +74,27 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/om-sunet/newsroom`, (req, res)=>{
+            server.get(`/om-sunet/nyhetsrum`, (req, res)=>{
                 const actualPage = `/newsroom`;
-                const queryParams = { slug: 'newsroom', apiRoute: 'newsroom', lang: 'sv' };
+                const queryParams = { slug: 'nyhetsrum', apiRoute: 'nyhetsrum', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/om-sunet/newsroom/:slug`, (req, res) =>{
-                const actualPage = "/news";
-                const queryParams = { slug: req.params.slug, apiRoute: 'newsroom', lang: 'sv' };
+            server.get(`/om-sunet/nyhetsrum/:slug`, (req, res) =>{
+                const actualPage = "/newsitem";
+                const queryParams = { slug: req.params.slug, apiRoute: 'nyhetsrum', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/about-sunet/newsroom`, (req, res)=>{
+                const actualPage = `/newsroom`;
+                const queryParams = { slug: 'newsroom', apiRoute: 'newsroom', lang: 'en' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/about-sunet/newsroom/:slug`, (req, res) =>{
+                const actualPage = "/newsitem";
+                const queryParams = { slug: req.params.slug, apiRoute: 'newsroom', lang: 'en' };
                 app.render(req, res, actualPage, queryParams);
             })
 

@@ -20,7 +20,7 @@ const AllNewsList = ({ news, locale }) => {
 					<a>
 				<div className="card">
 					<div className="card-tags">
-						<span>{item.acf && item.acf.text_date}</span>
+						<span>{item.date}</span>
 					</div>
 					<div className="card-content">
 						<div className="header-container">
