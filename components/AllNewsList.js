@@ -4,7 +4,7 @@ import withLocale from './withLocale'
 
 const routes = {
 	"en": "/about-sunet/newsroom",
-	"sv": "/om-sunet/nyhetstum",
+	"sv": "/om-sunet/nyhetsrum",
 }
 
 
