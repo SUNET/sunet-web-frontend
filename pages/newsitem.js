@@ -11,7 +11,7 @@ class NewsItem extends Component {
 	
     static async getInitialProps(context) {
 	
-	const {slug, lang, section, subsection } = context.query
+	const {slug, lang } = context.query
         const res = await fetch(`${config.apiUrl}posts.json`);
         const pages = await res.json();
 	const newsitem = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
@@ -24,15 +24,13 @@ class NewsItem extends Component {
 			newsitem,
 			error: !newsitem,
 			slug, 
-			section, 
-			subsection,
 			lang,
 			title,
 		 };
 	}
 
 	render() {
-		const { newsitem, error, section, subsection, lang } = this.props;
+		const { newsitem, error, lang } = this.props;
 		if (error) return <Error statusCode={404} />;
 
 		return (
@@ -44,13 +42,6 @@ class NewsItem extends Component {
 						<article className="col-lg-8 offset-lg-2">
 							<h1 id="main-title">{newsitem.title.rendered}</h1>
 							<div dangerouslySetInnerHTML={ {__html: newsitem.content.rendered} } />
-							{ newsitem.acf 
-							&& newsitem.acf.url_for_location 
-							&& ( 
-								<div>
-									<a href={newsitem.acf.url_for_location} className="location-link">Hitta hit</a>
-								</div>
-							)}
 						</article>
 					</main>
 				</div>
