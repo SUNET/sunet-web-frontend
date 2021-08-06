@@ -88,13 +88,13 @@ app
 
             server.get(`/about-sunet/newsroom`, (req, res)=>{
                 const actualPage = `/newsroom`;
-                const queryParams = { slug: 'newsroom', apiRoute: 'newsroom', lang: 'en' };
+                const queryParams = { slug: 'newsroom', apiRoute: 'nyhetsrum', lang: 'en' };
                 app.render(req, res, actualPage, queryParams);
             })
 
             server.get(`/about-sunet/newsroom/:slug`, (req, res) =>{
                 const actualPage = "/newsitem";
-                const queryParams = { slug: req.params.slug, apiRoute: 'newsroom', lang: 'en' };
+                const queryParams = { slug: req.params.slug, apiRoute: 'nyhetsrum', lang: 'en' };
                 app.render(req, res, actualPage, queryParams);
             })
 
