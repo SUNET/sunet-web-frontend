@@ -31,6 +31,9 @@ div.subscription-page {
     border: 1px solid black;
     padding: 1rem 2rem;
   }
+  label#SubscriberForm_email_label {
+    margin-right: 1rem;
+  }
   input#SubscriberForm_email {
     border-top: none;
     border-left: none;

@@ -74,7 +74,7 @@ class NewsletterSubscription extends Component {
                       <input type="hidden" name="TermsGuid" value="e564ccce-9542-483c-bc94-046ef1777061" />
                       <input type="hidden" name="Lists" value="2118fa62-01b2-4d36-92e3-1b8cfd471382" />
                       <p>
-                        <label for="SubscriberForm_email" >E-post</label>
+                        <label for="SubscriberForm_email"  id="SubscriberForm_email_label">E-post</label>
                         <input type="email" id="SubscriberForm_email" name="email" required />
                       </p>
                       <span id="SubscriberForm_email_error_required">Obligatorisk</span>
