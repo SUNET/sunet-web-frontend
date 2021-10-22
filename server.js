@@ -75,7 +75,7 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/prenumerera`, (req, res)=>{
+            server.get(`/om-sunet/nyhetsbrev`, (req, res)=>{
                 const actualPage = `/subscribe`;
                 const queryParams = { slug: 'subscribe', apiRoute: 'subscribe', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);

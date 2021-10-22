@@ -73,25 +73,27 @@ class NewsletterSubscription extends Component {
                       <input type="hidden" name="LegalBasis" value="1" />
                       <input type="hidden" name="TermsGuid" value="e564ccce-9542-483c-bc94-046ef1777061" />
                       <input type="hidden" name="Lists" value="2118fa62-01b2-4d36-92e3-1b8cfd471382" />
-                      <label for="SubscriberForm_email" >E-post</label>
-                      <input type="text" id="SubscriberForm_email" name="email" required ><br/>
-                      <span id="SubscriberForm_email_error_required" style="display:none;color:red;">Obligatorisk</span>
-                      <span id="SubscriberForm_email_error_0" style="display:none;color:red;">Ogiltig e-postadress</span>
-                      <span id="SubscriberForm_email_error_1" style="display:none;color:red;">Max 400 tecken</span>
+                      <p>
+                        <label for="SubscriberForm_email" >E-post</label>
+                        <input type="email" id="SubscriberForm_email" name="email" required />
+                      </p>
+                      <span id="SubscriberForm_email_error_required">Obligatorisk</span>
+                      <span id="SubscriberForm_email_error_0">Ogiltig e-postadress</span>
+                      <span id="SubscriberForm_email_error_1">Max 400 tecken</span>
                       <input type="hidden" name="OptInSenderName" value="SUNET" />
                       <input type="hidden" name="OptInSenderEmail" value="noreply@sunet.se" />
                       <input type="hidden" name="OptInMessage" value="PHA+SGVqITxzdHJvbmc+IDwvc3Ryb25nPjwvcD4KCjxwPjxzdHJvbmc+VGFjayBmJm91bWw7ciBhdHQgZHUgdmFsdCBhdHQgcHJlbnVtZXJlcmEgcCZhcmluZzsgU3VuZXRzIG55aGV0c2JyZXYhJm5ic3A7PC9zdHJvbmc+PC9wPgoKPHA+QmVrciZhdW1sO2Z0YSBkaW4gcHJlbnVtZXJhdGlvbiBnZW5vbSBhdHQga2xpY2thIHAmYXJpbmc7IGwmYXVtbDtua2VuLiZuYnNwOzwvcD4KCjxwPlYmYXVtbDtsa29tbWVuISZuYnNwOzwvcD4KCjxwPiZuYnNwOzwvcD4KCjxwPlBTOiBEdSBrYW4gbiZhdW1sO3Igc29tIGhlbHN0IGF2c2x1dGEgZGluIHByZW51bWVyYXRpb24gZ2Vub20gYXR0IGtsaWNrYSBwJmFyaW5nOyAmcXVvdDthdnByZW51bWVyZXJhJnF1b3Q7IGkgZXR0IG55aGV0c2JyZXYgZWxsZXIga29udGFrdGEgb3NzIHAmYXJpbmc7IGluZm9Ac3VuZXQuc2U8L3A+Cg==" />
                       <input type="hidden" name="ThanksPage" value="https://sunet.se/om-sunet/nyhetsbrev-tack" />
                       <input type="hidden" name="CheckThanksPageAvailability" value="0" />
-                      <span>
-                        Jag samtycker till 
+                      <p>
+                        Jag samtycker till &nbsp; 
                         <a href="https://public.paloma.se/Consent/ReadConsent?termsguid=e564ccce-9542-483c-bc94-046ef1777061" target="_blank">
                           behandling av mina personuppgifter
                         </a>
-                      </span>
-                      <input required type="checkbox" name="haschecked" />
-                      <br/>
-                      <input type="submit" value="Skicka"/>
+                        &nbsp;
+                      <input required type="checkbox" id="accept-conditions" name="haschecked" />
+                      </p>
+                      <input type="submit" id="submit-button" value="Skicka"/>
                     </form>
 
                     <p>Vill du avsluta din prenumeration? Maila till <a href="mailto:info@sunet.se">info@sunet.se</a> så tar vi bort dig från listan.</p>

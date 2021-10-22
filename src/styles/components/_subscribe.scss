@@ -12,22 +12,32 @@ div.subscription-page {
   }
   p {
     margin-top: 20px;
-
-    input#email-input {
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      width: 50%;
-    }
-
-    input#conditions-input {
-      margin-right: 5px;
-      margin-bottom: 20px;
-    }
   }
-  button#submit-button {
+  #SubscriberForm_email_error_required {
+    display:none;
+    color:red;
+  }
+  #SubscriberForm_email_error_0 {
+    display:none;
+    color:red;
+  }
+  #SubscriberForm_email_error_1 {
+    display:none;
+    color:red;
+  }
+
+  input#submit-button {
     margin-top: 30px;
     border: 1px solid black;
-    padding: 20px;
+    padding: 1rem 2rem;
+  }
+  input#SubscriberForm_email {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 50%;
+  }
+  input#accept-conditions {
+    margin-left: .5rem;
   }
 }
