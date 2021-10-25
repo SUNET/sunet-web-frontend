@@ -81,7 +81,7 @@ class NewsletterSubscription extends Component {
                       <span id="SubscriberForm_email_error_0">Ogiltig e-postadress</span>
                       <span id="SubscriberForm_email_error_1">Max 400 tecken</span>
                       <input type="hidden" name="OptInSenderName" value="SUNET" />
-                      <input type="hidden" name="OptInSenderEmail" value="noreply@sunet.se" />
+                      <input type="hidden" name="OptInSenderEmail" value="noreply@nyhetsbrev.sunet.se" />
                       <input type="hidden" name="OptInMessage" value="PHA+SGVqITxzdHJvbmc+IDwvc3Ryb25nPjwvcD4KCjxwPjxzdHJvbmc+VGFjayBmJm91bWw7ciBhdHQgZHUgdmFsdCBhdHQgcHJlbnVtZXJlcmEgcCZhcmluZzsgU3VuZXRzIG55aGV0c2JyZXYhJm5ic3A7PC9zdHJvbmc+PC9wPgoKPHA+QmVrciZhdW1sO2Z0YSBkaW4gcHJlbnVtZXJhdGlvbiBnZW5vbSBhdHQga2xpY2thIHAmYXJpbmc7IGwmYXVtbDtua2VuLiZuYnNwOzwvcD4KCjxwPlYmYXVtbDtsa29tbWVuISZuYnNwOzwvcD4KCjxwPiZuYnNwOzwvcD4KCjxwPlBTOiBEdSBrYW4gbiZhdW1sO3Igc29tIGhlbHN0IGF2c2x1dGEgZGluIHByZW51bWVyYXRpb24gZ2Vub20gYXR0IGtsaWNrYSBwJmFyaW5nOyAmcXVvdDthdnByZW51bWVyZXJhJnF1b3Q7IGkgZXR0IG55aGV0c2JyZXYgZWxsZXIga29udGFrdGEgb3NzIHAmYXJpbmc7IGluZm9Ac3VuZXQuc2U8L3A+Cg==" />
                       <input type="hidden" name="ThanksPage" value="https://sunet.se/om-sunet/nyhetsbrev-tack" />
                       <input type="hidden" name="CheckThanksPageAvailability" value="0" />
