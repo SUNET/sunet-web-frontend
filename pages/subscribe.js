@@ -59,11 +59,12 @@ class NewsletterSubscription extends Component {
             <Layout {...this.props}>
 
               <div className="container subscription-page">
-                <div className="row single m-52">
-                  <div className="col-lg-8 offset-lg-2">
+              <main aria-labelledby="main-title" className="row single m-52">
+                  <article className="col-lg-8 offset-lg-2">
 
-                    <h1>Prenumerera på vårt nyhetsbrev</h1>
-                    <h2>Håll dig uppdaterad om vad som händer inom Sunet. Fyll i din e-postadress nedan för att börja prenumerera.</h2>
+                    <h1 id="main-title">Prenumerera på vårt nyhetsbrev</h1>
+                    <div>
+                    <p>Håll dig uppdaterad om vad som händer inom Sunet. Fyll i din e-postadress nedan för att börja prenumerera.</p>
                     <p>Du behöver också ta del av informationen om behandling av personuppgifter och samtycka till att Vetenskapsrådet, där Sunet är en avdelning, behandlar dina personuppgifter.</p>
                     <p className="font-weight-bold">E-POST (OBLIGATORISK):</p>
 
@@ -87,7 +88,7 @@ class NewsletterSubscription extends Component {
 			<p>
 			    <input required type="checkbox" id="accept-conditions" name="haschecked" /> 
           &nbsp;  Jag har läst &nbsp; 
-                        <a href="/om-sunet/nyhetsbrev-personuppgiftsbehandling" target="_blank">
+                        <a href="/om-sunet/nyhetsbrev-personuppgiftsbehandling">
                           informationen
                         </a>
                             &nbsp;
@@ -98,8 +99,10 @@ class NewsletterSubscription extends Component {
                     </form>
 
                     <p>Vill du avsluta din prenumeration? Klicka på länken “Avprenumerera” längst ner i nyhetsbrevet.</p>
-                  </div>
-                </div>
+            
+                     </div>
+                  </article>
+                  </main>
               </div>
 
 <script type="text/javascript">
