@@ -4,7 +4,7 @@ import Layout from '../components/Layout.js';
 import PageWrapper from '../components/PageWrapper.js';
 import fetch from 'isomorphic-unfetch';
 import config from '../config.js'
-import { getPersoner } from '../src/utils/index.js';
+import { getMedarbetare } from '../src/utils/index.js';
 
 function getLastName(name) {
 	if(!name) return "";
@@ -34,7 +34,7 @@ class Personer extends Component {
 		const res = await fetch(`${config.apiUrl}pages.json`);
                 const pages = await res.json();
 		const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
-		const personer = await getPersoner(lang);
+		const personer = await getMedarbetare(lang);
 		const title = page.title.rendered;
 		
 		return {
