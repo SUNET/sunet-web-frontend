@@ -34,6 +34,12 @@ export async function getPersoner(lang) {
 	return personer.filter(item => item.lang === lang)
 }
 
+export async function getMedarbetare(lang) {
+    const res = await fetch(`${config.apiUrl}person.json`);
+	const personer = await res.json();
+	return personer.filter(item => item.lang === lang && item.acf.visa === true)
+}
+
 export async function getEvenemang(lang) {
     const res = await fetch(`${config.apiUrl}evenemang.json`);
 	const evenemang = await res.json();
