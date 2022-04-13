@@ -5,7 +5,7 @@ const SecurityTxt = () => null;
 
 export const getServerSideProps = async ({ res }) => {
   const date = new Date();
-  date.setMonth(date.getMonth() + 2);
+  date.setMonth(date.getMonth() + 1);
   if (res) {
     res.setHeader('Content-Type', 'text/plain');
     res.write(`Contact: https://www.sunet.se/om-sunet/sakerhet\n`);
