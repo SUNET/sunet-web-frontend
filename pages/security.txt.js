@@ -1,8 +1,7 @@
 
-import { GetServerSideProps } from 'next';
 import React from 'react';
 
-const SecurityTxt = () => null
+const SecurityTxt = () => null;
 
 export const getServerSideProps = async ({ res }) => {
   const date = new Date();
