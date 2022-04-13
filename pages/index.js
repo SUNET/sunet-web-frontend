@@ -38,6 +38,7 @@ class Index extends Component {
 	}
 
 	render() {
+		const eventUrl = this.props.lang === 'sv' && '/om-sunet/aktuellt/evenemang' || '/en/about-sunet/current/events';
 		return (
 			<Layout {...this.props}>
 				{this.props.segment_top && (<div className="container">
@@ -75,7 +76,7 @@ class Index extends Component {
 							<div className="col">
 							
 								<div className="btn-load-container">
-									<a href="/om-sunet/evenemang" className="btn-more" aria-label={this.props.eventLinkText}>
+									<a href={eventUrl} className="btn-more" aria-label={this.props.eventLinkText}>
 										{this.props.eventLinkText}
 									</a>
 								</div>

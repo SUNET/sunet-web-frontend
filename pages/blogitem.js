@@ -7,7 +7,7 @@ import config from '../config.js'
 import { buildSidebarMenu } from '../src/utils/menu-builder';
 import SideBarMenu from "../components/SideBarMenu.js";
 
-class NewsItem extends Component {
+class BlogItem extends Component {
 	
     static async getInitialProps(context) {
 	
@@ -45,7 +45,7 @@ class NewsItem extends Component {
 					<main aria-labelledby="main-title" className="row single m-52">
 				
 						<article className="col-lg-8 offset-lg-2">
-							<div className="item-type-heading">{lang === 'en' && "NEWS" || "NYHETER"}</div>
+							<div className="item-type-heading">{lang === 'en' && "BLOG" || "BLOGG"}</div>
 							<h1 id="main-title">{newsitem.title.rendered}</h1>
 							<div dangerouslySetInnerHTML={ {__html: newsitem.content.rendered} } />
 			                                <div className="date-in-foot">{lang === 'en' && "PUBLISHED ON " || "PUBLICERAD DEN "}{localizedDate}</div>
@@ -58,5 +58,4 @@ class NewsItem extends Component {
 	}
 }
 
-export default PageWrapper(NewsItem);
-
+export default PageWrapper(BlogItem);

@@ -12,6 +12,11 @@
 			line-height: 1.2;
 			margin-top: 0;
 		}
+		div.item-type-heading {
+			font-family: "Akkurat";
+			margin-bottom: .8rem;
+			font-weight: 400;
+		}
 		p.intro-1,
 		> div > p:first-child {
 			@include x-rem(font-size, 2.8);
@@ -61,6 +66,12 @@
 		}
 		img {
 			margin-top: 88px;
+		}
+		div.date-in-foot {
+			font-family: "Akkurat";
+			margin-top: 2rem;
+			text-transform: uppercase;
+			font-size: .8rem;
 		}
 	}
 	blockquote {

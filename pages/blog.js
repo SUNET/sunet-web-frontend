@@ -4,23 +4,23 @@ import PageWrapper from "../components/PageWrapper.js";
 import AllNewsList from "../components/AllNewsList.js";
 import fetch from 'isomorphic-unfetch';
 import config from '../config.js'
-import {getNews} from '../src/utils'
+import {getBlogPosts} from '../src/utils'
 
 
-class Newsroom extends Component {
+class Blog extends Component {
 	static async getInitialProps(context) {
 		const { lang, slug } = context.query;
 
 		const res = await fetch(`${config.apiUrl}pages.json`);
         const pages = await res.json();
 		const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
-		const news = await getNews(lang)
+		const news = await getBlogPosts(lang)
 
 		return { 
 			page,
 			error: !page,
 			news,
-			title: lang === 'sv' && 'Nyheter' || 'News',
+			title: lang === 'sv' && 'Blogg' || 'Blog',
 		}
 	}
 
@@ -47,4 +47,5 @@ class Newsroom extends Component {
 	
 }
 
-export default PageWrapper(Newsroom);
+export default PageWrapper(Blog);
+

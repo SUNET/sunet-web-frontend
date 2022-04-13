@@ -62,39 +62,87 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/om-sunet/evenemang`, (req, res)=>{
+            server.get(`/om-sunet/aktuellt`, (req, res)=>{
+                const actualPage = `/aktuellt`;
+                const queryParams = { slug: 'aktuellt', apiRoute: 'aktuellt', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/om-sunet/aktuellt/evenemang`, (req, res)=>{
                 const actualPage = `/evenemang`;
-                const queryParams = { slug: 'evenemang', apiRoute: 'evenemang', lang: 'sv' };
+                const queryParams = { slug: 'evenemang', apiRoute: 'aktuellt', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/om-sunet/evenemang/:slug`, (req, res) =>{
+            server.get(`/om-sunet/aktuellt/evenemang/:slug`, (req, res) =>{
                 const actualPage = "/evenemanget";
-                const queryParams = { slug: req.params.slug, apiRoute: 'evenemang', lang: 'sv' };
+                const queryParams = { slug: req.params.slug, apiRoute: 'aktuellt', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/om-sunet/nyhetsrum`, (req, res)=>{
+            server.get(`/om-sunet/aktuellt/nyheter`, (req, res)=>{
                 const actualPage = `/newsroom`;
-                const queryParams = { slug: 'nyhetsrum', apiRoute: 'nyhetsrum', lang: 'sv' };
+                const queryParams = { slug: 'nyhetsrum', apiRoute: 'aktuellt', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/om-sunet/nyhetsrum/:slug`, (req, res) =>{
+            server.get(`/om-sunet/aktuellt/nyheter/:slug`, (req, res) =>{
                 const actualPage = "/newsitem";
-                const queryParams = { slug: req.params.slug, apiRoute: 'nyhetsrum', lang: 'sv' };
+                const queryParams = { slug: req.params.slug, apiRoute: 'aktuellt', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/about-sunet/newsroom`, (req, res)=>{
+            server.get(`/om-sunet/aktuellt/blogg`, (req, res)=>{
+                const actualPage = `/blog`;
+                const queryParams = { slug: 'blogg', apiRoute: 'aktuellt', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/om-sunet/aktuellt/blogg/:slug`, (req, res) =>{
+                const actualPage = "/blogitem";
+                const queryParams = { slug: req.params.slug, apiRoute: 'aktuellt', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/en/about-sunet/current`, (req, res)=>{
+                const actualPage = `/aktuellt`;
+                const queryParams = { slug: 'current', apiRoute: 'aktuellt', lang: 'en' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/en/about-sunet/current/events`, (req, res)=>{
+                const actualPage = `/evenemang`;
+                const queryParams = { slug: 'events', apiRoute: 'aktuellt', lang: 'en' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/en/about-sunet/current/events/:slug`, (req, res) =>{
+                const actualPage = "/evenemanget";
+                const queryParams = { slug: req.params.slug, apiRoute: 'aktuellt', lang: 'en' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/en/about-sunet/current/newsroom`, (req, res)=>{
                 const actualPage = `/newsroom`;
-                const queryParams = { slug: 'newsroom', apiRoute: 'nyhetsrum', lang: 'en' };
+                const queryParams = { slug: 'newsroom', apiRoute: 'aktuellt', lang: 'en' };
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/about-sunet/newsroom/:slug`, (req, res) =>{
+            server.get(`/en/about-sunet/current/newsroom/:slug`, (req, res) =>{
                 const actualPage = "/newsitem";
-                const queryParams = { slug: req.params.slug, apiRoute: 'nyhetsrum', lang: 'en' };
+                const queryParams = { slug: req.params.slug, apiRoute: 'aktuellt', lang: 'en' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/en/about-sunet/current/blog`, (req, res)=>{
+                const actualPage = `/blog`;
+                const queryParams = { slug: 'blog', apiRoute: 'aktuellt', lang: 'en' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/en/about-sunet/current/blog/:slug`, (req, res) =>{
+                const actualPage = "/blogitem";
+                const queryParams = { slug: req.params.slug, apiRoute: 'aktuellt', lang: 'en' };
                 app.render(req, res, actualPage, queryParams);
             })
 
