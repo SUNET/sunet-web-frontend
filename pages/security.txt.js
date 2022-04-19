@@ -12,7 +12,7 @@ export const getServerSideProps = async ({ res }) => {
     res.write(`Contact: mailto:abuse@sunet.se\n`);
     res.write(`Expires: ${date.toISOString()}\n`);
     res.write(`Preferred-Languages: en, sv\n`);
-    res.write(`Acknowledgments: https://www.sunet.se/om-sunet/sakerhet/hall-of-fame\n`);
+    res.write(`Acknowledgments: https://www.sunet.se/om-sunet/sakerhet-hall-of-fame\n`);
     res.write(`Encryption: https://keys.openpgp.org/vks/v1/by-fingerprint/9CBFAF18D1E1AF3176E74C3E2F23CB193ACFD1F0`);
     res.end();
   }
