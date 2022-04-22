@@ -20,6 +20,11 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
+            server.get('/security.txt', (req, res) => {
+                const actualPage = "/security.txt";
+                app.render(req, res, actualPage);
+            })
+
             server.get('/services', (req, res)=>{
                 const actualPage = '/tjanster';
                 const queryParams = { slug: 'services', apiRoute: 'tjanster', category: req.params.category, lang: 'sv' };
