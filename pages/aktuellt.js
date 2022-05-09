@@ -42,13 +42,13 @@ class Current extends Component {
 							<div dangerouslySetInnerHTML={ {__html: page.acf.segment_top} } />
 							<ul className="newslistings">
 								<li className="newslisting news">
-									<a href={newsUrl} tabIndex="1">{newsName}</a>
+									<a href={newsUrl}>{newsName}</a>
 								</li>
 								<li className="newslisting events">
-									<a href={blogUrl} tabIndex="2">{blogName}</a>
+									<a href={blogUrl}>{blogName}</a>
 								</li>
 								<li className="newslisting pastevents">
-									<a href={eventsUrl} tabIndex="3">{eventsName}</a>
+									<a href={eventsUrl}>{eventsName}</a>
 								</li>
 							</ul>
 						</div>
