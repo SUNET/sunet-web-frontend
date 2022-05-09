@@ -49,9 +49,9 @@ class AllNewsList extends Component {
 
 	noButtonMoreNews (tabindex) {
 		return (
-			<button id="no-more-news">
+			<div id="no-more-news">
 			{this.props.locale.lang === 'sv' && "Inga fler nyheter" || "No more news"}
-			</button>
+			</div>
 		);
 	}
 
