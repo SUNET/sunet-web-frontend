@@ -39,15 +39,15 @@ class AllNewsList extends Component {
 		}
 	}
 
-	buttonMoreNews (tabindex) {
+	buttonMoreNews () {
 		return (
-			<button id="more-news-button" tabIndex={tabindex}  onClick={this.renderMoreNews.bind(this)}>
+			<button id="more-news-button"  onClick={this.renderMoreNews.bind(this)}>
 			<span id="more-news-button-plus">+</span>{this.props.locale.lang === 'sv' && "Visa fler" || "Show more"}
 			</button>
 		);
 	}
 
-	noButtonMoreNews (tabindex) {
+	noButtonMoreNews () {
 		return (
 			<div id="no-more-news">
 			{this.props.locale.lang === 'sv' && "Inga fler nyheter" || "No more news"}
@@ -92,7 +92,6 @@ class AllNewsList extends Component {
 				as={`${routes[this.props.locale.lang]}/${item.slug}`}
 				key={item.id}>
 					<a
-				tabIndex={idx + 4}
 				ref={elem => {
 					if (this.state.current > config.scrollBatch && idx === (this.state.current - config.scrollBatch)) {
 						this.toFocus = elem;
@@ -132,7 +131,7 @@ class AllNewsList extends Component {
 			<div id="all-news-listing" className="row">
 				<div className="col-12 newscards">{this.renderNews()}</div>
 			</div>
-			{this.state.buttonMore(this.state.current + 4)}
+			{this.state.buttonMore()}
 			</>
 		);
 	}
