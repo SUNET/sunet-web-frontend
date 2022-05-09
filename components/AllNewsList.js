@@ -28,7 +28,7 @@ class AllNewsList extends Component {
 		super(props);
 		this.state = {
 			current: config.scrollBatch,
-			buttonMore: config.scrollBatch > this.props.news.length && this.noButtonMoreNews.bind(this) || this.buttonMoreNews.bind(this),
+			buttonMore: config.scrollBatch >= this.props.news.length && this.noButtonMoreNews.bind(this) || this.buttonMoreNews.bind(this),
 		};
 		this.toFocus = null;
 	}
@@ -49,7 +49,7 @@ class AllNewsList extends Component {
 
 	noButtonMoreNews (tabindex) {
 		return (
-			<button id="no-more-news" tabIndex={tabindex}>
+			<button id="no-more-news">
 			{this.props.locale.lang === 'sv' && "Inga fler nyheter" || "No more news"}
 			</button>
 		);
