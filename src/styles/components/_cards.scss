@@ -163,8 +163,9 @@
 			&:focus {
 				.card-content {
 					.header-container {
-						h2 {
+						h2, h3 {
 							border-bottom: 1px solid $pri_orange;
+							width: fit-content;
 						}
 					}
 				}

@@ -72,3 +72,27 @@
 		}
 	}
 }
+#more-news-button {
+	cursor: pointer;
+	line-height: 1;
+
+	#more-news-button-plus {
+		font-size: 1.2rem;
+		margin-right: .6rem;
+	}
+
+	&:focus,
+	&:hover {
+		color: $pri_orange;
+		border-bottom: 1px solid $pri_orange;
+	}
+}
+#no-more-news {
+	cursor: default;
+	line-height: 1;
+
+	&:focus {
+		color: $pri_orange;
+		border-bottom: 1px solid $pri_orange;
+	}
+}

@@ -39,9 +39,10 @@ class Evenemanget extends Component {
 			<Layout {...this.props}>
 
 				<div className="container">
-					<main aria-labelledby="main-title" className="row single m-80">
+					<main aria-labelledby="main-title" className="row single m-52">
 				
 						<article className="col-lg-8 offset-lg-2">
+							<div className="item-type-heading">{lang === 'en' && "EVENT" || "EVENEMANG"}</div>
 							<h1 id="main-title">{evenemang.title.rendered}</h1>
 							<div dangerouslySetInnerHTML={ {__html: evenemang.content.rendered} } />
 							{ evenemang.acf 
