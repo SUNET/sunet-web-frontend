@@ -98,6 +98,31 @@ class NewsletterSubscription extends Component {
                       <input type="submit" id="submit-button" value="Skicka"/>
                     </form>
 
+
+	      <form name="SubscribeForm" method="post" action="https://ui.ungpd.com/Api/Subscriptions/723e8a84-1f5c-4c1e-8837-b4755f4e6244">
+		  <input type="hidden" name="ListIds" value="a7fb77c1-f7a8-48a7-8756-ea306f1dd3f6" id="listIda7fb77c1-f7a8-48a7-8756-ea306f1dd3f6" />
+		  <input type="hidden" name="SubscriptionConfirmedUrl" value="https://www.sunet.se/om-sunet/valkommen-som-prenumerant/" />
+                  <input type="hidden" name="SubscriptionFailedUrl" value="https://www.sunet.se/om-sunet/nagot-gick-fel" />
+                  <input type="hidden" name="DoubleOptIn[Issue][IssueId]" value="fab8be83-807a-43b4-b91f-13d1b4f1c6f9" />
+                  <input type="hidden" name="DoubleOptIn[EmailSentUrl]" value="https://www.sunet.se/om-sunet/nyhetsbrev-tack/" />
+		  <p>
+                  <input type="email" id="SubscriberForm_email" name="Contact[Email]"  required placeholder="namn.namnsson@email.com" /><br />
+		      </p>
+
+		  <p><label for="contactConsentText"> 
+		      <input type="checkbox" required name="ConsentText" id="contactConsentText" value="Jag vill få relevant information från Sunet till min inkorg. Sunet ska inte dela eller sälja min pe\
+rsonliga information. Jag kan när som helst avsluta prenumerationen." />
+
+&nbsp;  Jag har läst &nbsp;                                                                                                                                                                                                   
+                          <a href="/om-sunet/nyhetsbrev-personuppgiftsbehandling">                                                                                                                                                                                  informationen                                                                                                                                                                                                                        </a>                                                                                                                                                                                                                                       &nbsp;                                                                                                                                                                                                                                 och samtycker till Vetenskapsrådets behandling av mina personuppgifter.
+			  </label>
+		      </p>
+
+              <input type="submit" id="submit-button" value="Skicka" />
+</form>
+
+
+			
                     <p>Vill du avsluta din prenumeration? Klicka på länken “Avprenumerera” längst ner i nyhetsbrevet.</p>
             
                      </div>
