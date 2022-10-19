@@ -32,6 +32,7 @@ class Ticket extends Component {
 
 		return { 
 			ticket,
+      customFields,
 			error: !ticket,
 			ticketid, 
 			lang,
@@ -45,7 +46,7 @@ class Ticket extends Component {
       if (! usedNames.includes(fname)) {
         const val = ticket.fields[fname];
         if (val) {
-          const name = customFields.find(f => f.id === fname).name;
+          const name = this.props.customFields.find(f => f.id === fname).name;
           if (typeof(val) === 'string') {
             kvpairs.push([name, val]);
           } else if (val.hasOwnProperty('name')) {
