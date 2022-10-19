@@ -21,7 +21,7 @@ class Ticket extends Component {
 	
     static async getInitialProps(context) {
 	
-	const {ticketid} = context.query
+	const {ticketid, lang} = context.query
   const openTickets = await getOpenTickets();
   const customFields = await getJiraCustom();
 	const ticket = openTickets.issues.find(ticket => ticket.id === ticketid);
