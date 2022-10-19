@@ -148,13 +148,13 @@ app
 
             server.get(`/om-sunet/tickets`, (req, res)=>{
                 const actualPage = `/tickets`;
-                const queryParams = { slug: 'tickets', apiRoute: 'tickets', lang: 'en' };
+                const queryParams = { slug: 'tickets', apiRoute: 'tickets', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
             server.get(`/om-sunet/tickets/:slug`, (req, res) =>{
                 const actualPage = "/ticket";
-                const queryParams = { slug: req.params.slug, apiRoute: 'tickets', lang: 'en' };
+                const queryParams = { ticketid: req.params.slug, apiRoute: 'tickets', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 

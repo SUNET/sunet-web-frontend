@@ -10,12 +10,16 @@ const routes = {
 
 function getAffectedCustomers(ticket) {
   const affectedCustomers = [];
-  if (ticket.fields.customfield_11100 !== null) {
+  if (ticket.fields.customfield_11100) {
     ticket.fields.customfield_11100.forEach((item) => {
-      if (item.startsWith('affected_customer')) {
-        const customer = item.split(':').at(-1);
-        affectedCustomers.push(customer);
-      }
+      try {
+        if (item.startsWith('affected_customer')) {
+          const customer = item.split(':').at(-1);
+          affectedCustomers.push(customer);
+        }
+      } catch(err) {
+          console.log(err);
+        }
     });
   }
   return affectedCustomers.join(' ');
@@ -74,8 +78,8 @@ const UnscheduledTicket = ({ ticket, locale }) => {
 const _ScheduledTicketsList = ({ tickets, locale }) => {
 	
 	function renderTickets() {
-		return tickets.map((ticket) => {
-      return (<ScheduledTicket ticket={ticket} locale={locale} />);
+		return tickets.map((ticket, i) => {
+      return (<ScheduledTicket ticket={ticket} locale={locale} key={i} />);
 		});
 	}
 	return (
@@ -88,8 +92,8 @@ const _ScheduledTicketsList = ({ tickets, locale }) => {
 const _UnscheduledTicketsList = ({ tickets, locale }) => {
 	
 	function renderTickets() {
-		return tickets.map((ticket) => {
-      return (<UnscheduledTicket ticket={ticket} locale={locale} />);
+		return tickets.map((ticket, i) => {
+      return (<UnscheduledTicket ticket={ticket} locale={locale} key={i} />);
 		});
 	}
 	return (
