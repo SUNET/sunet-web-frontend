@@ -16,12 +16,12 @@ class Tickets extends Component {
 		const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
 		
     const openTickets = await getOpenTickets(lang);
-    const schedTickets = openTickets.filter((ticket) => {
-      ticket.fields.issuetype.name === "Scheduled"
-    });
-    const unschedTickets = openTickets.filter((ticket) => {
-      ticket.fields.issuetype.name === "Unscheduled"
-    });
+    const schedTickets = openTickets.issues.filter((ticket) =>
+      ticket.fields.issuetype.name.trim() === "Scheduled" && ticket.fields.customfield_11300 !== null
+    );
+    const unschedTickets = openTickets.issues.filter((ticket) =>
+      ticket.fields.issuetype.name.trim() === "Unscheduled"
+    );
 
 		return { 
 			page,

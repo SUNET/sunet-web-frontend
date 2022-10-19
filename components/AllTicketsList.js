@@ -10,12 +10,14 @@ const routes = {
 
 function getAffectedCustomers(ticket) {
   const affectedCustomers = [];
-  ticket.fields.customfield_11100.forEach((item) => {
-    if (item.startsWith('affected_customer')) {
-      const customer = item.split(':').at(-1);
-      affectedCustomers.push(customer);
-    }
-  });
+  if (ticket.fields.customfield_11100 !== null) {
+    ticket.fields.customfield_11100.forEach((item) => {
+      if (item.startsWith('affected_customer')) {
+        const customer = item.split(':').at(-1);
+        affectedCustomers.push(customer);
+      }
+    });
+  }
   return affectedCustomers.join(' ');
 }
 
@@ -39,7 +41,7 @@ const ScheduledTicket = ({ ticket, locale }) => {
                 {end.toLocaleString()}
               </h3>
             </div>
-            <div>{affectedCustomers.join(' ')}</div>
+            <div>{getAffectedCustomers(ticket)}</div>
           </div>
         </div>
 		  </a>
@@ -61,7 +63,7 @@ const UnscheduledTicket = ({ ticket, locale }) => {
                 {ticket.fields.created}
               </h3>
             </div>
-            <div>{affectedCustomers.join(' ')}</div>
+            <div>{getAffectedCustomers(ticket)}</div>
           </div>
         </div>
 		  </a>
