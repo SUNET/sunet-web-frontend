@@ -3,8 +3,8 @@ import Link from 'next/link';
 import withLocale from './withLocale'
 
 const routes = {
-	"en": "about-sunet/tickets",
-	"sv": "/om-sunet/biljetter",
+	"en": "/about-sunet/tickets",
+	"sv": "/om-sunet/tickets",
 }
 
 
