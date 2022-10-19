@@ -24,7 +24,7 @@ class Ticket extends Component {
 	const {ticketid} = context.query
   const openTickets = await getOpenTickets();
   const customFields = await getJiraCustom();
-	const ticket = openTickets.find(ticket => ticket.id === ticketid);
+	const ticket = openTickets.issues.find(ticket => ticket.id === ticketid);
 	
 	const title = ticket ? ticket.fields.summary : "";
 
