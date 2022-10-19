@@ -148,7 +148,7 @@ app
 
             server.get(`/om-sunet/tickets`, (req, res)=>{
                 const actualPage = `/tickets`;
-                const queryParams = { slug: 'tickets', apiRoute: 'tickets', lang: 'sv' };
+                const queryParams = { slug: 'biljetter', apiRoute: 'tickets', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
