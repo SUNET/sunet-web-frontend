@@ -42,7 +42,7 @@ class Ticket extends Component {
   getCustomFields(ticket) {
     const kvpairs = [];
     for (const fname in ticket.fields) {
-      if (! usedFields.contains(fname)) {
+      if (! usedNames.contains(fname)) {
         const val = ticket.fields[fname];
         if (val) {
           const name = customFields.find(f => f.id === fname).name;
