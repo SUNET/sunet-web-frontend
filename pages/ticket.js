@@ -63,7 +63,7 @@ class Ticket extends Component {
 		const { ticket, error, lang, title } = this.props;
 		if (error) return <Error statusCode={404} />;
 
-    const customFields = getCustomFields(ticket);
+    const customFields = this.getCustomFields(ticket);
 
 		return (
 			<Layout {...this.props}>
