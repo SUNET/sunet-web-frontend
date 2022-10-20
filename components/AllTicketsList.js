@@ -22,56 +22,68 @@ function getAffectedCustomers(ticket) {
         }
     });
   }
-  return affectedCustomers.join(' ');
+  return affectedCustomers;
 }
+
+// <Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
 
 const ScheduledTicket = ({ ticket, locale }) => {
   const dates = ticket.fields.customfield_11300.split('/');
   const start = new Date(dates[0]);
   const end = new Date(dates[1]);
   return (
-		<Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
-			<a>
-        <div className="card">
-          <div className="card-tags">
-            <span>{ticket.fields.summary}</span>
-          </div>
-          <div className="card-content">
-            <div className="header-container">
-              <h3>
-                {start.toLocaleString()}
-              </h3>
-              <h3>
-                {end.toLocaleString()}
-              </h3>
-            </div>
-            <div>{getAffectedCustomers(ticket)}</div>
-          </div>
+    <div className="card">
+      <div className="card-tags">
+        {getAffectedCustomers(ticket).map(customer => (
+          <span>{customer}</span>
+        ))}
+      </div>
+      <div className="card-content">
+        <div className="header-container">
+          <h3>
+            <span>{ticket.key}</span>
+          </h3>
         </div>
-		  </a>
-		</Link>
+        <p className="card-intro">
+          {ticket.fields.summary}
+          <span className="start-end-dates">
+            <span className="start-date">
+              {start.toLocaleString()}
+            </span>
+            <span className="end-date">
+              {end.toLocaleString()}
+            </span>
+          </span>
+        </p>
+      </div>
+    </div>
   );
 }
 
+// <Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
+
 const UnscheduledTicket = ({ ticket, locale }) => {
   return (
-		<Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
-			<a>
-        <div className="card">
-          <div className="card-tags">
-            <span>{ticket.fields.summary}</span>
-          </div>
-          <div className="card-content">
-            <div className="header-container">
-              <h3>
-                {ticket.fields.created}
-              </h3>
-            </div>
-            <div>{getAffectedCustomers(ticket)}</div>
-          </div>
+    <div className="card">
+      <div className="card-tags">
+        {getAffectedCustomers(ticket).map(customer => (
+          <span>{customer}</span>
+        ))}
+      </div>
+      <div className="card-content">
+        <div className="header-container">
+          <h3>
+            <span>{ticket.key}</span>
+          </h3>
         </div>
-		  </a>
-		</Link>
+        <p className="card-intro">
+          {ticket.fields.summary}
+          <span className="created-date">
+            {ticket.fields.created.toLocaleString()}
+          </span>
+        </p>
+      </div>
+    </div>
   );
 }
 
