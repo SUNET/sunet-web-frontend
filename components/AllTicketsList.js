@@ -78,16 +78,23 @@ const UnscheduledTicket = ({ ticket, locale }) => {
           <span>{customer}</span>
         ))}
       </div>
-      <div className="card-content">
-        <div className="header-container">
+      <div className="card-content ticket">
+        <div className="header-container-long">
           <h3>
             <span>{ticket.key}</span>
           </h3>
+          <div className="summary">
+            {ticket.fields.summary}
+          </div>
         </div>
-        <p className="card-intro">
-          {ticket.fields.summary}
-          <div className="created-date">
-            {ticket.fields.created.toLocaleString()}
+        <p className="card-intro-long">
+          <div className="start-end-dates">
+            <span className="start-date">
+              <span className="date-label">
+                created:
+              </span>
+              {ticket.fields.created.toLocaleString()}
+            </span>
           </div>
         </p>
       </div>
