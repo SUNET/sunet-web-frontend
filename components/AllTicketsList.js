@@ -39,13 +39,15 @@ const ScheduledTicket = ({ ticket, locale }) => {
         ))}
       </div>
       <div className="card-content">
-        <div className="header-container">
+        <div className="header-container-long">
           <h3>
             <span>{ticket.key}</span>
           </h3>
+          <div className="summary">
+            {ticket.fields.summary}
+          </div>
         </div>
         <p className="card-long-intro">
-          {ticket.fields.summary}
           <div className="start-end-dates">
             <span className="start-date">
               {start.toLocaleString()}

@@ -88,18 +88,7 @@
 				max-height: 96px;
 				-webkit-line-clamp: 4; /* number of lines to show */
 				-webkit-box-orient: vertical;
-			}
-			.card-long-intro {
-				margin-top: 8px !important;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				display: flex;
-				line-height: 24px;
-				max-height: 96px;
-        flex-direction: row;
-        align-items: center;
         .start-end-dates {
-          margin-left: 2rem;
           display: flex;
           flex-direction: column;
         }
@@ -111,6 +100,17 @@
 					border-bottom: 1px solid $light;
 					display: initial;
 				}
+			}
+			.header-container-long {
+				h3 {
+					margin-top: 0;
+					transition: all 0.5s ease;
+					border-bottom: 1px solid $light;
+					display: initial;
+				}
+        .summary {
+          margin-left: 2rem;
+        }
 			}
 		}
 		&:hover,
