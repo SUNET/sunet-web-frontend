@@ -45,7 +45,7 @@ class Ticket extends Component {
     for (const fname in ticket.fields) {
       if (! usedNames.includes(fname)) {
         const val = ticket.fields[fname];
-        if (val && !(typeof(val) === 'object' && Object.keys(val).length === 0)) {
+        if (val && !(Array.isArray(val) && val.length === 0) && !(typeof(val) === 'object' && Object.keys(val).length === 0)) {
           const name = this.props.customFields.find(f => f.id === fname).name;
           const val = this.renderCustomField(fname, val);
           kvpairs.push([name, val]);
