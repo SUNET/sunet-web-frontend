@@ -93,7 +93,7 @@ const UnscheduledTicket = ({ ticket, locale }) => {
               <span className="date-label">
                 created:
               </span>
-              {ticket.fields.created.toLocaleString()}
+              {new Date(ticket.fields.created).toLocaleString()}
             </span>
           </div>
         </p>
