@@ -44,18 +44,18 @@ class Tickets extends Component {
 					</div>
 				</div>
 				<div className="bg-grey">
-          <div className="ticket-list-legend">
-            SUNET open trouble tickets - unscheduled / incident
-          </div>
 					<div className="container listing">
+            <div className="ticket-list-legend">
+              SUNET open trouble tickets - unscheduled / incident
+            </div>
 						<UnscheduledTicketsList tickets={this.props.unschedTickets} />
 					</div>
 				</div>
 				<div className="bg-white">
-          <div className="ticket-list-legend">
-            SUNET open trouble tickets - scheduled maintenance
-          </div>
 					<div className="container listing">
+            <div className="ticket-list-legend">
+              SUNET open trouble tickets - scheduled maintenance
+            </div>
 						<ScheduledTicketsList tickets={this.props.schedTickets} />
 					</div>
 				</div>
