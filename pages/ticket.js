@@ -19,16 +19,15 @@ const usedNames = [
 
 class Ticket extends Component {
 	
-    static async getInitialProps(context) {
+  static async getInitialProps(context) {
 	
-	const {ticketid, lang} = context.query
-  const openTickets = await getOpenTickets();
-  const customFields = await getJiraCustom();
-	const ticket = openTickets.issues.find(ticket => ticket.id === ticketid);
-	
-	const title = ticket ? ticket.fields.summary : "";
+    const {ticketid, lang} = context.query
+    const openTickets = await getOpenTickets();
+    const customFields = await getJiraCustom();
+    const ticket = openTickets.issues.find(ticket => ticket.id === ticketid);
+    const title = ticket ? ticket.fields.summary : "";
 
-        if (!ticket) context.res.statusCode = 404;
+    if (!ticket) context.res.statusCode = 404;
 
 		return { 
 			ticket,
