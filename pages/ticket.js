@@ -73,27 +73,14 @@ class Ticket extends Component {
 					<main aria-labelledby="main-title" className="row single m-80">
 				
 						<article className="col-lg-8 offset-lg-2">
-              <h1 id="main-title">{ticket.key}: {title}</h1>
-              <p>{ticket.fields.description}</p>
+              <h1 id="main-title">{ticket.key}: [{ticket.fields.project.name}] {title}</h1>
+              <p className="ticket-description">{ticket.fields.description}</p>
+              <p className="ticket-creation">
+                Created by 
+                <span	dangerouslySetInnerHTML={{ __html: `${ticket.fields.creator.displayName} &lt;${ticket.fields.creator.emailAddress}&gt;` }} />
+                on {new Date(ticket.fields.created).toLocaleString()}
+              </p>
               <dl>
-                <dt>
-                  Project:
-                </dt>
-                <dd>
-                  {ticket.fields.project.name}
-                </dd>
-                <dt>
-                  Created:
-                </dt>
-                <dd>
-                  {new Date(ticket.fields.created).toLocaleString()}
-                </dd>
-                <dt>
-                  Created by:
-                </dt>
-                <dd>
-                  {`${ticket.fields.creator.displayName} &lt;${ticket.fields.creator.emailAddress}&gt;`}
-                </dd>
                 {customFields.map(f => (
                   <>
                     <dt>
