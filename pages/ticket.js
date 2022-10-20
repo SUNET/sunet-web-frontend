@@ -74,12 +74,12 @@ class Ticket extends Component {
 				
 						<article className="col-lg-8 offset-lg-2">
               <h1 id="main-title">{ticket.key}: [{ticket.fields.project.name}] {title}</h1>
-              <p className="ticket-description">{ticket.fields.description}</p>
               <p className="ticket-creation">
                 Created by 
                 <span	dangerouslySetInnerHTML={{ __html: `${ticket.fields.creator.displayName} &lt;${ticket.fields.creator.emailAddress}&gt;` }} />
                 on {new Date(ticket.fields.created).toLocaleString()}
               </p>
+              <p className="ticket-description">{ticket.fields.description}</p>
               <dl>
                 {customFields.map(f => (
                   <>
