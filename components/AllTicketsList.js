@@ -44,7 +44,7 @@ const ScheduledTicket = ({ ticket, locale }) => {
             <span>{ticket.key}</span>
           </h3>
         </div>
-        <p className="card-intro">
+        <p className="card-long-intro">
           {ticket.fields.summary}
           <div className="start-end-dates">
             <span className="start-date">

@@ -88,6 +88,16 @@
 				max-height: 96px;
 				-webkit-line-clamp: 4; /* number of lines to show */
 				-webkit-box-orient: vertical;
+			}
+			.card-long-intro {
+				margin-top: 8px !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: flex;
+				line-height: 24px;
+				max-height: 96px;
+        flex-direction: row;
+        align-items: center;
         .start-end-dates {
           margin-left: 2rem;
           display: flex;
