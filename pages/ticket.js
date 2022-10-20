@@ -48,8 +48,8 @@ class Ticket extends Component {
         if (val) {
           if (!(typeof(val) === 'object' && Object.keys(val).length === 0)) {
             const name = this.props.customFields.find(f => f.id === fname).name;
-            const val = this.renderCustomField(fname, val);
-            kvpairs.push([name, val]);
+            const value = this.renderCustomField(fname, val);
+            kvpairs.push([name, value]);
           }
         }
       }
