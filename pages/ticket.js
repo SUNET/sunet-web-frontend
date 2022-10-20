@@ -81,7 +81,7 @@ class Ticket extends Component {
           case 'attachment':
 
           default:
-            return val.map((item, i) => (<span key={i}>{`${item}`}</span>)).join(',&nbsp');
+            return (val.map((item, i) => (<span key={i}>{`${item}`}</span>)).join('<br/>'));
         }
       case 'string':
       case 'number':
