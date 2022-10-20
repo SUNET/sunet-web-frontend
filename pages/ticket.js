@@ -67,11 +67,11 @@ class Ticket extends Component {
       case 'array':
         switch (field.schema.items) {
           case 'string':
-            return val.map((item, i) => (<span key={i}>{item}</span>)).join(',&nbsp');
+            return (val.map((item, i) => (<span key={i}>{item}</span>)).join('<br/>'));
           case 'user':
-            return val.map((item, i) => (<span key={i}>{this.renderUser(item)}</span>)).join(',&nbsp');
+            return (val.map((item, i) => (<span key={i}>{this.renderUser(item)}</span>)).join('<br/>'));
           case 'option':
-            return val.map((item, i) => (<span key={i}>{item.value}</span>)).join(',&nbsp');
+            return (val.map((item, i) => (<span key={i}>{item.value}</span>)).join('<br/>'));
 
           case 'version':
           case 'issuelinks':
