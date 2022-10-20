@@ -25,8 +25,6 @@ function getAffectedCustomers(ticket) {
   return affectedCustomers;
 }
 
-// <Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
-
 const ScheduledTicket = ({ ticket, locale }) => {
   const dates = ticket.fields.customfield_11300.split('/');
   const start = new Date(dates[0]);
@@ -39,14 +37,16 @@ const ScheduledTicket = ({ ticket, locale }) => {
         ))}
       </div>
       <div className="card-content ticket">
-        <div className="header-container-long">
-          <h3>
-            <span>{ticket.key}</span>
-          </h3>
-          <div className="summary">
-            {ticket.fields.summary}
+        <Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
+          <div className="header-container-long">
+            <h3>
+              <span>{ticket.key}</span>
+            </h3>
+            <div className="summary">
+              {ticket.fields.summary}
+            </div>
           </div>
-        </div>
+        </Link>
         <p className="card-intro-long">
           <div className="start-end-dates">
             <span className="start-date">
@@ -68,8 +68,6 @@ const ScheduledTicket = ({ ticket, locale }) => {
   );
 }
 
-// <Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
-
 const UnscheduledTicket = ({ ticket, locale }) => {
   return (
     <div className="card">
@@ -79,14 +77,16 @@ const UnscheduledTicket = ({ ticket, locale }) => {
         ))}
       </div>
       <div className="card-content ticket">
-        <div className="header-container-long">
-          <h3>
-            <span>{ticket.key}</span>
-          </h3>
-          <div className="summary">
-            {ticket.fields.summary}
+        <Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
+          <div className="header-container-long">
+            <h3>
+              <span>{ticket.key}</span>
+            </h3>
+            <div className="summary">
+              {ticket.fields.summary}
+            </div>
           </div>
-        </div>
+        </Link>
         <p className="card-intro-long">
           <div className="start-end-dates">
             <span className="start-date">
