@@ -88,6 +88,11 @@
 				max-height: 96px;
 				-webkit-line-clamp: 4; /* number of lines to show */
 				-webkit-box-orient: vertical;
+        .start-end-dates {
+          margin-left: 2rem;
+          display: flex;
+          flex-direction: column;
+        }
 			}
 			.header-container {
 				h2 {

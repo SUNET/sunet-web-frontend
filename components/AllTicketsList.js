@@ -46,14 +46,14 @@ const ScheduledTicket = ({ ticket, locale }) => {
         </div>
         <p className="card-intro">
           {ticket.fields.summary}
-          <span className="start-end-dates">
+          <div className="start-end-dates">
             <span className="start-date">
               {start.toLocaleString()}
             </span>
             <span className="end-date">
               {end.toLocaleString()}
             </span>
-          </span>
+          </div>
         </p>
       </div>
     </div>
@@ -78,9 +78,9 @@ const UnscheduledTicket = ({ ticket, locale }) => {
         </div>
         <p className="card-intro">
           {ticket.fields.summary}
-          <span className="created-date">
+          <div className="created-date">
             {ticket.fields.created.toLocaleString()}
-          </span>
+          </div>
         </p>
       </div>
     </div>
