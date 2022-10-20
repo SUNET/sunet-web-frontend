@@ -167,6 +167,10 @@
           .start-end-dates {
             display: flex;
             flex-direction: column;
+            .date-label {
+              font-size: .8rem;
+              margin-right: .5rem;
+            }
           }
 				}
 				h2 {

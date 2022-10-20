@@ -50,9 +50,15 @@ const ScheduledTicket = ({ ticket, locale }) => {
         <p className="card-intro-long">
           <div className="start-end-dates">
             <span className="start-date">
+              <span className="date-label">
+                start:
+              </span>
               {start.toLocaleString()}
             </span>
             <span className="end-date">
+              <span className="date-label">
+                end:
+              </span>
               {end.toLocaleString()}
             </span>
           </div>
