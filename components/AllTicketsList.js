@@ -38,7 +38,7 @@ const ScheduledTicket = ({ ticket, locale }) => {
           <span>{customer}</span>
         ))}
       </div>
-      <div className="card-content">
+      <div className="card-content ticket">
         <div className="header-container-long">
           <h3>
             <span>{ticket.key}</span>
