@@ -87,7 +87,7 @@ class Ticket extends Component {
         return (<span>{val}</span>);
       case 'date':
       case 'datetime':
-        return (<span>{new Date(val).toLocaleString()}</span>);
+        return (<span>{new Date(val).toUTCString()}</span>);
       case 'user':
         return (<span>{this.renderUser(val)}</span>);
       case 'option':
@@ -120,7 +120,7 @@ class Ticket extends Component {
 		if (error) return <Error statusCode={404} />;
 
     const customFields = this.getCustomFields(ticket);
-    const creation = `Created by ${this.renderUser(ticket.fields.creator)} on ${new Date(ticket.fields.created).toLocaleString()}`;
+    const creation = `Created by ${this.renderUser(ticket.fields.creator)} on ${new Date(ticket.fields.created).toUTCString()}`;
 
 		return (
 			<Layout {...this.props}>

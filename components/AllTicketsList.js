@@ -53,13 +53,13 @@ const ScheduledTicket = ({ ticket, locale }) => {
               <span className="date-label">
                 start:
               </span>
-              {start.toLocaleString()}
+              {start.toUTCString()}
             </span>
             <span className="end-date">
               <span className="date-label">
                 end:
               </span>
-              {end.toLocaleString()}
+              {end.toUTCString()}
             </span>
           </div>
         </p>
@@ -93,7 +93,7 @@ const UnscheduledTicket = ({ ticket, locale }) => {
               <span className="date-label">
                 created:
               </span>
-              {new Date(ticket.fields.created).toLocaleString()}
+              {new Date(ticket.fields.created).toUTCString()}
             </span>
           </div>
         </p>
