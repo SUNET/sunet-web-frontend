@@ -135,15 +135,15 @@ class Ticket extends Component {
               </p>
               <p className="ticket-description">{ticket.fields.description}</p>
               <dl>
-                {customFields.map(f => (
-                  <>
+                {customFields.map((f, i) => (
+                  <React.Fragment key={i}>
                     <dt>
                       {f[0]}
                     </dt>
                     <dd>
                       {f[1]}
                     </dd>
-                  </>
+                  </React.Fragment>
                 ))}
               </dl>
 						</article>
