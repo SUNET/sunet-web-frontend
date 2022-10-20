@@ -146,6 +146,9 @@
         .header-container-long {
           display: flex;
           flex-direction: row;
+          h3 {
+            margin-top: 0;
+          }
           .summary {
             margin-left: 2rem;
           }
@@ -156,6 +159,8 @@
 						width:70%;
 						padding: 20px;
 					}
+				}
+				.card-intro-long {
           .start-end-dates {
             display: flex;
             flex-direction: column;
