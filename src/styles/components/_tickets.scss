@@ -10,6 +10,7 @@
 }
 
 .ticket-list-legend {
+  font-weight: 600;
   background-color: $pri_orange;
   color: $thi_grey;
   width: fit-content;
@@ -17,4 +18,8 @@
   padding-bottom: 3px;
   padding-left: 6px;
   padding-right: 6px;
+}
+
+.container.listing.tickets {
+  padding-top: 50px;
 }

@@ -49,7 +49,7 @@ class Tickets extends Component {
               SUNET open trouble tickets - unscheduled / incident
             </div>
 					</div>
-					<div className="container listing">
+					<div className="container listing tickets">
 						<UnscheduledTicketsList tickets={this.props.unschedTickets} />
 					</div>
 				</div>
@@ -59,7 +59,7 @@ class Tickets extends Component {
               SUNET open trouble tickets - scheduled maintenance
             </div>
 					</div>
-					<div className="container listing">
+					<div className="container listing tickets">
 						<ScheduledTicketsList tickets={this.props.schedTickets} />
 					</div>
 				</div>
