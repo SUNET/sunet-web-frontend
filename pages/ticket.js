@@ -85,7 +85,7 @@ class Ticket extends Component {
         }
       case 'string':
       case 'number':
-        return (<span>val</span>);
+        return (<span>{val}</span>);
       case 'date':
       case 'datetime':
         return (<span>{new Date(val).toLocaleString()}</span>);
@@ -129,7 +129,7 @@ class Ticket extends Component {
 				<div className="container">
 					<main aria-labelledby="main-title" className="row single m-80">
 				
-						<article className="col-lg-8 offset-lg-2">
+						<article className="col-lg-12">
               <h1 id="main-title">{ticket.key}: [{ticket.fields.project.name}] {title}</h1>
               <p className="ticket-creation">
                 <span	dangerouslySetInnerHTML={{ __html: creation }} />
