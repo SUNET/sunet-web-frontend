@@ -67,11 +67,11 @@ class Ticket extends Component {
       case 'array':
         switch (field.schema.items) {
           case 'string':
-            return (val.map((item, i) => (<span key={i}>{item}</span>)).join('<br/>'));
+            return val.map((item, i) => (<div className="ticket-listing" key={i}>{item}</div>));
           case 'user':
-            return (val.map((item, i) => (<span key={i}>{this.renderUser(item)}</span>)).join('<br/>'));
+            return val.map((item, i) => (<div className="ticket-listing" key={i}>{this.renderUser(item)}</div>));
           case 'option':
-            return (val.map((item, i) => (<span key={i}>{item.value}</span>)).join('<br/>'));
+            return val.map((item, i) => (<div className="ticket-listing" key={i}>{item.value}</div>));
 
           case 'version':
           case 'issuelinks':
@@ -81,7 +81,7 @@ class Ticket extends Component {
           case 'attachment':
 
           default:
-            return (val.map((item, i) => (<span key={i}>{`${item}`}</span>)).join('<br/>'));
+            return val.map((item, i) => (<div className="ticket-listing" key={i}>{`${item}`}</div>));
         }
       case 'string':
       case 'number':
