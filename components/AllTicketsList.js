@@ -31,7 +31,7 @@ const ScheduledTicket = ({ ticket, locale }) => {
     const startend = ticket.fields.customfield_11300.split('/');
     const start = new Date(startend[0]);
     const end = new Date(startend[1]);
-    const dates = (
+    dates = (
       <div className="start-end-dates">
         <span className="start-date">
           <span className="date-label">
@@ -51,8 +51,8 @@ const ScheduledTicket = ({ ticket, locale }) => {
   return (
     <div className="card">
       <div className="card-tags">
-        {getAffectedCustomers(ticket).map(customer => (
-          <span>{customer}</span>
+        {getAffectedCustomers(ticket).map((customer, i) => (
+          <span key={i}>{customer}</span>
         ))}
       </div>
       <div className="card-content ticket">
@@ -80,7 +80,7 @@ const UnscheduledTicket = ({ ticket, locale }) => {
     next = new Date(ticket.fields.customfield_10918);
   }
   if (ticket.fields.created !== undefined) {
-    next = new Date(ticket.fields.created);
+    created = new Date(ticket.fields.created);
   }
   if (created || next) {
     dates = (
@@ -107,8 +107,8 @@ const UnscheduledTicket = ({ ticket, locale }) => {
   return (
     <div className="card">
       <div className="card-tags">
-        {getAffectedCustomers(ticket).map(customer => (
-          <span>{customer}</span>
+        {getAffectedCustomers(ticket).map((customer, i) => (
+          <span key={i}>{customer}</span>
         ))}
       </div>
       <div className="card-content ticket">
