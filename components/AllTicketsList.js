@@ -47,7 +47,7 @@ const ScheduledTicket = ({ ticket, locale }) => {
             </div>
           </div>
         </Link>
-        <p className="card-intro-long">
+        <div className="card-intro-long">
           <div className="start-end-dates">
             <span className="start-date">
               <span className="date-label">
@@ -62,7 +62,7 @@ const ScheduledTicket = ({ ticket, locale }) => {
               {end.toUTCString()}
             </span>
           </div>
-        </p>
+        </div>
       </div>
     </div>
   );

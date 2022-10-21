@@ -151,7 +151,7 @@ class Ticket extends Component {
                 <span	dangerouslySetInnerHTML={{ __html: creation }} />
               </p>
               <p className="ticket-description">{ticket.fields.description}</p>
-              {renderComingDates(ticket)}
+              {this.renderComingDates(ticket)}
               <dl>
                 {customFields.map((f, i) => (
                   <React.Fragment key={i}>
