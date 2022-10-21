@@ -15,16 +15,18 @@ const usedNames = [
   'project',
   'created',
   'creator',
+  'customfield_10918',
+  'customfield_11300',
 ];
 
 class Ticket extends Component {
 	
   static async getInitialProps(context) {
 	
-    const {ticketid, lang} = context.query
+    const {slug, lang, section} = context.query
     const openTickets = await getOpenTickets();
     const customFields = await getJiraCustom();
-    const ticket = openTickets.issues.find(ticket => ticket.id === ticketid);
+    const ticket = openTickets.issues.find(ticket => ticket.id === slug);
     const title = ticket ? ticket.fields.summary : "";
 
     if (!ticket) context.res.statusCode = 404;
@@ -33,9 +35,9 @@ class Ticket extends Component {
 			ticket,
       customFields,
 			error: !ticket,
-			ticketid, 
 			lang,
 			title,
+      section,
 		 };
 	}
 
@@ -58,6 +60,21 @@ class Ticket extends Component {
 
   renderUser(val) {
     return `${val.displayName} &lt;${val.emailAddress}&gt;`
+  }
+
+  renderComingDates(ticket) {
+    if (ticket.fields.customfield_11300 !== undefined) {
+      const dates = ticket.fields.customfield_11300.split('/');
+      const start = new Date(dates[0]).toLocaleString();
+      const end = new Date(dates[1]).toLocaleString();
+      return (
+        <p>Start date: {start}<br/>End date: {end}</p>
+      );
+    } else if (ticket.fields.customfield_10918 !== undefined) {
+      const date = new Date(ticket.fields.customfield_10918).toLocaleString();
+      return (<p>Next action: {date}</p>);
+    }
+    return '';
   }
 
   renderCustomField(id, val) {
@@ -134,6 +151,7 @@ class Ticket extends Component {
                 <span	dangerouslySetInnerHTML={{ __html: creation }} />
               </p>
               <p className="ticket-description">{ticket.fields.description}</p>
+              {renderComingDates(ticket)}
               <dl>
                 {customFields.map((f, i) => (
                   <React.Fragment key={i}>
