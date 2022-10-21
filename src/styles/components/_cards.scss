@@ -149,6 +149,7 @@
           flex-direction: row;
           h3 {
             margin-top: 0;
+            transition: color 0.5s ease;
             &:hover {
               text-decoration: none;
               color: $pri_orange;
@@ -157,6 +158,7 @@
           }
           .summary {
             margin-left: 2rem;
+            transition: color 0.5s ease;
             &:hover {
               text-decoration: none;
               color: $pri_orange;
