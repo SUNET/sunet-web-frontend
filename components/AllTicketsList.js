@@ -57,16 +57,14 @@ const ScheduledTicket = ({ ticket, locale }) => {
       </div>
       <div className="card-content ticket">
         <Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
-          <a>
-            <div className="header-container-long">
-              <h3>
-                <span>{ticket.key}</span>
-              </h3>
-              <div className="summary">
-                {ticket.fields.summary}
-              </div>
+          <div className="header-container-long">
+            <h3>
+              <span><a>{ticket.key}</a></span>
+            </h3>
+            <div className="summary">
+              <a>{ticket.fields.summary}</a>
             </div>
-          </a>
+          </div>
         </Link>
         <div className="card-intro-long">
           {dates}
@@ -115,16 +113,14 @@ const UnscheduledTicket = ({ ticket, locale }) => {
       </div>
       <div className="card-content ticket">
         <Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
-          <a>
-            <div className="header-container-long">
-              <h3>
-                <span>{ticket.key}</span>
-              </h3>
-              <div className="summary">
-                {ticket.fields.summary}
-              </div>
+          <div className="header-container-long">
+            <h3>
+              <span><a>{ticket.key}</a></span>
+            </h3>
+            <div className="summary">
+              <a>{ticket.fields.summary}</a>
             </div>
-          </a>
+          </div>
         </Link>
         <div className="card-intro-long">
           {dates}
