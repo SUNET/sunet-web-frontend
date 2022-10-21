@@ -68,11 +68,11 @@ class Ticket extends Component {
       const start = new Date(dates[0]).toUTCString();
       const end = new Date(dates[1]).toUTCString();
       return (
-        <p>Start date: {start}<br/>End date: {end}</p>
+        <p className="ticket-dates">Start date: {start}<br/>End date: {end}</p>
       );
     } else if (ticket.fields.customfield_10918) {
       const date = new Date(ticket.fields.customfield_10918).toUTCString();
-      return (<p>Next action: {date}</p>);
+      return (<p className="ticket-dates">Next action: {date}</p>);
     }
     return '';
   }
