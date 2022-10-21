@@ -85,7 +85,7 @@ class Ticket extends Component {
           case 'string':
             return val.map((item, i) => (<div className="ticket-listing" key={i}>{item}</div>));
           case 'user':
-            return val.map((item, i) => (<div className="ticket-listing" key={i}>{this.renderUser(item)}</div>));
+            return val.map((item, i) => (<div className="ticket-listing" key={i} dangerouslySetInnerHTML={ {__html: this.renderUser(item)} } />));
           case 'option':
             return val.map((item, i) => (<div className="ticket-listing" key={i}>{item.value}</div>));
           case 'issuelinks':
@@ -105,7 +105,7 @@ class Ticket extends Component {
       case 'datetime':
         return (<span>{new Date(val).toUTCString()}</span>);
       case 'user':
-        return (<span>{this.renderUser(val)}</span>);
+        return (<span dangerouslySetInnerHTML={ {__html: this.renderUser(val)} } />);
       case 'option':
         return (<span>{val.value}</span>);
       case 'priority':
