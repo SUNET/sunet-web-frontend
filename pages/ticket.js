@@ -65,13 +65,13 @@ class Ticket extends Component {
   renderComingDates(ticket) {
     if (ticket.fields.customfield_11300) {
       const dates = ticket.fields.customfield_11300.split('/');
-      const start = new Date(dates[0]).toLocaleString();
-      const end = new Date(dates[1]).toLocaleString();
+      const start = new Date(dates[0]).toUTCString();
+      const end = new Date(dates[1]).toUTCString();
       return (
         <p>Start date: {start}<br/>End date: {end}</p>
       );
     } else if (ticket.fields.customfield_10918) {
-      const date = new Date(ticket.fields.customfield_10918).toLocaleString();
+      const date = new Date(ticket.fields.customfield_10918).toUTCString();
       return (<p>Next action: {date}</p>);
     }
     return '';
@@ -88,14 +88,13 @@ class Ticket extends Component {
             return val.map((item, i) => (<div className="ticket-listing" key={i}>{this.renderUser(item)}</div>));
           case 'option':
             return val.map((item, i) => (<div className="ticket-listing" key={i}>{item.value}</div>));
-
-          case 'version':
           case 'issuelinks':
-          case 'component':
-          case 'sd-customerorganization':
-          case 'worklog':
+            return val.map((item, i) => (<div className="ticket-listing" key={i}>{item.outwardIssue.key}</div>));
           case 'attachment':
-
+          case 'worklog':
+          case 'sd-customerorganization':
+          case 'component':
+          case 'version':
           default:
             return val.map((item, i) => (<div className="ticket-listing" key={i}>{`${item}`}</div>));
         }
@@ -109,26 +108,29 @@ class Ticket extends Component {
         return (<span>{this.renderUser(val)}</span>);
       case 'option':
         return (<span>{val.value}</span>);
-
       case 'priority':
-      case 'any':
       case 'status':
-      case 'progress':
-      case 'sd-approvals':
-      case 'votes':
       case 'issuetype':
       case 'project':
-      case 'resolution':
-      case 'sd-customerrequesttype':
-      case 'sd-servicelevelagreement':
+        return (<span>{val.name}</span>);
+      case 'progress':
+        return (<span>Progress: {val.progress}, total: {val.total}</span>);
+      case 'votes':
+        return (<span>{val.votes}</span>);
       case 'watches':
-      case 'timetracking':
-      case 'securitylevel':
-      case 'comments-page':
+        return (<span>Count: {val.watchCount}, is watching: {val.isWatching}</span>);
 
+      case 'comments-page':
+      case 'securitylevel':
+      case 'timetracking':
+      case 'sd-servicelevelagreement':
+      case 'sd-customerrequesttype':
+      case 'resolution':
+      case 'sd-approvals':
+      case 'any':
       case 'option-with-child':
       default:
-        return `${val}`;
+        return (<span>{`${val}`}</span>);
     }
   }
 

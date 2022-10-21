@@ -59,10 +59,10 @@ const ScheduledTicket = ({ ticket, locale }) => {
         <Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
           <div className="header-container-long">
             <h3>
-              <span><a>{ticket.key}</a></span>
+              <span>{ticket.key}</span>
             </h3>
             <div className="summary">
-              <a>{ticket.fields.summary}</a>
+              {ticket.fields.summary}
             </div>
           </div>
         </Link>
@@ -115,10 +115,10 @@ const UnscheduledTicket = ({ ticket, locale }) => {
         <Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
           <div className="header-container-long">
             <h3>
-              <span><a>{ticket.key}</a></span>
+              <span>{ticket.key}</span>
             </h3>
             <div className="summary">
-              <a>{ticket.fields.summary}</a>
+              {ticket.fields.summary}
             </div>
           </div>
         </Link>
