@@ -26,9 +26,28 @@ function getAffectedCustomers(ticket) {
 }
 
 const ScheduledTicket = ({ ticket, locale }) => {
-  const dates = ticket.fields.customfield_11300.split('/');
-  const start = new Date(dates[0]);
-  const end = new Date(dates[1]);
+  let dates = '';
+  if (ticket.fields.customfield_11300 !== undefined) {
+    const startend = ticket.fields.customfield_11300.split('/');
+    const start = new Date(startend[0]);
+    const end = new Date(startend[1]);
+    const dates = (
+      <div className="start-end-dates">
+        <span className="start-date">
+          <span className="date-label">
+            start:
+          </span>
+          {start.toUTCString()}
+        </span>
+        <span className="end-date">
+          <span className="date-label">
+            end:
+          </span>
+          {end.toUTCString()}
+        </span>
+      </div>
+    );
+  }
   return (
     <div className="card">
       <div className="card-tags">
@@ -48,20 +67,7 @@ const ScheduledTicket = ({ ticket, locale }) => {
           </div>
         </Link>
         <div className="card-intro-long">
-          <div className="start-end-dates">
-            <span className="start-date">
-              <span className="date-label">
-                start:
-              </span>
-              {start.toUTCString()}
-            </span>
-            <span className="end-date">
-              <span className="date-label">
-                end:
-              </span>
-              {end.toUTCString()}
-            </span>
-          </div>
+          {dates}
         </div>
       </div>
     </div>
@@ -69,6 +75,35 @@ const ScheduledTicket = ({ ticket, locale }) => {
 }
 
 const UnscheduledTicket = ({ ticket, locale }) => {
+  let created, next, dates ='';
+  if (ticket.fields.customfield_10918 !== undefined) {
+    next = new Date(ticket.fields.customfield_10918);
+  }
+  if (ticket.fields.created !== undefined) {
+    next = new Date(ticket.fields.created);
+  }
+  if (created || next) {
+    dates = (
+      <div className="start-end-dates">
+        {created && (
+          <span className="start-date">
+            <span className="date-label">
+              Created:
+            </span>
+            {created.toUTCString()}
+          </span>
+        )}
+        {next && (
+          <span className="end-date">
+            <span className="date-label">
+              Next action:
+            </span>
+            {next.toUTCString()}
+          </span>
+        )}
+      </div>
+    );
+  }
   return (
     <div className="card">
       <div className="card-tags">
@@ -87,16 +122,9 @@ const UnscheduledTicket = ({ ticket, locale }) => {
             </div>
           </div>
         </Link>
-        <p className="card-intro-long">
-          <div className="start-end-dates">
-            <span className="start-date">
-              <span className="date-label">
-                created:
-              </span>
-              {new Date(ticket.fields.created).toUTCString()}
-            </span>
-          </div>
-        </p>
+        <div className="card-intro-long">
+          {dates}
+        </div>
       </div>
     </div>
   );
