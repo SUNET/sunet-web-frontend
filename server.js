@@ -146,13 +146,13 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/kontakt/tickets`, (req, res)=>{
+            server.get(`/kontakt/biljetter`, (req, res)=>{
                 const actualPage = `/tickets`;
                 const queryParams = { slug: 'biljetter', section: "kontakt", apiRoute: 'tickets', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/kontakt/tickets/:slug`, (req, res) =>{
+            server.get(`/kontakt/biljetter/:slug`, (req, res) =>{
                 const actualPage = "/ticket";
                 const queryParams = { slug: req.params.slug, section: "kontakt", apiRoute: 'tickets', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
