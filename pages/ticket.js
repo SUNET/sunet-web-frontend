@@ -63,14 +63,14 @@ class Ticket extends Component {
   }
 
   renderComingDates(ticket) {
-    if (ticket.fields.customfield_11300 !== undefined) {
+    if (ticket.fields.customfield_11300) {
       const dates = ticket.fields.customfield_11300.split('/');
       const start = new Date(dates[0]).toLocaleString();
       const end = new Date(dates[1]).toLocaleString();
       return (
         <p>Start date: {start}<br/>End date: {end}</p>
       );
-    } else if (ticket.fields.customfield_10918 !== undefined) {
+    } else if (ticket.fields.customfield_10918) {
       const date = new Date(ticket.fields.customfield_10918).toLocaleString();
       return (<p>Next action: {date}</p>);
     }
