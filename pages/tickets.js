@@ -9,7 +9,7 @@ import {getOpenTickets} from '../src/utils'
 
 class Tickets extends Component {
 	static async getInitialProps(context) {
-		const { lang, slug } = context.query;
+		const { lang, slug, section } = context.query;
 
 		const res = await fetch(`${config.apiUrl}pages.json`);
         const pages = await res.json();
@@ -24,16 +24,18 @@ class Tickets extends Component {
     );
 
 		return { 
+      slug,
 			page,
 			error: !page,
 			schedTickets,
 			unschedTickets,
 			title: 'Tickets',
+			path: context.asPath,
 		}
 	}
 
 	render () {
-		const {page} = this.props;
+		const {page, error, path} = this.props;
 		return (
 			<Layout {...this.props}>
 				<div className="container">
