@@ -149,9 +149,19 @@
           flex-direction: row;
           h3 {
             margin-top: 0;
+            &:hover {
+              text-decoration: none;
+              color: $pri_orange;
+              border-bottom: 1px solid $pri_orange;
+            }
           }
           .summary {
             margin-left: 2rem;
+            &:hover {
+              text-decoration: none;
+              color: $pri_orange;
+              border-bottom: 1px solid $pri_orange;
+            }
           }
         }
 				.card-intro {
