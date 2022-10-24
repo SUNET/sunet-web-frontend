@@ -4,6 +4,7 @@ import Error from "next/error";
 import PageWrapper from "../components/PageWrapper.js";
 import fetch from 'isomorphic-unfetch';
 import config from '../config.js'
+import * as dutils from '../src/utils/dates.js'
 import { buildSidebarMenu } from '../src/utils/menu-builder';
 import SideBarMenu from "../components/SideBarMenu.js";
 import {getOpenTickets, getJiraCustom} from '../src/utils'
@@ -65,13 +66,13 @@ class Ticket extends Component {
   renderComingDates(ticket) {
     if (ticket.fields.customfield_11300) {
       const dates = ticket.fields.customfield_11300.split('/');
-      const start = new Date(dates[0]).toUTCString();
-      const end = new Date(dates[1]).toUTCString();
+      const start = dutils.formatDateTime(new Date(dates[0]));
+      const end = dutils.formatDateTime(new Date(dates[1]));
       return (
         <p className="ticket-dates">Start date: {start}<br/>End date: {end}</p>
       );
     } else if (ticket.fields.customfield_10918) {
-      const date = new Date(ticket.fields.customfield_10918).toUTCString();
+      const date = dutils.formatDate(new Date(ticket.fields.customfield_10918));
       return (<p className="ticket-dates">Next action: {date}</p>);
     }
     return '';
@@ -103,7 +104,7 @@ class Ticket extends Component {
         return (<span>{val}</span>);
       case 'date':
       case 'datetime':
-        return (<span>{new Date(val).toUTCString()}</span>);
+        return (<span>{dutils.formatDateTime(new Date(val))}</span>);
       case 'user':
         return (<span dangerouslySetInnerHTML={ {__html: this.renderUser(val)} } />);
       case 'option':
@@ -139,7 +140,7 @@ class Ticket extends Component {
 		if (error) return <Error statusCode={404} />;
 
     const customFields = this.getCustomFields(ticket);
-    const creation = `Created by ${this.renderUser(ticket.fields.creator)} on ${new Date(ticket.fields.created).toUTCString()}`;
+    const creation = `Created by ${this.renderUser(ticket.fields.creator)} on ${dutils.formatDateTime(new Date(ticket.fields.created))}`;
 
 		return (
 			<Layout {...this.props}>

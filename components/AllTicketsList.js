@@ -1,10 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
+import * as dutils from '../src/utils/dates.js'
 import withLocale from './withLocale'
 
 const routes = {
-	"en": "/tickets",
-	"sv": "/biljetter",
+	"en": "/en/tickets",
+	"sv": "/tickets",
 }
 
 
@@ -35,15 +36,15 @@ const ScheduledTicket = ({ ticket, locale }) => {
       <div className="start-end-dates">
         <span className="start-date">
           <span className="date-label">
-            start:
+            Maintenance start:
           </span>
-          {start.toUTCString()}
+          {dutils.formatDateTime(start)}
         </span>
         <span className="end-date">
           <span className="date-label">
-            end:
+            Maintenance end:
           </span>
-          {end.toUTCString()}
+          {dutils.formatDateTime(end)}
         </span>
       </div>
     );
@@ -88,9 +89,9 @@ const UnscheduledTicket = ({ ticket, locale }) => {
         {created && (
           <span className="start-date">
             <span className="date-label">
-              Created:
+              Problem start:
             </span>
-            {created.toUTCString()}
+            {dutils.formatDateTime(created)}
           </span>
         )}
         {next && (
@@ -98,7 +99,7 @@ const UnscheduledTicket = ({ ticket, locale }) => {
             <span className="date-label">
               Next action:
             </span>
-            {next.toUTCString()}
+            {dutils.formatDateTime(next)}
           </span>
         )}
       </div>
