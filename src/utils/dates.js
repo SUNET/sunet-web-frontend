@@ -1,10 +1,10 @@
 import config from '../../config.js'
 
 
-export const formatDateTime = (d) => (
-  `${d.getUTCFullYear()}-${d.getUTCMonth() + 1}-${d.getUTCDate()} ${d.getUTCHours()}:${d.getUTCMinutes()} UTC`
+export const formatDate = (d) => (
+  `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`
 );
 
-export const formatDate = (d) => (
-  `${d.getUTCFullYear()}-${d.getUTCMonth() + 1}-${d.getUTCDate()}`
+export const formatDateTime = (d) => (
+  `${formatDate(d)} ${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')} UTC`
 );

@@ -99,7 +99,7 @@ const UnscheduledTicket = ({ ticket, locale }) => {
             <span className="date-label">
               Next action:
             </span>
-            {dutils.formatDateTime(next)}
+            {dutils.formatDate(next)}
           </span>
         )}
       </div>
