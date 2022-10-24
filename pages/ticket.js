@@ -26,7 +26,7 @@ class Ticket extends Component {
     const {slug, lang, section} = context.query
     const openTickets = await getOpenTickets();
     const customFields = await getJiraCustom();
-    const ticket = openTickets.issues.find(ticket => ticket.id === slug);
+    const ticket = openTickets.issues.find(ticket => ticket.key === slug);
     const title = ticket ? ticket.fields.summary : "";
 
     if (!ticket) context.res.statusCode = 404;

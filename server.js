@@ -146,15 +146,27 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/kontakt/biljetter`, (req, res)=>{
+            server.get(`/biljetter`, (req, res)=>{
                 const actualPage = `/tickets`;
-                const queryParams = { slug: 'biljetter', section: "kontakt", apiRoute: 'tickets', lang: 'sv' };
+                const queryParams = { slug: 'biljetter', apiRoute: 'tickets', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/kontakt/biljetter/:slug`, (req, res) =>{
+            server.get(`/biljetter/:slug`, (req, res) =>{
                 const actualPage = "/ticket";
-                const queryParams = { slug: req.params.slug, section: "kontakt", apiRoute: 'tickets', lang: 'sv' };
+                const queryParams = { slug: req.params.slug, apiRoute: 'tickets', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/tickets`, (req, res)=>{
+                const actualPage = `/tickets`;
+                const queryParams = { slug: 'tickets', apiRoute: 'tickets', lang: 'en' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/tickets/:slug`, (req, res) =>{
+                const actualPage = "/ticket";
+                const queryParams = { slug: req.params.slug, apiRoute: 'tickets', lang: 'en' };
                 app.render(req, res, actualPage, queryParams);
             })
 

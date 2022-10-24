@@ -3,8 +3,8 @@ import Link from 'next/link';
 import withLocale from './withLocale'
 
 const routes = {
-	"en": "/contact/tickets",
-	"sv": "/kontakt/biljetter",
+	"en": "/tickets",
+	"sv": "/biljetter",
 }
 
 
@@ -56,7 +56,7 @@ const ScheduledTicket = ({ ticket, locale }) => {
         ))}
       </div>
       <div className="card-content ticket">
-        <Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
+        <Link href={`${routes[locale.lang]}/${ticket.key}`} as={`${routes[locale.lang]}/${ticket.key}`} key={ticket.key}>
           <div className="header-container-long">
             <h3>
               <span>{ticket.key}</span>
@@ -112,7 +112,7 @@ const UnscheduledTicket = ({ ticket, locale }) => {
         ))}
       </div>
       <div className="card-content ticket">
-        <Link href={`${routes[locale.lang]}/${ticket.id}`} as={`${routes[locale.lang]}/${ticket.id}`} key={ticket.key}>
+        <Link href={`${routes[locale.lang]}/${ticket.key}`} as={`${routes[locale.lang]}/${ticket.key}`} key={ticket.key}>
           <div className="header-container-long">
             <h3>
               <span>{ticket.key}</span>
