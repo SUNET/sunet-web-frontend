@@ -35,7 +35,7 @@ class BlogItem extends Component {
 
 	      const date = new Date(newsitem.date);
 	      const locale = { lang };
-	      const months = this.props.locale.lang === 'en' && ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] || ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "Oktober", "november", "december"] ;
+	      const months = lang === 'en' && ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] || ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "Oktober", "november", "december"] ;
 		  let month = months[date.getMonth()];
 		return (
 			<Layout {...this.props}>
