@@ -82,7 +82,7 @@ app
 
             server.get(`/om-sunet/aktuellt/nyheter`, (req, res)=>{
                 const actualPage = `/newsroom`;
-                const queryParams = { slug: 'nyhetsrum', apiRoute: 'aktuellt', lang: 'sv' };
+                const queryParams = { slug: 'nyheter', apiRoute: 'aktuellt', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
