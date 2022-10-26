@@ -37,7 +37,7 @@ class Current extends Component {
 		return (
 			<Layout {...this.props}>
 				<div className="container">
-					<div className="col">
+					<div className="row">
 						<div className="col-lg-8 offset-lg-2 hero">
 							<div dangerouslySetInnerHTML={ {__html: page.acf.segment_top} } />
 							<ul className="newslistings">

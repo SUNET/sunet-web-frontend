@@ -34,10 +34,9 @@ class BlogItem extends Component {
 		if (error) return <Error statusCode={404} />;
 
 	      const date = new Date(newsitem.date);
-	      const options = { day: 'numeric', month: 'long', year: 'numeric' };
 	      const locale = { lang };
-	      const localizedDate = date.toLocaleDateString(locale, options);
-
+	      const months = this.props.locale.lang === 'en' && ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] || ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "Oktober", "november", "december"] ;
+		  let month = months[date.getMonth()];
 		return (
 			<Layout {...this.props}>
 
@@ -48,7 +47,7 @@ class BlogItem extends Component {
 							<div className="item-type-heading">{lang === 'en' && "BLOG" || "BLOGG"}</div>
 							<h1 id="main-title">{newsitem.title.rendered}</h1>
 							<div dangerouslySetInnerHTML={ {__html: newsitem.content.rendered} } />
-			                                <div className="date-in-foot">{lang === 'en' && "PUBLISHED ON " || "PUBLICERAD DEN "}{localizedDate}</div>
+			                                <div className="date-in-foot">{lang === 'en' && "PUBLISHED ON " || "PUBLICERAD DEN "}{date.getDate()} {month} {date.getFullYear()}</div>
 						</article>
 					</main>
 				</div>

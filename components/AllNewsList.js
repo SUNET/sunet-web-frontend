@@ -71,12 +71,12 @@ class AllNewsList extends Component {
 	renderNews() {
 
 
-		return this.props.news.slice(0, this.state.current).map((item, idx) => {
-      const date = new Date(item.date);
-      const options = { day: 'numeric', month: 'long', year: 'numeric' };
-      const localizedDate = date.toLocaleDateString(this.props.locale, options);
-	let itemType = this.props.locale.lang === 'en' && "EVENT" || "EVENEMANG" 
-	let routes = all_routes.events;
+	return this.props.news.slice(0, this.state.current).map((item, idx) => {
+    	const date = new Date(item.date);
+		const months = this.props.locale.lang === 'en' && ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] || ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "Oktober", "november", "december"] ;
+		let itemType = this.props.locale.lang === 'en' && "EVENT" || "EVENEMANG" 
+		let routes = all_routes.events;
+		let month = months[date.getMonth()];
 	if (item.type === "post") {
 		if (item.acf.is_news_item) {
 			itemType = this.props.locale.lang === 'en' && "NEWS" || "NYHETER";
@@ -103,7 +103,7 @@ class AllNewsList extends Component {
 		    {itemType}
                 </div>
                 <div className="newscard-date">
-                {localizedDate}
+                {date.getDate()} {month} {date.getFullYear()}
                 </div>
               </div>
               <div className="newscard-title">
