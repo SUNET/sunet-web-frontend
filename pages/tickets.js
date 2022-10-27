@@ -17,10 +17,10 @@ class Tickets extends Component {
 		
     const tickets = await getJIRATickets(lang);
     const openTickets = tickets.filter(ticket => ticket.fields.status.name === 'Open');
-    const schedTickets = openTickets.issues.filter((ticket) =>
+    const schedTickets = openTickets.filter((ticket) =>
       ticket.fields.issuetype.name.trim() === "Scheduled" && ticket.fields.customfield_11300 !== null
     );
-    const unschedTickets = openTickets.issues.filter((ticket) =>
+    const unschedTickets = openTickets.filter((ticket) =>
       ticket.fields.issuetype.name.trim() === "Unscheduled"
     );
 

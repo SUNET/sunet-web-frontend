@@ -1,3 +1,6 @@
+# This file is sourced from a bash script, so the syntax
+# should be like for an env bash file.
+
 
 # Base URL of the JIRA API REST v2
 JIRA_BASEURL="https://jira-test.sunet.se/rest/api/2"
@@ -8,5 +11,5 @@ JIRA_USERNAME="restsunetweb"
 # JIRA password. Can be overriden by an evironment variable SUNET_JIRA_PASSWORD
 JIRA_PASSWORD="dummy"
 
-# Where to put the resulting `tickets.json`
+# Directory in which to put the resulting `tickets.json`, without trailing slash
 JIRA_TICKETS_OUTPUT="."
