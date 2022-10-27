@@ -124,7 +124,7 @@ class Ticket extends Component {
         Outage:
                   </dt>
                   <dd>
-        {dutils.formatDateTimePairsFromList(ticket.fields.customfield_11200).map(pair, i => (
+        {dutils.formatDateTimePairsFromList(ticket.fields.customfield_11200).map((pair, i) => (
                     <div key={i}>{pair}</div>
         ))}
                   </dd>
@@ -174,8 +174,8 @@ class Ticket extends Component {
       {(ticket.fields.comment.comments.length > 0) && (
         <>
           <p><strong>Updates:</strong></p>
-          {ticket.fields.comment.comments.map(comment, i => (
-            <p><blockquote>comment</blockquote></p>
+          {ticket.fields.comment.comments.map((comment, i) => (
+            <p key={i}><blockquote>{comment}</blockquote></p>
           ))}
         </>
       )}
