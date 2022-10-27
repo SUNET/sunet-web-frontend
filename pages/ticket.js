@@ -7,34 +7,23 @@ import config from '../config.js'
 import * as dutils from '../src/utils/dates.js'
 import { buildSidebarMenu } from '../src/utils/menu-builder';
 import SideBarMenu from "../components/SideBarMenu.js";
-import {getOpenTickets, getJiraCustom} from '../src/utils'
+import {getJIRATickets} from '../src/utils'
+import {getAffectedCustomers} from "../components/AllTicketsList.js";
 
-
-const usedNames = [
-  'description',
-  'summary',
-  'project',
-  'created',
-  'creator',
-  'customfield_10918',
-  'customfield_11300',
-];
 
 class Ticket extends Component {
 	
   static async getInitialProps(context) {
 	
     const {slug, lang, section} = context.query
-    const openTickets = await getOpenTickets();
-    const customFields = await getJiraCustom();
-    const ticket = openTickets.issues.find(ticket => ticket.key === slug);
+    const tickets = await getJIRATickets();
+    const ticket = tickets.issues.find(ticket => ticket.key === slug);
     const title = ticket ? ticket.fields.summary : "";
 
     if (!ticket) context.res.statusCode = 404;
 
 		return { 
 			ticket,
-      customFields,
 			error: !ticket,
 			lang,
 			title,
@@ -42,105 +31,13 @@ class Ticket extends Component {
 		 };
 	}
 
-  getCustomFields(ticket) {
-    const kvpairs = [];
-    for (const fname in ticket.fields) {
-      if (! usedNames.includes(fname)) {
-        const val = ticket.fields[fname];
-        if (val) {
-          if (!(typeof(val) === 'object' && Object.keys(val).length === 0)) {
-            const name = this.props.customFields.find(f => f.id === fname).name;
-            const value = this.renderCustomField(fname, val);
-            kvpairs.push([name, value]);
-          }
-        }
-      }
-    };
-    return kvpairs;
-  }
-
   renderUser(val) {
     return `${val.displayName} &lt;${val.emailAddress}&gt;`
-  }
-
-  renderComingDates(ticket) {
-    if (ticket.fields.customfield_11300) {
-      const dates = ticket.fields.customfield_11300.split('/');
-      const start = dutils.formatDateTime(new Date(dates[0]));
-      const end = dutils.formatDateTime(new Date(dates[1]));
-      return (
-        <p className="ticket-dates">Start date: {start}<br/>End date: {end}</p>
-      );
-    } else if (ticket.fields.customfield_10918) {
-      const date = dutils.formatDate(new Date(ticket.fields.customfield_10918));
-      return (<p className="ticket-dates">Next action: {date}</p>);
-    }
-    return '';
-  }
-
-  renderCustomField(id, val) {
-    const field = this.props.customFields.find(f => f.id === id);
-    switch (field.schema.type) {
-      case 'array':
-        switch (field.schema.items) {
-          case 'string':
-            return val.map((item, i) => (<div className="ticket-listing" key={i}>{item}</div>));
-          case 'user':
-            return val.map((item, i) => (<div className="ticket-listing" key={i} dangerouslySetInnerHTML={ {__html: this.renderUser(item)} } />));
-          case 'option':
-            return val.map((item, i) => (<div className="ticket-listing" key={i}>{item.value}</div>));
-          case 'issuelinks':
-            return val.map((item, i) => (<div className="ticket-listing" key={i}>{item.outwardIssue.key}</div>));
-          case 'attachment':
-          case 'worklog':
-          case 'sd-customerorganization':
-          case 'component':
-          case 'version':
-          default:
-            return val.map((item, i) => (<div className="ticket-listing" key={i}>{`${item}`}</div>));
-        }
-      case 'string':
-      case 'number':
-        return (<span>{val}</span>);
-      case 'date':
-      case 'datetime':
-        return (<span>{dutils.formatDateTime(new Date(val))}</span>);
-      case 'user':
-        return (<span dangerouslySetInnerHTML={ {__html: this.renderUser(val)} } />);
-      case 'option':
-        return (<span>{val.value}</span>);
-      case 'priority':
-      case 'status':
-      case 'issuetype':
-      case 'project':
-        return (<span>{val.name}</span>);
-      case 'progress':
-        return (<span>Progress: {val.progress}, total: {val.total}</span>);
-      case 'votes':
-        return (<span>{val.votes}</span>);
-      case 'watches':
-        return (<span>Count: {val.watchCount}, is watching: {val.isWatching}</span>);
-
-      case 'comments-page':
-      case 'securitylevel':
-      case 'timetracking':
-      case 'sd-servicelevelagreement':
-      case 'sd-customerrequesttype':
-      case 'resolution':
-      case 'sd-approvals':
-      case 'any':
-      case 'option-with-child':
-      default:
-        return (<span>{`${val}`}</span>);
-    }
   }
 
 	render() {
 		const { ticket, error, lang, title } = this.props;
 		if (error) return <Error statusCode={404} />;
-
-    const customFields = this.getCustomFields(ticket);
-    const creation = `Created by ${this.renderUser(ticket.fields.creator)} on ${dutils.formatDateTime(new Date(ticket.fields.created))}`;
 
 		return (
 			<Layout {...this.props}>
@@ -149,24 +46,139 @@ class Ticket extends Component {
 					<main aria-labelledby="main-title" className="row single m-80">
 				
 						<article className="col-lg-12">
-              <h1 id="main-title">{ticket.key}: [{ticket.fields.project.name}] {title}</h1>
-              <p className="ticket-creation">
-                <span	dangerouslySetInnerHTML={{ __html: creation }} />
-              </p>
-              <p className="ticket-description">{ticket.fields.description}</p>
-              {this.renderComingDates(ticket)}
+              <h1 id="main-title">{title}</h1>
               <dl>
-                {customFields.map((f, i) => (
-                  <React.Fragment key={i}>
-                    <dt>
-                      {f[0]}
-                    </dt>
-                    <dd>
-                      {f[1]}
-                    </dd>
-                  </React.Fragment>
-                ))}
+                <dt>
+      Ticket number:
+                </dt>
+                <dd>
+      {ticket.key}
+                </dd>
+                <dt>
+      Ticket type:
+                </dt>
+                <dd>
+      {ticket.fields.issuetype.name}
+                </dd>
+                <dt>
+      Ticket status:
+                </dt>
+                <dd>
+      {ticket.fields.status.name}
+                </dd>
+                <dt>
+      Ticket summary:
+                </dt>
+                <dd>
+      {ticket.fields.summary}
+                </dd>
+      {(ticket.fields.customfield_10922 !== null) && (
+                <>
+                  <dt>
+        Ticket scope:
+                  </dt>
+                  <dd>
+        {ticket.fields.customfield_10922.value}
+                  </dd>
+                </>
+      )}
+                <dt>
+      Ticket opened:
+                </dt>
+                <dd>
+      {dutils.formatDateTimeFromString(ticket.fields.created)}
+                </dd>
+      {(ticket.fields.resolutiondate !== null) && (
+                <>
+                  <dt>
+        Ticket closed:
+                  </dt>
+                  <dd>
+        {dutils.formatDateTimeFromString(ticket.fields.resolutiondate)}
+                  </dd>
+                </>
+      )}
+      {(ticket.fields.customfield_11300 !== null) && (
+                <>
+                  <dt>
+        Maintenance:
+                  </dt>
+                  <dd>
+        {dutils.formatDateTimePairFromString(ticket.fields.customfield_11300)}
+                  </dd>
+                </>
+      )}
+      {(ticket.fields.customfield_10921 !== null) && (
+                <>
+                  <dt>
+        Estimated outage:
+                  </dt>
+                  <dd>
+        {ticket.fields.customfield_10921} min
+                  </dd>
+                </>
+      )}
+      {(ticket.fields.customfield_11200 !== null) && (
+                <>
+                  <dt>
+        Outage:
+                  </dt>
+                  <dd>
+        {dutils.formatDateTimePairsFromList(ticket.fields.customfield_11200).map(pair, i => (
+                    <div key={i}>pair</div>
+        ))}
+                  </dd>
+                </>
+      )}
+                <dt>
+      Affected organizations:
+                </dt>
+                <dd>
+        {getAffectedCustomers(ticket).map((customer, i) => (
+          <span key={i}>{customer}</span>
+        ))}
+                </dd>
+      {(ticket.fields.description !== null) && (
+                <>
+                  <dt>
+        Description:
+                  </dt>
+                  <dd>
+        {ticket.fields.description}
+                  </dd>
+                </>
+      )}
+      {(ticket.fields.customfield_10935 !== null) && (
+                <>
+                  <dt>
+        Impact:
+                  </dt>
+                  <dd>
+                    <blockquote>
+        {ticket.fields.customfield_10935}
+                    </blockquote>
+                  </dd>
+                </>
+      )}
+      {(ticket.fields.customfield_10932 !== null) && (
+                <>
+                  <dt>
+        External reference:
+                  </dt>
+                  <dd>
+        {ticket.fields.customfield_10932}
+                  </dd>
+              </>
+      )}
               </dl>
+      {(ticket.fields.comment.comments.length > 0) && (
+        <>
+          <p><strong>Updates:</strong></p>
+          {ticket.fields.comment.comments.map(comment, i => (
+            <p><blockquote>comment</blockquote></p>
+          ))}
+        </>
+      )}
 						</article>
 					</main>
 				</div>

@@ -9,7 +9,7 @@ const routes = {
 }
 
 
-function getAffectedCustomers(ticket) {
+export function getAffectedCustomers(ticket) {
   const affectedCustomers = [];
   if (ticket.fields.customfield_11100) {
     ticket.fields.customfield_11100.forEach((item) => {
