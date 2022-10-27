@@ -19,7 +19,7 @@ class Ticket extends Component {
     const tickets = await getJIRATickets();
     const ticket = tickets.find(ticket => ticket.key === slug);
     const title = ticket ? ticket.fields.summary : "";
-    const type = ticket.fields.issuetype.name;
+    const type = ticket.fields.issuetype.name.trim();
 
     if (!ticket) context.res.statusCode = 404;
 
