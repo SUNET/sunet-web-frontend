@@ -147,7 +147,7 @@ class Ticket extends Component {
                 </dt>
                 <dd>
         {getAffectedCustomers(ticket).map((customer, i) => (
-          <span key={i}>{customer}</span>
+          <span key={i}>{customer}&nbsp;&nbsp;</span>
         ))}
                 </dd>
       {(ticket.fields.description !== null) && (
