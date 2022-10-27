@@ -19,11 +19,13 @@ class Ticket extends Component {
     const tickets = await getJIRATickets();
     const ticket = tickets.find(ticket => ticket.key === slug);
     const title = ticket ? ticket.fields.summary : "";
+    const type = ticket.fields.issuetype.name;
 
     if (!ticket) context.res.statusCode = 404;
 
 		return { 
 			ticket,
+      type,
 			error: !ticket,
 			lang,
 			title,
@@ -36,7 +38,7 @@ class Ticket extends Component {
   }
 
 	render() {
-		const { ticket, error, lang, title } = this.props;
+		const { ticket, type, error, lang, title } = this.props;
 		if (error) return <Error statusCode={404} />;
 
 		return (
@@ -98,7 +100,7 @@ class Ticket extends Component {
                   </dd>
                 </>
       )}
-      {(ticket.fields.customfield_11300 !== null) && (
+      {(type = "Scheduled" && ticket.fields.customfield_11300 !== null) && (
                 <>
                   <dt>
         Maintenance:
@@ -108,7 +110,17 @@ class Ticket extends Component {
                   </dd>
                 </>
       )}
-      {(ticket.fields.customfield_10921 !== null) && (
+      {(type === "Unscheduled" && ticket.fields.customfield_11301 !== null) && (
+                <>
+                  <dt>
+        Problem start / end:
+                  </dt>
+                  <dd>
+        {dutils.formatDateTimePairFromString(ticket.fields.customfield_11301)}
+                  </dd>
+                </>
+      )}
+      {(type === "Unscheduled" && ticket.fields.customfield_10921 !== null) && (
                 <>
                   <dt>
         Estimated outage:
