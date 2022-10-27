@@ -1,0 +1,12 @@
+
+# Base URL of the JIRA API REST v2
+JIRA_BASEURL="https://jira-test.sunet.se/rest/api/2"
+
+# JIRA username
+JIRA_USERNAME="restsunetweb"
+
+# JIRA password. Can be overriden by an evironment variable SUNET_JIRA_PASSWORD
+JIRA_PASSWORD="dummy"
+
+# Where to put the resulting `tickets.json`
+JIRA_TICKETS_OUTPUT="."
