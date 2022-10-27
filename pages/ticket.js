@@ -48,8 +48,8 @@ class Ticket extends Component {
 						<article className="col-lg-12">
               <h1 id="main-title">Ticket not found</h1>
               <div>
-                <p>Please note that we only keep closed tickets at sunet.se for one month</p>
-                <p>For closed tickets older than that, you would have to look at jira.sunet.se.</p>
+                <p>Please note that we only keep closed tickets at sunet.se for one month.<br/>
+                For closed tickets older than that, you would have to look at jira.sunet.se.</p>
               </div>
 						</article>
 					</main>
