@@ -39,7 +39,22 @@ class Ticket extends Component {
 
 	render() {
 		const { ticket, type, error, lang, title } = this.props;
-		if (error) return <Error statusCode={404} />;
+		if (error) return (
+			<Layout {...this.props}>
+
+				<div className="container">
+					<main aria-labelledby="main-title" className="row single m-80">
+				
+						<article className="col-lg-12">
+              <h1 id="main-title">Ticket not found</h1>
+						</article>
+            <p>Please note that we only keep closed tickets at sunet.se for one month</p>
+            <p>For closed tickets older than that, you would have to look at jira.sunet.se.</p>
+					</main>
+				</div>
+				
+			</Layout>
+    );
 
 		return (
 			<Layout {...this.props}>
