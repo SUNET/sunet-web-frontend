@@ -127,7 +127,7 @@ output="$JIRA_TICKETS_OUTPUT"
 # JQL query to obtain all tickets belonging to project TIC
 jql='"jql": "project = TIC"'
 # JIRA spec to select the isuue fields to retrieve
-fields='"fields": ["issuekey", "issuetype", "status", "summary", "customfield_10922", "created", "resolutiondate", "customfield_11300", "customfield_10921", "customfield_11100", "description", "customfield_10935", "customfield_10932", "customfield_11001", "customfield_11200", "customfield_11301", "customfield_10918", "comment"]'
+fields='"fields": ["issuekey", "issuetype", "status", "summary", "customfield_10922", "created", "resolutiondate", "customfield_11300", "customfield_10921", "customfield_11100", "description", "customfield_10935", "customfield_10932", "customfield_11001", "customfield_11300", "customfield_11200", "customfield_11301", "customfield_10918", "comment"]'
 # Data to send to JIRA to retrieve the tickets 
 data="{$jql, $fields}"
 
