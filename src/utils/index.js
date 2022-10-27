@@ -80,8 +80,8 @@ export async function getTjanster(lang) {
 }
 
 
-export async function getOpenTickets(lang) {
-    const res = await fetch(`${config.apiUrl}open-tickets.json`);
+export async function getJIRATickets(lang) {
+    const res = await fetch(`${config.apiUrl}tickets.json`);
     const tickets = await res.json();
     return tickets;
 }

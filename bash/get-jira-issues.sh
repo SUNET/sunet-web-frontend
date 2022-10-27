@@ -30,6 +30,7 @@ OPTIONS:
         Print this help and exit.
 -f
         Path to the configuration file. See the companion "get-jira-issues.conf.example" for details.
+        If not provided, the script will attempt to read ./get-jira-issues.conf
 
 USAGE_TEXT
 }
@@ -111,6 +112,8 @@ parse_user_options "${@}"
 # Read configuration
 config_file=${conf_file:-'get-jira-issues.conf'}
 if [[ ! -f "${config_file}" ]]; then
+    usage
+    printf "\n\n"
     die "error reading configuration file: ${config_file}" "${error_reading_conf_file}"
 fi
 # shellcheck source=./get-jira-issues.conf.example

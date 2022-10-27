@@ -4,7 +4,7 @@ import PageWrapper from "../components/PageWrapper.js";
 import {ScheduledTicketsList, UnscheduledTicketsList} from "../components/AllTicketsList.js";
 import fetch from 'isomorphic-unfetch';
 import config from '../config.js'
-import {getOpenTickets} from '../src/utils'
+import {getJIRATickets} from '../src/utils'
 
 
 class Tickets extends Component {
@@ -15,7 +15,8 @@ class Tickets extends Component {
         const pages = await res.json();
 		const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
 		
-    const openTickets = await getOpenTickets(lang);
+    const tickets = await getJIRATickets(lang);
+    const openTickets = tickets.filter(ticket => ticket.fields.status.name === 'Open');
     const schedTickets = openTickets.issues.filter((ticket) =>
       ticket.fields.issuetype.name.trim() === "Scheduled" && ticket.fields.customfield_11300 !== null
     );
