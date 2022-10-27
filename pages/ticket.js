@@ -154,9 +154,9 @@ class Ticket extends Component {
         Impact:
                   </dt>
                   <dd>
-                    <blockquote>
+                    <pre>
         {ticket.fields.customfield_10935}
-                    </blockquote>
+                    </pre>
                   </dd>
                 </>
       )}
@@ -175,7 +175,7 @@ class Ticket extends Component {
         <>
           <p><strong>Updates:</strong></p>
           {ticket.fields.comment.comments.map((comment, i) => (
-            <p key={i}><blockquote>{comment}</blockquote></p>
+            <p key={i}><pre>{comment}</pre></p>
           ))}
         </>
       )}
