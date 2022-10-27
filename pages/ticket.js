@@ -100,7 +100,7 @@ class Ticket extends Component {
                   </dd>
                 </>
       )}
-      {(type = "Scheduled" && ticket.fields.customfield_11300 !== null) && (
+      {(type === "Scheduled" && ticket.fields.customfield_11300 !== null) && (
                 <>
                   <dt>
         Maintenance:
