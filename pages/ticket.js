@@ -171,7 +171,7 @@ class Ticket extends Component {
               </>
       )}
               </dl>
-      {(ticket.fields.comment !== null && ticket.fields.comment.comments !== undefined && ticket.fields.comment.comments.comments.length > 0) && (
+      {(ticket.fields.comment !== null && ticket.fields.comment.comments !== undefined && ticket.fields.comment.comments.length > 0) && (
         <>
           <p><strong>Updates:</strong></p>
           {ticket.fields.comment.comments.map((comment, i) => (
