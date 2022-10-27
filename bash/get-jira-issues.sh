@@ -5,11 +5,14 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-readonly error_reading_conf_file=80
-readonly error_parsing_options=81
+readonly error_reading_conf_file=2
+readonly error_parsing_options=22
+readonly error_no_jq_command=2
+
 readonly script_name="${0##*/}"
 
-readonly tmpfile="/tmp/tickets.json"
+readonly tmpfile1="/tmp/tickets1.json"
+readonly tmpfile2="/tmp/tickets2.json"
 
 trap clean_up ERR EXIT SIGINT SIGTERM
 
@@ -33,7 +36,8 @@ USAGE_TEXT
 
 clean_up() {
   trap - ERR EXIT SIGINT SIGTERM
-  rm -f "$tmpfile"
+  rm -f "$tmpfile1"
+  rm -f "$tmpfile2"
 }
 
 die() {
@@ -95,6 +99,12 @@ external_comment_ids() {
   curl -XGET -H "Accept: application/json" -u "$username:$password" "$issue_url" | jq "$jq_remove_null_properties" | jq "$jq_select_external"
 }
 
+# check that the executable jq exists
+if ! command -v jq &> /dev/null
+then
+    die "this script needs to have the jq executable available" "${error_no_jq_command}"
+fi
+
 # Parse CLI options
 parse_user_options "${@}"
 
@@ -103,7 +113,7 @@ config_file=${conf_file:-'get-jira-issues.conf'}
 if [[ ! -f "${config_file}" ]]; then
     die "error reading configuration file: ${config_file}" "${error_reading_conf_file}"
 fi
-# shellcheck source=get-jira-issues.conf.example
+# shellcheck source=./get-jira-issues.conf.example
 source "${config_file}"
 
 baseurl="$JIRA_BASEURL"
@@ -126,11 +136,19 @@ jq_remove_null=".issues[] | select(.fields.customfield_11100 != null)"
 # jq to select tickets in which the field customfield_11100 includes items starting with "affected_customer"
 jq_select_ac='select(.fields.customfield_11100 | map( test("^affected_customer")) | any)'
 
+# get all JIRA tickets
+curl_output=$(curl -X POST --write-out "%{http_code}" --output "$tmpfile1" -H "Content-Type: application/json" -u "$username:$password" -d "$data" "$searchurl")
+
+if [ "$curl_output" != "200" ]; then
+    die "error response from JIRA: ${curl_output}" "${curl_output}"
+fi
+
 # get all tickets with affected customers and store them in a temp file
-curl -X POST -H "Content-Type: application/json" -u "$username:$password" -d "$data" "$searchurl" | jq "$jq_remove_null" | jq "$jq_select_ac" | jq -s "." > "$tmpfile"
+jq "$jq_remove_null" "$tmpfile1" | jq "$jq_select_ac" | jq -s "." > "$tmpfile2"
+
 
 # Get the ticket IDs of all the tickets retrieved from JIRA
-issue_ids=$(jq ".[].id | tonumber" "$tmpfile")
+issue_ids=$(jq ".[].id | tonumber" "$tmpfile2")
 
 # Retrive from JIRA all comments for the tickets gotten above (with additional info about them being internal),
 # and produce a list with the IDs of all tickets not marked as internal.
@@ -150,6 +168,6 @@ outfile="$output/tickets.json"
 jq_remove_internal_comments=".[].fields.comment.comments |= select( [.[].id] | inside([${comment_ids}]) )"
 
 # remove internal comments from tickets and place the resulting json in its final location
-jq "$jq_remove_internal_comments" "$tmpfile" > "$outfile"
+jq "$jq_remove_internal_comments" "$tmpfile2" > "$outfile"
 
 exit 0
