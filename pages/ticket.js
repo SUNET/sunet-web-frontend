@@ -125,7 +125,7 @@ class Ticket extends Component {
                   </dt>
                   <dd>
         {dutils.formatDateTimePairsFromList(ticket.fields.customfield_11200).map(pair, i => (
-                    <div key={i}>pair</div>
+                    <div key={i}>{pair}</div>
         ))}
                   </dd>
                 </>
