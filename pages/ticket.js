@@ -175,7 +175,7 @@ class Ticket extends Component {
         <>
           <p><strong>Updates:</strong></p>
           {ticket.fields.comment.comments.map((comment, i) => (
-            <p key={i}><pre>{comment}</pre></p>
+            <p key={i}><pre>{comment.body}</pre></p>
           ))}
         </>
       )}
