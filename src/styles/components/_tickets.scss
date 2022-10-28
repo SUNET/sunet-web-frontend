@@ -34,4 +34,9 @@ dl.ticket-detail {
 article div.ticket-detail-update {
   line-height: 1;
   font-size: 1rem;
+
+  pre {
+    margin: 0;
+    padding: 20px;
+  }
 }
