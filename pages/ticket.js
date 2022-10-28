@@ -66,7 +66,7 @@ class Ticket extends Component {
 				
 						<article className="col-lg-12">
               <h1 id="main-title">{title}</h1>
-              <dl>
+              <dl className="ticket-update">
                 <dt>
       Ticket number:
                 </dt>
@@ -204,7 +204,7 @@ class Ticket extends Component {
         <>
           <p><strong>Updates:</strong></p>
           {ticket.fields.comment.comments.map((comment, i) => (
-            <p key={i}>
+            <p key={i} className="ticket-detail-update">
               <span>{dutils.formatDateTimeFromString(comment.created)}</span><br/>
               <pre>{comment.body}</pre>
             </p>
