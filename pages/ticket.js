@@ -204,10 +204,10 @@ class Ticket extends Component {
         <>
           <p><strong>Updates:</strong></p>
           {ticket.fields.comment.comments.map((comment, i) => (
-            <p key={i} className="ticket-detail-update">
+            <div key={i} className="ticket-detail-update">
               <span>{dutils.formatDateTimeFromString(comment.created)}</span><br/>
               <pre>{comment.body}</pre>
-            </p>
+            </div>
           ))}
         </>
       )}
