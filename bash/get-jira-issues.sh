@@ -123,10 +123,13 @@ baseurl="$JIRA_BASEURL"
 username="$JIRA_USERNAME"
 password=${SUNET_JIRA_PASSWORD:-$JIRA_PASSWORD}
 output="$JIRA_TICKETS_OUTPUT"
+project="$JIRA_PROJECT"
+daysold="$MAX_CLOSED_AGE"
 
-# JQL query to obtain all tickets belonging to project TIC
-jql='"jql": "project = TIC"'
-# JIRA spec to select the isuue fields to retrieve
+# JQL query to obtain all tickets belonging to project TIC that are open or were closed less that a configurable time (MAX_CLOSED_AGE) ago.
+jql="\"jql\": \"project = $project and (resolutiondate is empty or resolutiondate > \\\"-$daysold\\\")\""
+
+# JIRA spec to select the issue fields to retrieve
 fields='"fields": ["issuekey", "issuetype", "status", "summary", "customfield_10922", "created", "resolutiondate", "customfield_11300", "customfield_10921", "customfield_11100", "description", "customfield_10935", "customfield_10932", "customfield_11001", "customfield_11200", "customfield_11301", "customfield_10918", "comment"]'
 # Data to send to JIRA to retrieve the tickets 
 data="{$jql, $fields}"

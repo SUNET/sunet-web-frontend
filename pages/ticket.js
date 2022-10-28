@@ -8,7 +8,7 @@ import * as dutils from '../src/utils/dates.js'
 import { buildSidebarMenu } from '../src/utils/menu-builder';
 import SideBarMenu from "../components/SideBarMenu.js";
 import {getJIRATickets} from '../src/utils'
-import {getAffectedCustomers} from "../components/AllTicketsList.js";
+import {getAffected} from "../components/AllTicketsList.js";
 
 
 class Ticket extends Component {
@@ -49,7 +49,7 @@ class Ticket extends Component {
               <h1 id="main-title">Ticket not found</h1>
               <div>
                 <p>Please note that we only keep closed tickets at sunet.se for one month.<br/>
-                For closed tickets older than that, you would have to look at jira.sunet.se.</p>
+                For closed tickets older than that, contact <span>noc</span>&#64;<span>sunet.se</span>.</p>
               </div>
 						</article>
 					</main>
@@ -57,6 +57,8 @@ class Ticket extends Component {
 				
 			</Layout>
     );
+
+    const affectedServices = getAffected(ticket, what='service');
 
 		return (
 			<Layout {...this.props}>
@@ -163,10 +165,22 @@ class Ticket extends Component {
       Affected organizations:
                 </dt>
                 <dd>
-        {getAffectedCustomers(ticket).map((customer, i) => (
+        {getAffected(ticket).map((customer, i) => (
           <span key={i}>{customer}&nbsp;&nbsp;</span>
         ))}
                 </dd>
+      {(affectedServices.length > 0) && (
+                <>
+                  <dt>
+        Affected services:
+                  </dt>
+                  <dd>
+        {affectedServices.map((service, i) => (
+          <span key={i}>{service}&nbsp;&nbsp;</span>
+        ))}
+                  </dd>
+                </>
+      )}
       {(ticket.fields.description !== null) && (
                 <>
                   <dt>
@@ -205,7 +219,7 @@ class Ticket extends Component {
           <p><strong>Updates:</strong></p>
           {ticket.fields.comment.comments.map((comment, i) => (
             <div key={i} className="ticket-detail-update">
-              <span>{dutils.formatDateTimeFromString(comment.created)}</span><br/>
+              <span className="ticket-update-date">{dutils.formatDateTimeFromString(comment.created)}</span><br/>
               <pre>{comment.body}</pre>
             </div>
           ))}

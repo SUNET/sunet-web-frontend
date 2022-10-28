@@ -9,21 +9,21 @@ const routes = {
 }
 
 
-export function getAffectedCustomers(ticket) {
-  const affectedCustomers = [];
+export function getAffected(ticket, what='affected_customer') {
+  const affected = [];
   if (ticket.fields.customfield_11100) {
     ticket.fields.customfield_11100.forEach((item) => {
       try {
-        if (item.startsWith('affected_customer')) {
-          const customer = item.split(':').at(-1);
-          affectedCustomers.push(customer);
+        if (item.startsWith(what)) {
+          const thing = item.split(':').at(-1);
+          affected.push(thing);
         }
       } catch(err) {
           console.log(err);
         }
     });
   }
-  return affectedCustomers;
+  return affected;
 }
 
 const ScheduledTicket = ({ ticket, locale }) => {
@@ -52,7 +52,7 @@ const ScheduledTicket = ({ ticket, locale }) => {
   return (
     <div className="card">
       <div className="card-tags">
-        {getAffectedCustomers(ticket).map((customer, i) => (
+        {getAffected(ticket).map((customer, i) => (
           <span key={i}>{customer}</span>
         ))}
       </div>

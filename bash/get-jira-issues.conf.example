@@ -13,3 +13,9 @@ JIRA_PASSWORD="dummy"
 
 # Directory in which to put the resulting `tickets.json`, without trailing slash
 JIRA_TICKETS_OUTPUT="."
+
+# Retrieve tickets in this JIRA project
+JIRA_PROJECT="TIC"
+
+# Only retrieve closed tickets that were closed less than this number of days ago.
+MAX_CLOSED_AGE="30d"
