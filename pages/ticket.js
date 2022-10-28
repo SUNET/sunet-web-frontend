@@ -58,7 +58,7 @@ class Ticket extends Component {
 			</Layout>
     );
 
-    const affectedServices = getAffected(ticket, what='service');
+    const affectedServices = getAffected(ticket, 'service');
 
 		return (
 			<Layout {...this.props}>
