@@ -2,7 +2,7 @@
 # should be like for an env bash file.
 
 
-# Base URL of the JIRA API REST v2
+# Base URL of the JIRA API REST v2, with no trailing slash
 JIRA_BASEURL="https://jira-test.sunet.se/rest/api/2"
 
 # JIRA username

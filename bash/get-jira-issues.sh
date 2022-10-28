@@ -171,7 +171,8 @@ comment_ids=$(join_array , "${all_comment_ids[@]}")
 outfile="$output/tickets.json"
 
 # jq to filter out internal comments from the tickets json
-jq_remove_internal_comments=".[].fields.comment.comments |= select( [.[].id] | inside([${comment_ids}]) )"
+jq_remove_internal_comments="[ .[] | .fields.comment.comments |= map( select( [.id] | inside([${comment_ids}]) )) ]"
+# jq_remove_internal_comments=".[].fields.comment.comments |= select( [.[].id] | inside([${comment_ids}]) )"  # this is for jq 1.6
 
 # remove internal comments from tickets and place the resulting json in its final location
 jq "$jq_remove_internal_comments" "$tmpfile2" > "$outfile"
