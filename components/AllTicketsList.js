@@ -108,7 +108,7 @@ const UnscheduledTicket = ({ ticket, locale }) => {
   return (
     <div className="card">
       <div className="card-tags">
-        {getAffectedCustomers(ticket).map((customer, i) => (
+        {getAffected(ticket).map((customer, i) => (
           <span key={i}>{customer}</span>
         ))}
       </div>
