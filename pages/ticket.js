@@ -137,7 +137,7 @@ class Ticket extends Component {
                   </dd>
                 </>
       )}
-      {(type === "Unscheduled" && ticket.fields.customfield_10921 !== null) && (
+      {(type === "Scheduled" && ticket.fields.customfield_10921 !== null) && (
                 <>
                   <dt>
         Estimated outage:
