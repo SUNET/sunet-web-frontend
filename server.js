@@ -68,13 +68,13 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/om-sunet/evenemang`, (req, res)=>{
+            server.get(`/om-sunet/aktuellt/evenemang`, (req, res)=>{
                 const actualPage = `/evenemang`;
                 const queryParams = { slug: 'evenemang', apiRoute: 'aktuellt', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/om-sunet/evenemang/:slug`, (req, res) =>{
+            server.get(`/om-sunet/aktuellt/evenemang/:slug`, (req, res) =>{
                 const actualPage = "/evenemanget";
                 const queryParams = { slug: req.params.slug, apiRoute: 'aktuellt', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
