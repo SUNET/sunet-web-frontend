@@ -78,3 +78,17 @@ export async function getTjanster(lang) {
     const tjanster = await res.json();
     return tjanster.filter(item => item.lang === lang);
 }
+
+
+export async function getJIRATickets(lang) {
+    const res = await fetch(`${config.apiUrl}tickets.json`);
+    const tickets = await res.json();
+    return tickets;
+}
+
+
+export async function getJiraCustom(lang) {
+    const res = await fetch(`${config.apiUrl}custom-fields.json`);
+    const fields = await res.json();
+    return fields;
+}
