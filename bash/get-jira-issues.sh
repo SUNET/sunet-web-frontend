@@ -18,7 +18,7 @@ trap clean_up ERR EXIT SIGINT SIGTERM
 
 usage() {
     cat <<USAGE_TEXT
-Usage: ${script_name} [-h | --help] [-f <configfile>]
+Usage: ${script_name} [-h | --help] [-f <configfile>] [-p <SUNET_JIRA_PASSWORD>]
 
 DESCRIPTION
 
@@ -31,6 +31,8 @@ OPTIONS:
 -f
         Path to the configuration file. See the companion "get-jira-issues.conf.example" for details.
         If not provided, the script will attempt to read ./get-jira-issues.conf
+-p
+        JIRA password
 
 USAGE_TEXT
 }
@@ -51,7 +53,7 @@ die() {
 parse_user_options() {
     local -r args=("${@}")
     local opts
-    opts=$(getopt --options f:,h --long help -- "${args[@]}" 2> /dev/null) || {
+    opts=$(getopt --options p:,f:,h --long help -- "${args[@]}" 2> /dev/null) || {
         usage
         die "error: parsing options" "${error_parsing_options}"
     }
@@ -60,6 +62,11 @@ while true; do
     case "${1}" in
 -f)
             readonly conf_file="${2}"
+            shift
+            shift
+            ;;
+-p)
+            SUNET_JIRA_PASSWORD="${2}"
             shift
             shift
             ;;
@@ -97,7 +104,7 @@ external_comment_ids() {
   jq_remove_null_properties=".comments[] | select(.properties != null)"
   jq_select_external='select(.properties | map( .key == "sd.public.comment" and .value.internal == false ) | any) | .id'
   
-  curl -XGET -H "Accept: application/json" -u "$username:$password" "$issue_url" | jq "$jq_remove_null_properties" | jq "$jq_select_external"
+  curl -s -XGET -H "Accept: application/json" -u "$username:$password" "$issue_url" | jq "$jq_remove_null_properties" | jq "$jq_select_external"
 }
 
 # check that the executable jq exists
@@ -130,20 +137,20 @@ daysold="$MAX_CLOSED_AGE"
 jql="\"jql\": \"project = $project and (resolutiondate is empty or resolutiondate > \\\"-$daysold\\\")\""
 
 # JIRA spec to select the issue fields to retrieve
-fields='"fields": ["issuekey", "issuetype", "status", "summary", "customfield_10922", "created", "resolutiondate", "customfield_11300", "customfield_10921", "customfield_11100", "description", "customfield_10935", "customfield_10932", "customfield_11001", "customfield_11200", "customfield_11301", "customfield_10918", "comment"]'
+fields='"fields": ["issuekey", "issuetype", "status", "summary", "customfield_11800", "created", "resolutiondate", "customfield_11603", "customfield_10402", "customfield_11600", "description", "customfield_11802", "customfield_10405", "customfield_10403", "customfield_11601", "customfield_11604", "customfield_10404", "comment"]'
 # Data to send to JIRA to retrieve the tickets 
 data="{$jql, $fields}"
 
 # JIRA API search endpoint
 searchurl="$baseurl/search"
 
-# jq to select tickets in which the field customfield_11100 is not null
-jq_remove_null=".issues[] | select(.fields.customfield_11100 != null)"
-# jq to select tickets in which the field customfield_11100 includes items starting with "affected_customer"
-jq_select_ac='select(.fields.customfield_11100 | map( test("^affected_customer")) | any)'
+# jq to select tickets in which the field customfield_11600 is not null
+jq_remove_null=".issues[] | select(.fields.customfield_11600 != null)"
+# jq to select tickets in which the field customfield_11600 includes items starting with "affected_customer"
+jq_select_ac='select(.fields.customfield_11600 | map( test("^affected_customer")) | any)'
 
 # get all JIRA tickets
-curl_output=$(curl -X POST --write-out "%{http_code}" --output "$tmpfile1" -H "Content-Type: application/json" -u "$username:$password" -d "$data" "$searchurl")
+curl_output=$(curl -s -X POST --write-out "%{http_code}" --output "$tmpfile1" -H "Content-Type: application/json" -u "$username:$password" -d "$data" "$searchurl")
 
 if [ "$curl_output" != "200" ]; then
     die "error response from JIRA: ${curl_output}" "${curl_output}"

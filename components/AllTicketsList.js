@@ -11,8 +11,8 @@ const routes = {
 
 export function getAffected(ticket, what='affected_customer') {
   const affected = [];
-  if (ticket.fields.customfield_11100) {
-    ticket.fields.customfield_11100.forEach((item) => {
+  if (ticket.fields.customfield_11600) {
+    ticket.fields.customfield_11600.forEach((item) => {
       try {
         if (item.startsWith(what)) {
           const thing = item.split(':').at(-1);
@@ -28,8 +28,8 @@ export function getAffected(ticket, what='affected_customer') {
 
 const ScheduledTicket = ({ ticket, locale }) => {
   let dates = '';
-  if (ticket.fields.customfield_11300 !== undefined) {
-    const startend = ticket.fields.customfield_11300.split('/');
+  if (ticket.fields.customfield_11603 !== undefined) {
+    const startend = ticket.fields.customfield_11603.split('/');
     const start = new Date(startend[0]);
     const end = new Date(startend[1]);
     dates = (
@@ -77,8 +77,8 @@ const ScheduledTicket = ({ ticket, locale }) => {
 
 const UnscheduledTicket = ({ ticket, locale }) => {
   let created, next, dates ='';
-  if (ticket.fields.customfield_10918 !== undefined) {
-    next = new Date(ticket.fields.customfield_10918);
+  if (ticket.fields.customfield_10404 !== undefined) {
+    next = new Date(ticket.fields.customfield_10404);
   }
   if (ticket.fields.created !== undefined) {
     created = new Date(ticket.fields.created);

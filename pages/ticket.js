@@ -93,13 +93,13 @@ class Ticket extends Component {
                 <dd>
       {ticket.fields.summary}
                 </dd>
-      {(ticket.fields.customfield_10922 !== null) && (
+      {(ticket.fields.customfield_11800 !== null) && (
                 <>
                   <dt>
         Ticket scope:
                   </dt>
                   <dd>
-        {ticket.fields.customfield_10922.value}
+        {ticket.fields.customfield_11800.value}
                   </dd>
                 </>
       )}
@@ -119,43 +119,43 @@ class Ticket extends Component {
                   </dd>
                 </>
       )}
-      {(type === "Scheduled" && ticket.fields.customfield_11300 !== null) && (
+      {(type === "Scheduled" && ticket.fields.customfield_11603 !== null) && (
                 <>
                   <dt>
         Maintenance:
                   </dt>
                   <dd>
-        {dutils.formatDateTimePairFromString(ticket.fields.customfield_11300)}
+        {dutils.formatDateTimePairFromString(ticket.fields.customfield_11603)}
                   </dd>
                 </>
       )}
-      {(type === "Unscheduled" && ticket.fields.customfield_11301 !== null) && (
+      {(type === "Unscheduled" && ticket.fields.customfield_11604 !== null) && (
                 <>
                   <dt>
         Problem start / end:
                   </dt>
                   <dd>
-        {dutils.formatDateTimePairFromString(ticket.fields.customfield_11301)}
+        {dutils.formatDateTimePairFromString(ticket.fields.customfield_11604)}
                   </dd>
                 </>
       )}
-      {(type === "Scheduled" && ticket.fields.customfield_10921 !== null) && (
+      {(type === "Scheduled" && ticket.fields.customfield_10402 !== null) && (
                 <>
                   <dt>
         Estimated outage:
                   </dt>
                   <dd>
-        {ticket.fields.customfield_10921} min
+        {ticket.fields.customfield_10402} min
                   </dd>
                 </>
       )}
-      {(ticket.fields.customfield_11200 !== null) && (
+      {(ticket.fields.customfield_11601 !== null) && (
                 <>
                   <dt>
         Outage:
                   </dt>
                   <dd>
-        {dutils.formatDateTimePairsFromList(ticket.fields.customfield_11200).map((pair, i) => (
+        {dutils.formatDateTimePairsFromList(ticket.fields.customfield_11601).map((pair, i) => (
                     <div key={i}>{pair}</div>
         ))}
                   </dd>
@@ -187,32 +187,47 @@ class Ticket extends Component {
         Description:
                   </dt>
                   <dd>
-        {ticket.fields.description}
+		    <pre>
+			{ticket.fields.description}
+	             </pre> 
                   </dd>
                 </>
       )}
-      {(ticket.fields.customfield_10935 !== null) && (
+      {(ticket.fields.customfield_11802 !== null) && (
                 <>
                   <dt>
         Impact:
                   </dt>
                   <dd>
                     <pre>
-        {ticket.fields.customfield_10935}
+        {ticket.fields.customfield_11802}
                     </pre>
                   </dd>
                 </>
       )}
-      {(ticket.fields.customfield_10932 !== null) && (
+      {(ticket.fields.customfield_10405 !== null) && (
                 <>
                   <dt>
         External reference:
                   </dt>
                   <dd>
-        {ticket.fields.customfield_10932}
+        {ticket.fields.customfield_10405}
                   </dd>
               </>
       )}
+      {(ticket.fields.customfield_10403 !== null) && (
+                <>   
+                  <dt>
+        Final ticket report:
+                  </dt>
+                  <dd>
+                   <pre>
+        {ticket.fields.customfield_10403}
+                   </pre>
+                  </dd>
+              </>
+      )}
+      
               </dl>
       {(ticket.fields.comment !== null && ticket.fields.comment.comments !== undefined && ticket.fields.comment.comments.length > 0) && (
         <>
