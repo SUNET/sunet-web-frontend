@@ -16,7 +16,10 @@ export const formatDateTimeFromString = (s) => formatDateTime(new Date(s));
 export const formatDateTimePairFromString = (s) => {
   const dates = s.split('/');
   const start = formatDateTime(new Date(dates[0]));
-  const end = formatDateTime(new Date(dates[1]));
+  let end = ""
+  if (dates[1].length > 4) {
+    end = formatDateTime(new Date(dates[1]));
+  }
   return `${start} - ${end}`;
 };
 
