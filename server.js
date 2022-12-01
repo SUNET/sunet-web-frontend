@@ -146,6 +146,18 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
+            server.get(`/arenden`, (req, res)=>{
+		const actualPage = `/tickets`;
+                const queryParams = { slug: 'arenden', apiRoute: 'tickets', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/arenden/:slug`, (req, res) =>{
+		const actualPage = "/ticket";
+                const queryParams = { slug: req.params.slug, apiRoute: 'tickets', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+	
             server.get(`/tickets`, (req, res)=>{
                 const actualPage = `/tickets`;
                 const queryParams = { slug: 'tickets', apiRoute: 'tickets', lang: 'sv' };

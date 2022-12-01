@@ -5,7 +5,7 @@ import withLocale from './withLocale'
 
 const routes = {
 	"en": "/en/tickets",
-	"sv": "/tickets",
+	"sv": "/arenden",
 }
 
 
