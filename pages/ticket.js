@@ -205,16 +205,6 @@ class Ticket extends Component {
                   </dd>
                 </>
       )}
-      {(ticket.fields.customfield_10405 !== null) && (
-                <>
-                  <dt>
-        External reference:
-                  </dt>
-                  <dd>
-        {ticket.fields.customfield_10405}
-                  </dd>
-              </>
-      )}
       {(ticket.fields.customfield_10403 !== null) && (
                 <>   
                   <dt>
