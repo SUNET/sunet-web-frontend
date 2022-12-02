@@ -160,7 +160,7 @@ app
 	
             server.get(`/tickets`, (req, res)=>{
                 const actualPage = `/tickets`;
-                const queryParams = { slug: 'tickets', apiRoute: 'tickets', lang: 'sv' };
+                const queryParams = { slug: 'arenden', apiRoute: 'tickets', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
