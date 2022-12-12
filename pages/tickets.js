@@ -16,7 +16,7 @@ class Tickets extends Component {
 		const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
 		
     const tickets = await getJIRATickets(lang);
-    const openTickets = tickets.filter(ticket => ticket.fields.status.name === 'Open');
+    const openTickets = tickets.filter(ticket => ticket.fields.status.name === 'Open' || ticket.fields.status.name === 'Resolved');
     const schedTickets = openTickets.filter((ticket) =>
       ticket.fields.issuetype.name.trim() === "Scheduled" && ticket.fields.customfield_11603 !== null
     );
