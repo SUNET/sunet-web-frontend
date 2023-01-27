@@ -35,16 +35,15 @@ class Tickets extends Component {
         })
 
 	unschedTickets.map(item => {
+	    
+            item.start = item.fields.created;
 
-            if (item.fields.customfield_10404 !== undefined) {
-                item.start = item.fields.customfield_10404
-            }
             return item;
 
         })
 	
 	
-	function compare( b, a ) {
+	function compare( a, b ) {
 	    if ( a.start < b.start ){
 		return -1;
 	    }
