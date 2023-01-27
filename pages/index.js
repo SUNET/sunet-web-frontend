@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import Layout from '../components/Layout.js';
 import fetch from 'isomorphic-unfetch';
 import config from '../config.js'
-import {getEvenemang, getTjanster, getCategories} from '../src/utils'
+import {getEvenemang, getTjanster, getCategories, getAllNews} from '../src/utils'
 import PageWrapper from '../components/PageWrapper.js';
 import TjansterList from '../components/TjansterList.js';
 import EvenemangList from '../components/AllEvenemangList';
-
+import AllNewsList from "../components/AllNewsList.js";
 
 
 class Index extends Component {
@@ -19,26 +19,28 @@ class Index extends Component {
 
 		const { acf: { segment_top, segment_bottom } } = page;
 		
-		const evenemang = await getEvenemang(lang);
+//		const evenemang = await getEvenemang(lang);
 		const tjanster = await getTjanster(lang);
 		const categories = await getCategories();
-
+	        const news = await getAllNews(lang)
+	    
 		return {
 			page,
 			error: !page,
 			segment_top,
 			segment_bottom,
 			slug,
-			lang,
+		        lang,
+		        news,
 			categories,
 			tjanster: tjanster,
-			evenemang: evenemang,
-			eventLinkText: lang === "en" ? "All events" : "Till alla evenemang",
+//			evenemang: evenemang,
+			currentLinkText: lang === "en" ? "To current news" : "Till Aktuellt",
 		}
 	}
 
 	render() {
-		const eventUrl = this.props.lang === 'sv' && '/om-sunet/aktuellt/evenemang' || '/en/about-sunet/current/events';
+		const currentUrl = this.props.lang === 'sv' && '/om-sunet/aktuellt/' || '/en/about-sunet/current/';
 		return (
 			<Layout {...this.props}>
 				{this.props.segment_top && (<div className="container">
@@ -69,15 +71,16 @@ class Index extends Component {
 				</div>) }
 	
 				<div >
-					<div className="container listing">
-					<h2 className="vinjett">Evenemang</h2>
-						<EvenemangList evenemang={this.props.evenemang} count={3} />
+			<div className="container listing">
+			          <h2 className="vinjett">Aktuellt</h2>
+                                                <AllNewsList news={this.props.news} nomore="true"/>
+        	
 						<div className="row">
 							<div className="col">
 							
 								<div className="btn-load-container">
-									<a href={eventUrl} className="btn-more" aria-label={this.props.eventLinkText}>
-										{this.props.eventLinkText}
+									<a href={currentUrl} className="btn-more" aria-label={this.props.currentLinkText}>
+										{this.props.currentLinkText}
 									</a>
 								</div>
 							</div>

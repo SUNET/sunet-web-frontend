@@ -131,7 +131,7 @@ class AllNewsList extends Component {
 			<div id="all-news-listing" className="row">
 				<div className="col-12 newscards">{this.renderNews()}</div>
 			</div>
-			{this.state.buttonMore()}
+			{ !this.props.nomore && this.state.buttonMore() }
 			</>
 		);
 	}
