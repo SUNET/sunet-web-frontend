@@ -8,33 +8,66 @@ import {getJIRATickets} from '../src/utils'
 
 
 class Tickets extends Component {
-	static async getInitialProps(context) {
-		const { lang, slug, section } = context.query;
-
-		const res = await fetch(`${config.apiUrl}pages.json`);
+    static async getInitialProps(context) {
+	const { lang, slug, section } = context.query;
+	
+	const res = await fetch(`${config.apiUrl}pages.json`);
         const pages = await res.json();
-		const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
-		
-    const tickets = await getJIRATickets(lang);
-    const openTickets = tickets.filter(ticket => ticket.fields.status.name === 'Open' || ticket.fields.status.name === 'Resolved');
-    const schedTickets = openTickets.filter((ticket) =>
-      ticket.fields.issuetype.name.trim() === "Scheduled" && ticket.fields.customfield_11603 !== null
-    );
-    const unschedTickets = openTickets.filter((ticket) =>
-      ticket.fields.issuetype.name.trim() === "Unscheduled"
-    );
+	const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
+	
+	const tickets = await getJIRATickets(lang);
+	const openTickets = tickets.filter(ticket => ticket.fields.status.name === 'Open' || ticket.fields.status.name === 'Resolved');
+	const schedTickets = openTickets.filter((ticket) =>
+						ticket.fields.issuetype.name.trim() === "Scheduled" && ticket.fields.customfield_11603 !== null
+					       );
+	const unschedTickets = openTickets.filter((ticket) =>
+						  ticket.fields.issuetype.name.trim() === "Unscheduled"
+						 );
+	
+	schedTickets.map(item => {	
+	    
+	    if (item.fields.customfield_11603 !== undefined) {
+		const startend = item.fields.customfield_11603.split('/');
+		item.start = startend[0];
+	    }   
+	    return item;
+	    
+        })
 
-		return { 
-      slug,
-			page,
-			error: !page,
-			schedTickets,
-			unschedTickets,
-			title: 'Tickets',
-			path: context.asPath,
-		}
+	unschedTickets.map(item => {
+
+            if (item.fields.customfield_10404 !== undefined) {
+                item.start = item.fields.customfield_10404
+            }
+            return item;
+
+        })
+	
+	
+	function compare( b, a ) {
+	    if ( a.start < b.start ){
+		return -1;
+	    }
+	    if ( a.start > b.start ){
+		return 1;
+	    }
+	    return 0;
 	}
-
+	
+	schedTickets.sort(compare);
+	unschedTickets.sort(compare);
+	
+	return { 
+	    slug,
+	    page,
+	    error: !page,
+	    schedTickets,
+	    unschedTickets,
+	    title: 'Tickets',
+	    path: context.asPath,
+	}
+    }
+    
 	render () {
 		const {page, error, path} = this.props;
 		return (

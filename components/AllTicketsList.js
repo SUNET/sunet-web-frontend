@@ -15,7 +15,8 @@ export function getAffected(ticket, what='affected_customer') {
     ticket.fields.customfield_11600.forEach((item) => {
       try {
         if (item.startsWith(what)) {
-          const thing = item.split(':').at(-1);
+            //const thing = item.split(':').at(-1);
+	    const thing = item.split(':')[2];
           affected.push(thing);
         }
       } catch(err) {
