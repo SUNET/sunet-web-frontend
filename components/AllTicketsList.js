@@ -133,31 +133,38 @@ const UnscheduledTicket = ({ ticket, locale }) => {
 }
 
 const _ScheduledTicketsList = ({ tickets, locale }) => {
-	
-	function renderTickets() {
-		return tickets.map((ticket, i) => {
-      return (<ScheduledTicket ticket={ticket} locale={locale} key={i} />);
-		});
+    
+    function renderTickets() {
+	if (tickets && tickets.length > 0) {
+	    return tickets.map((ticket, i) => {
+		return (<ScheduledTicket ticket={ticket} locale={locale} key={i} />);
+	    });
+	} else {
+	    return (<div className="ticket">No open tickets</div>);
 	}
-	return (
-		<div className="row">
-			<div className="col-12 cards list tickets">{renderTickets()}</div>
-		</div>
-	);
+    }
+    return (
+	    <div className="row">
+	    <div className="col-12 cards list tickets">{renderTickets()}</div>
+	    </div>);
 };
 
 const _UnscheduledTicketsList = ({ tickets, locale }) => {
-	
-	function renderTickets() {
-		return tickets.map((ticket, i) => {
-      return (<UnscheduledTicket ticket={ticket} locale={locale} key={i} />);
-		});
+    
+    function renderTickets() {
+	if (tickets && tickets.length > 0) {
+	    return tickets.map((ticket, i) => {
+		return (<UnscheduledTicket ticket={ticket} locale={locale} key={i} />);
+	    });
+	} else {
+	    return (<div className="ticket">No open tickets</div>);
 	}
-	return (
-		<div className="row">
-			<div className="col-12 cards list tickets">{renderTickets()}</div>
-		</div>
-	);
+    }
+    return (
+	    <div className="row">
+	    <div className="col-12 cards list tickets">{renderTickets()}</div>
+	    </div>
+    );
 };
 
 export const ScheduledTicketsList = withLocale(_ScheduledTicketsList);
