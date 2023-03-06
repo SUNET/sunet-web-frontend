@@ -48,16 +48,26 @@ export async function getEvenemang(lang) {
 
 export async function getAllNews(lang) {
     const res = await fetch(`${config.apiUrl}posts.json`);
-	let news = await res.json();
-	news = news.filter(item => item.lang === lang)
+    let news = await res.json();
+    news = news.filter(item => item.lang === lang)
     const res2 = await fetch(`${config.apiUrl}evenemang.json`);
-	let evenemang = await res2.json();
-	evenemang = evenemang.filter(item => item.lang === lang)
+    let evenemang = await res2.json();
+    evenemang = evenemang.filter(item => item.lang === lang)
 
-	const all = news.concat(evenemang);
-	all.sort(item => item.date);
-	return all;
-	
+    const all = news.concat(evenemang);
+
+    function compare( a, b ) {
+        if ( a.date < b.date ){
+            return 1;
+        }
+        if ( a.date > b.date ){
+            return -1;
+        }
+        return 0;
+    }
+
+    all.sort(compare);
+    return all;
 }
 
 export async function getNews(lang) {
