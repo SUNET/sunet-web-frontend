@@ -177,9 +177,11 @@
           margin-top: 0;
           display: flex;
           flex-direction: row;
+
           .start-end-dates {
             display: flex;
             flex-direction: column;
+	    white-space: nowrap;
             .date-label {
               font-size: .8rem;
               margin-right: .5rem;
@@ -195,7 +197,8 @@
 					margin-top: 0;
 				}
         &.ticket {
-          justify-content: space-between;
+            justify-content: space-between;
+	    flex-wrap: nowrap;
         }
 			}
 			&:hover,
