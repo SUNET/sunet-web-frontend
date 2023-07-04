@@ -19,7 +19,7 @@
         height: 80px;
         justify-content: space-between;
         > button {
-            font-size:1.5rem;
+            @include x-rem(font-size, 2.4);
         }
     }
 
@@ -35,7 +35,7 @@
         max-height:1000px;
         .top {
             color: $pri_orange;
-            font-weight: 700;
+            font-weight: 600;
         }
     }
 }

@@ -95,6 +95,7 @@
 					transition: all 0.5s ease;
 					border-bottom: 1px solid $light;
 					display: initial;
+					@include x-rem(font-size, 2.0);
 				}
 			}
 		}
