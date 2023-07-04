@@ -14,18 +14,20 @@
 		padding: 0 0 25px 0;
 
 		h2 {
-			line-height: 1;
+			line-height: 130%;
 			border-bottom: 1px solid transparent;
 		}
 
 		&:hover {
 			text-decoration: none;
 			color: $pri_orange;
-
+			
 			h2 {
 				width: fit-content;
-				border-bottom: 1px solid $pri_orange;
-				line-height: 1;
+				text-decoration: underline;
+				text-decoration-thickness: 1px;
+				text-underline-offset: 6px;
+				line-height: 130%;
 			}
 		}
 

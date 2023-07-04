@@ -67,10 +67,13 @@ p {
 
 // links
 a {
-  border-bottom: 1px solid $dark;
+//  border-bottom: 1px solid $dark;
   color: $dark;
   font-weight: 600;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: $dark;
   transition: color 0.5s ease;
 
   &.external {
@@ -81,12 +84,15 @@ a {
   &:hover {
     text-decoration: none;
     color: $pri_orange;
-    border-bottom: 1px solid $pri_orange;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;    
   }
 }
 
 header a {
-  border-bottom: 1px solid $light;
+    border-bottom: 1px solid $light;
+    text-decoration: none;
   font-weight: 400;
   transition: all 0.5s ease;
 }
@@ -111,4 +117,8 @@ select:focus {
   @include media-breakpoint-up(md) {
     top: -52px;
   }
+}
+
+.filter-toggle a {
+    text-decoration: none;
 }

@@ -17,7 +17,8 @@
 		border-radius: 10px;
 		border: 1px solid transparent;
 		transition: border-color 0.5s ease;
-
+		text-decoration: none;
+		
 		&.molnbaserade-tjanster {
 			background-image: url(/static/images/molnbaserade-tjanster.png);
 			background-repeat: no-repeat;
@@ -94,6 +95,7 @@
 					margin-top: 0;
 					transition: all 0.5s ease;
 					border-bottom: 1px solid $light;
+					text-decoration: none;
 					display: initial;
 					@include x-rem(font-size, 2.0);
 				}
@@ -104,7 +106,9 @@
 			border: 1px solid $pri_orange;
 			.card-content {
 				h2 {
-					border-bottom: 1px solid $pri_orange;
+	                                text-decoration: underline;
+                                        text-decoration-thickness: 1px;
+                                        text-underline-offset: 6px;				
 					color: $pri_orange;
 				}
 			}

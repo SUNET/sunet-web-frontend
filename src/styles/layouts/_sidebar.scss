@@ -10,7 +10,7 @@
 		}
 	}
 	.service {
-		margin-left: 15px;
+		margin-left: 0px;
     margin-right: 20%;
 		display: flex;
 		flex-direction: column;
@@ -37,7 +37,9 @@
 				margin-top: 8px;
 				display: inline-block;
 				&:hover {
-					border-bottom: 1px solid $pri_orange;
+                                     text-decoration: underline;
+                                     text-decoration-thickness: 1px;
+                                     text-underline-offset: 4px;					
 				}
 			}
 			.meta-contact--phone {
@@ -76,7 +78,9 @@
 		border:0;
 		&.active {
 			color: $pri_orange;
-			border-bottom: 1px solid $pri_orange;
+			text-decoration: underline;
+                        text-decoration-thickness: 1px;
+                        text-underline-offset: 4px;
 		}
 	}
 }

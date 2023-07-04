@@ -20,7 +20,7 @@
 		p.intro-1,
 		> div > p:first-child {
 			@include x-rem(font-size, 2.2);
-			line-height: 1.30;
+			line-height: 1.40;
 			margin-top: 8px;
 			margin-bottom: 30px
 		}
@@ -67,7 +67,13 @@
 		}
 		ul,
 		ol {
-			margin-top: 30px;
+		    margin-top: 15px;
+		    margin-bottom: 15px;
+		    list-style-type: "—  ";
+		    padding-left: 24px;
+		    margin-bottom: 20px;
+		    @include x-rem(font-size, 1.5);
+				     
 		}
 		img {
 			margin-top: 88px;
