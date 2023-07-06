@@ -93,7 +93,7 @@
 			.header-container {
 				h2 {
 					margin-top: 0;
-					transition: all 0.5s ease;
+					//transition: all 0.5s ease;
 					border-bottom: 1px solid $light;
 					text-decoration: none;
 					display: initial;
@@ -211,7 +211,7 @@
 				.card-content {
 					.header-container {
 						h2, h3 {
-							border-bottom: 1px solid $pri_orange;
+							//border-bottom: 1px solid $pri_orange;
 							width: fit-content;
 						}
 					}
