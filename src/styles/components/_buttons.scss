@@ -26,7 +26,8 @@ button, input[type="submit"], input[type="reset"] {
 			margin-top: 30px;
 		} 
 		&:hover {
-			border: 1px solid $pri_orange;
+		    border: 1px solid $pri_orange;
+		    text-decoration: underline;
 		}
 	}
 }
@@ -39,6 +40,7 @@ button, input[type="submit"], input[type="reset"] {
 	font-weight: bold;
 	@include x-rem(font-size, 1.6);
 	border: 1px solid $pri_grey;
+	text-decoration: none;
 	margin-top: 20px;
 	display: inline-block;
 	transition: all 0.5s ease;
