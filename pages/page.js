@@ -10,8 +10,13 @@ class Page extends Component {
         const { section, slug, lang } = context.query;
         const res = await fetch(`${config.apiUrl}pages.json`);
         const pages = await res.json();
-        const page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
 	
+	var page;
+	if (section == slug) {
+	    page = pages.find(page => page.slug === slug && (!lang || page.lang === lang) && page.parent == 0);
+	} else {
+	    page = pages.find(page => page.slug === slug && (!lang || page.lang === lang));
+	}
         const title = page ? page.title.rendered : "";
 
 	if (!page) context.res.statusCode = 404;
