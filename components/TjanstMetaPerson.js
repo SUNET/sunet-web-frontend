@@ -6,7 +6,7 @@ const TjanstMetaPerson = ({ person }) => {
             <h2>{ person.title.rendered }</h2>
             <span className="meta-contact--title">{ person.acf.title }</span>
             <div>
-                <a className="meta-contact--mail" href={`mailto: ${ person.acf.email }`}>
+                <a className="meta-contact--mail" href={`mailto:${ person.acf.email }`}>
                     { person.acf.email }
                 </a>
             </div>
