@@ -55,7 +55,8 @@ class AllTjansterList extends Component {
 
 	renderCategories() {
 		return this.props.categories.filter(category => category.lang === this.props.locale.lang).map(category => {
-			if (category.count === 0) return;
+		    if (category.count === 0) return;
+		    if (category.id === 1) return;
 
 			return (
 				<a 
