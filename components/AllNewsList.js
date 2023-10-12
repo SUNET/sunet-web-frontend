@@ -102,9 +102,6 @@ class AllNewsList extends Component {
                 <div className="newscard-type">
 		    {itemType}
                 </div>
-                <div className="newscard-date">
-                {date.getDate()} {month} {date.getFullYear()}
-                </div>
               </div>
               <div className="newscard-title">
                   <h2>
