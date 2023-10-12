@@ -7,7 +7,7 @@ class NavigationItem extends Component {
     }
     getPath = url => {
         url = new URL(url);
-        return url.pathname
+        return url.pathname.replace(/\/$/g,'')
     }
     toggleItem = () => {
         this.setState({
@@ -25,9 +25,12 @@ class NavigationItem extends Component {
                 <a aria-selected={current}>{item.title}</a>
                 
             </Link>
+
             {item.children.length > 0 && <button className="sub-nav-toggle" onClick={this.toggleItem} aria-expanded={this.state.active} aria-label="Undermeny" >+</button>}
+
             <ul className="sub-nav">
-            { item.children.map(childItem => (
+		{ item.children.map(childItem => (
+		    
                  <li key={childItem.ID} className={`sub-nav-item ${pathname === this.getPath(childItem.url) ? 'current' : ''}`} aria-hidden={!this.state.active}>
                  <Link href={this.getPath(childItem.url)} as={this.getPath(childItem.url)}>
                      <a aria-selected={pathname === this.getPath(childItem.url)} {...tabIndex}>{childItem.title}</a>
