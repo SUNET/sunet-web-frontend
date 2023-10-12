@@ -13,11 +13,24 @@ body {
 }
 
 // headers
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
   font-family: "Inter";
   text-rendering: optimizeLegibility;
   margin-top: 52px;
   line-height: 1.2;
+  font-weight: bold;
+  margin-bottom: 0;
+  @include media-breakpoint-down(sm) {
+    margin-top: 32px;
+  }
+}
+// headers                                                                                                                                                                
+h4, h5, h6 {
+  font-family: "Inter";
+  text-rendering: optimizeLegibility;
+  margin-top: 5px;
+  line-height: 1.2;
+  font-style: italic;
   font-weight: bold;
   margin-bottom: 0;
   @include media-breakpoint-down(sm) {
@@ -40,7 +53,7 @@ h3 {
   @include x-rem(font-size, 2);
 }
 h4 {
-  @include x-rem(font-size, 1.7);
+  @include x-rem(font-size, 1.5);
 }
 h5 {
   @include x-rem(font-size, 1.5);

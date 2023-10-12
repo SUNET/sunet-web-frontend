@@ -48,6 +48,9 @@
 		h2 + h3 {
 		    margin-top: 5px;
 		}
+		h4 + ul {
+		    margin-top: 3px;
+		}
 		h3 + p {
 		        margin-top: 0px;
 		}
@@ -90,10 +93,12 @@
 	}
 	blockquote {
 		font-size: $font-size-base;
-		padding: $grid-gutter-width-base;
-		background-color: $thi_grey;
+		padding: 0px 20px 0px 20px;
+		border-left-color: #ca402b;
+		border-left-style: solid;
+		border-left-width: 5px;
+		//background-color: $thi_grey;
 		margin: 24px 0 0 0;
-		padding: $grid-gutter-width-base;
 		p {
 			margin-top:0;
 		}

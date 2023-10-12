@@ -106,7 +106,7 @@
 			border: 1px solid $pri_orange;
 			.card-content {
 				h2 {
-	                                text-decoration: underline;
+	                                text-decoration: none;
                                         text-decoration-thickness: 1px;
                                         text-underline-offset: 6px;				
 					color: $pri_orange;
@@ -125,6 +125,7 @@
 			height: auto;
 			border-bottom: 1px solid $sec_grey;
 			border-radius: 0;
+
 			padding: 0 0 25px 0;
 			flex-direction: row-reverse;
     	justify-content: space-between;
@@ -269,3 +270,12 @@
 		}
 	}
 }
+
+.cards a {
+    text-decoration: none;
+    &:hover {
+	text-decoration: underline;
+    }
+}
+
+
