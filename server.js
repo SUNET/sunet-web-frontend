@@ -62,22 +62,22 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/projekts`, (req, res)=>{
+            server.get(`/projekt`, (req, res)=>{
                 const actualPage = `/projekt`;
-                const queryParams = { slug: 'projekts', apiRoute: 'projekts', lang: 'sv' };
+                const queryParams = { slug: 'projekt', apiRoute: 'projekt', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
             server.get(`/projekts/:category`, (req, res)=>{
                 const actualPage = `/projekt`;
-		const queryParams = { slug: 'projekts', apiRoute: 'projekts', category: req.params.category, lang: 'sv' }; 
+		const queryParams = { slug: 'projekt', apiRoute: 'projekt', category: req.params.category, lang: 'sv' }; 
 //                const queryParams = { slug: item.slug, apiRoute: 'tjanster', category: req.params.category, lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/projekts/:category/:slug`, (req, res) =>{
+            server.get(`/projekt/:category/:slug`, (req, res) =>{
                 const actualPage = "/proj";
-                const queryParams = { slug: req.params.slug, apiRoute: 'projekts', lang: 'sv' };
+                const queryParams = { slug: req.params.slug, apiRoute: 'projekt', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
 
