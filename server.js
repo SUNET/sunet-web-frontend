@@ -62,6 +62,25 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
+            server.get(`/projekts`, (req, res)=>{
+                const actualPage = `/projekt`;
+                const queryParams = { slug: 'projekts', apiRoute: 'projekts', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/projekts/:category`, (req, res)=>{
+                const actualPage = `/projekt`;
+		const queryParams = { slug: 'projekts', apiRoute: 'projekts', category: req.params.category, lang: 'sv' }; 
+//                const queryParams = { slug: item.slug, apiRoute: 'tjanster', category: req.params.category, lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/projekts/:category/:slug`, (req, res) =>{
+                const actualPage = "/proj";
+                const queryParams = { slug: req.params.slug, apiRoute: 'projekts', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
             server.get(`/om-sunet/aktuellt`, (req, res)=>{
                 const actualPage = `/aktuellt`;
                 const queryParams = { slug: 'aktuellt', apiRoute: 'aktuellt', lang: 'sv' };
