@@ -68,7 +68,7 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/projekts/:category`, (req, res)=>{
+            server.get(`/projekt/:category`, (req, res)=>{
                 const actualPage = `/projekt`;
 		const queryParams = { slug: 'projekt', apiRoute: 'projekt', category: req.params.category, lang: 'sv' }; 
 //                const queryParams = { slug: item.slug, apiRoute: 'tjanster', category: req.params.category, lang: 'sv' };
