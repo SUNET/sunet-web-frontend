@@ -38,8 +38,8 @@ class Projekt extends Component {
 	}
 
 	render() {
-		const { projekt, person } = this.props;
-		if (!projekt) return <Error statusCode={404} />;
+		const { proj, person } = this.props;
+		if (!proj) return <Error statusCode={404} />;
 
 		return (
 			<Layout {...this.props}>
@@ -48,22 +48,22 @@ class Projekt extends Component {
 
 						<aside className="sidebar col-lg-3">
 							<ProjekttMeta
-								projekt={ projekt }
+								projekt={ proj }
 								person={ person }
 							/>
 						</aside>
 						
 						<main className="col-lg-7"  aria-labelledby="main-title">
 							<article>
-								<h1 id="main-title">{projekt.title.rendered}</h1>
-								<div dangerouslySetInnerHTML={ {__html: projekt.acf.content} } />
+								<h1 id="main-title">{proj.title.rendered}</h1>
+								<div dangerouslySetInnerHTML={ {__html: proj.acf.content} } />
 							</article>
 						</main>
 
 					</div>
 				</div>
 
-				<ProjektRelatedLinks projekt={projekt} />
+				<ProjektRelatedLinks projekt={proj} />
 			</Layout>
 		);
 	}
