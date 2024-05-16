@@ -10,7 +10,6 @@ class AllProjektList extends Component {
 		super(props);
 		this.state = { 
 			gridID: 1,
-			category: props.category,
 		};
 	}
 
@@ -23,48 +22,18 @@ class AllProjektList extends Component {
 		return `/${this.props.locale.slug}${slug}`;
 	}
 
-	changeGrid = gridID => {
-		this.setState({ gridID })
-	};
-
-	changeCategory = (event, category) => {
-		event.preventDefault()
-		if (category && category !== this.state.category) 
-			history.pushState(null, '', `${this.getSlug()}/${category}`)
-		else history.pushState(null, '', this.getSlug())
-		
-		this.setState({category})
-	}
-
 	
 
 	renderProjekt() {
-		const currentCategory = this.props.categories.find(item => item.slug === this.state.category);
 		return this.props.projekt
-			.filter(proj => proj.lang === this.props.locale.lang && (!this.state.category || proj.categories.indexOf(currentCategory.id) !== -1))
+			.filter(proj => proj.lang === this.props.locale.lang)
 			.map(proj => {
 				
 				return <ProjektLink
 					projekt={proj}
-					category={this.props.categories.find(item => item.id === proj.categories[0])}
 					key={proj.slug}
 				/>
 			
-		});
-	}
-
-	renderCategories() {
-		return this.props.categories.filter(category => category.lang === this.props.locale.lang).map(category => {
-			if (category.count === 0) return;
-
-			return (
-				<a 
-					className={`${category.slug} ${category.slug === this.state.category ? 'active' : null}`} 
-					key={category.id} href={`${this.getSlug()}/${category.slug}`} 
-					onClick={event => this.changeCategory(event, category.slug)}>
-					<li>{category.name}</li>
-				</a>
-			)
 		});
 	}
 
@@ -73,22 +42,7 @@ class AllProjektList extends Component {
 			<div className="bg-grey">
 				<div className="container listing">
 					<div className="row">
-						<div className="col filter-container">
-							<div className="filter-toggle">
-								<a href={this.getSlug()} 
-									className={`all ${!this.state.category ? 'active': ''}`} 
-									onClick={event => this.changeCategory(event, null)}>
-										<li>Visa alla</li></a>
-								{this.renderCategories()}
-							</div>
-							<ListToggle
-								changeGrid={this.changeGrid}
-								gridID={this.state.gridID}
-							/>
-  			  			</div>
-					</div>
-					<div className="row">
-						<div className={this.state.gridID === 1? "col cards" : "col cards list"}>
+						<div className="col cards list">
 							{this.renderProjekt()}
 						</div>
 					</div>

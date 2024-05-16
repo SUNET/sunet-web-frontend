@@ -9,25 +9,15 @@ import { getProjekt, getCategories } from "../src/utils/index.js";
 
 class Projekt extends Component {
 	static async getInitialProps(context) {
-		const { lang, category, slug } = context.query;
+		const { lang, slug } = context.query;
 
 		const projekt = await getProjekt(lang);
-		const categories = await getCategories();
 
-	    var hascaterror = false;
-	    
-	    if (category) {
-		var curCategory = categories.find(item => item.slug === category);
-		if (!curCategory) hascaterror = true;
-	    }
-
-            if (!projekt || !categories || hascaterror ) context.res.statusCode = 404;
+            if (!projekt) context.res.statusCode = 404;
 
 		return { 
-			error: !projekt || !categories || hascaterror,
-			category,
+			error: !projekt,
 			projekt,
-			categories,
 			slug,
 			lang,
 			title: "Projekt",
@@ -39,7 +29,7 @@ class Projekt extends Component {
 	}
 
 	render () {
-		const {error, category, slug, lang} = this.props;
+		const {error, slug, lang} = this.props;
 		const projektPage = this.getPage(slug, lang);
 	        if(error || !projektPage) return <Error statusCode={404} />;
 
@@ -52,7 +42,7 @@ class Projekt extends Component {
 						</div>
 					</div>
 				</div>
-				<AllProjektList projekt={this.props.projekt} category={category} categories={this.props.categories} />
+				<AllProjektList projekt={this.props.projekt} />
 			</Layout>
 		);
 	}
