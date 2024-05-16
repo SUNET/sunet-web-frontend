@@ -68,14 +68,7 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
-            server.get(`/projekt/:category`, (req, res)=>{
-                const actualPage = `/projekt`;
-		const queryParams = { slug: 'projekt', apiRoute: 'projekt', category: req.params.category, lang: 'sv' }; 
-//                const queryParams = { slug: item.slug, apiRoute: 'tjanster', category: req.params.category, lang: 'sv' };
-                app.render(req, res, actualPage, queryParams);
-            })
-
-            server.get(`/projekt/:category/:slug`, (req, res) =>{
+            server.get(`/projekt/:slug`, (req, res) =>{
                 const actualPage = "/proj";
                 const queryParams = { slug: req.params.slug, apiRoute: 'projekt', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
