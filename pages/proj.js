@@ -47,7 +47,7 @@ class Projekt extends Component {
 					<div className="row single m-80">
 
 						<aside className="sidebar col-lg-3">
-							<ProjekttMeta
+							<ProjektMeta
 								projekt={ proj }
 								person={ person }
 							/>
