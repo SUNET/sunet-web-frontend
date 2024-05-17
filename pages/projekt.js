@@ -5,12 +5,13 @@ import fetch from 'isomorphic-unfetch';
 import config from '../config.js'
 import PageWrapper from "../components/PageWrapper.js";
 import AllProjektList from "../components/AllProjektList.js";
-import { getProjekt, getCategories } from "../src/utils/index.js";
+import { getProjekt, getCategories, getPersoner } from "../src/utils/index.js";
 
 class Projekt extends Component {
 	static async getInitialProps(context) {
 		const { lang, slug } = context.query;
 
+	    const persons = await getPersoner(lang)
 		const projekt = await getProjekt(lang);
 
             if (!projekt) context.res.statusCode = 404;
@@ -18,6 +19,7 @@ class Projekt extends Component {
 		return { 
 			error: !projekt,
 			projekt,
+      persons,
 			slug,
 			lang,
 			title: "Projekt",
@@ -42,7 +44,7 @@ class Projekt extends Component {
 						</div>
 					</div>
 				</div>
-				<AllProjektList projekt={this.props.projekt} />
+				<AllProjektList projekt={this.props.projekt} persons={this.props.persons} />
 			</Layout>
 		);
 	}

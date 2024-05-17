@@ -3,13 +3,14 @@ import withLocale from './withLocale'
 import ProjektLink from './ProjektLink.js';
 
 
-const ProjektList = ({locale, projekt}) => {
+const ProjektList = ({locale, personName, projekt}) => {
 
 	function renderProjekt() {
 		return projekt.map(proj => {
 			if (proj.acf.sticky == "Ja") {
 				return <ProjektLink
 					proj={proj}
+          personName={personName}
 					key={proj.slug}
 				/>
 			}
