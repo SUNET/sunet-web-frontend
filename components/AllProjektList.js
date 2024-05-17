@@ -43,7 +43,7 @@ class AllProjektList extends Component {
 		
         let personName = "SUNET";
         if (personId !== -1) {
-		let person = persons.find(person => person.id === personId);
+		let person = this.props.persons.find(person => person.id === personId);
           personName = person.title.rendered;
         }
 				
