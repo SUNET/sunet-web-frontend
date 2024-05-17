@@ -2,7 +2,7 @@ import Link from 'next/link';
 import withLocale from './withLocale';
 import postTypes from '../post-types.json';
 
-const ProjektLink = ({ projekt, locale }) => {
+const ProjektLink = ({ proj, locale }) => {
 	function getSlug() {
 		const slug = postTypes.find((item) => item.name === 'projekt').routes[locale.lang];
 		return `/${locale.slug}${slug}`;
@@ -25,16 +25,16 @@ const ProjektLink = ({ projekt, locale }) => {
 
 
 	return (
-		<Link href={`${getSlug()}/${projekt.slug}`}>
+		<Link href={`${getSlug()}/${proj.slug}`}>
 			<a className={`card molnbaserade-tjanster`} tabIndex={0}>
 				<div className="card-tags">
 					<span>{personName}</span>
 				</div>
 				<div className="card-content">
 					<div className="header-container">
-						<h2>{projekt.title.rendered}</h2>
+						<h2>{proj.title.rendered}</h2>
 					</div>
-					<p className="card-intro">{projekt.acf.intro}</p>
+					<p className="card-intro">{proj.acf.intro}</p>
 				</div>
 			</a>
 		</Link>

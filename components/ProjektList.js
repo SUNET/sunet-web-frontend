@@ -9,7 +9,7 @@ const ProjektList = ({locale, projekt}) => {
 		return projekt.map(proj => {
 			if (proj.acf.sticky == "Ja") {
 				return <ProjektLink
-					projekt={proj}
+					proj={proj}
 					key={proj.slug}
 				/>
 			}

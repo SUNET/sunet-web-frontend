@@ -32,7 +32,7 @@ class AllProjektList extends Component {
 			.map(proj => {
 				
 				return <ProjektLink
-					projekt={proj}
+					proj={proj}
 					key={proj.slug}
 				/>
 			
