@@ -61,7 +61,7 @@ class AllProjektList extends Component {
 			<div className="bg-grey">
 				<div className="container listing">
 					<div className="row">
-						<div className="col filter-container">
+						<div className="col filter-container projekt-grid-toggle">
 							<ListToggle
 								changeGrid={this.changeGrid}
 								gridID={this.state.gridID}
