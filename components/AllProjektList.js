@@ -9,7 +9,7 @@ class AllProjektList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { 
-			gridID: 1,
+			gridID: 2,
 		};
 	}
 
@@ -22,7 +22,9 @@ class AllProjektList extends Component {
 		return `/${this.props.locale.slug}${slug}`;
 	}
 
-	
+	changeGrid = gridID => {
+		this.setState({ gridID })
+	};
 
 	renderProjekt() {
 		return this.props.projekt
@@ -42,7 +44,15 @@ class AllProjektList extends Component {
 			<div className="bg-grey">
 				<div className="container listing">
 					<div className="row">
-						<div className="col cards list">
+						<div className="col filter-container">
+							<ListToggle
+								changeGrid={this.changeGrid}
+								gridID={this.state.gridID}
+							/>
+  			  	</div>
+					</div>
+					<div className="row">
+						<div className={this.state.gridID === 1? "col cards" : "col cards list"}>
 							{this.renderProjekt()}
 						</div>
 					</div>
