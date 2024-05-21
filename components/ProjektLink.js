@@ -13,7 +13,7 @@ const ProjektLink = ({ proj, locale }) => {
 		<Link href={`${getSlug()}/${proj.slug}`}>
 			<a className={`card molnbaserade-tjanster`} tabIndex={0}>
 				<div className="card-tags">
-					<span>Placeholder</span>
+					<span>proj.acf.segment_support</span>
 				</div>
 				<div className="card-content">
 					<div className="header-container">
