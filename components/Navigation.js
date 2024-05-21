@@ -61,9 +61,9 @@ class Navigation extends Component {
                     { this.props.nav.secondaryItems.map(item => {
                        return item.object === "page" ?
                        (<li key={item.ID} className="global-nav-item">
-                           <a href={this.getPath(item.url)} as={this.getPath(item.url)}>
-                       {item.title}
-                        </a></li>)
+                           <Link href={this.getPath(item.url)} as={this.getPath(item.url)}>
+                       <a>{item.title}</a>
+                        </Link></li>)
                         : (
                             <li key={item.ID} className="global-nav-item">
                                 <ExternalHref href={item.url} text={item.title} />

@@ -63,7 +63,7 @@ app
             })
 
             server.get(`/projekt`, (req, res)=>{
-                const actualPage = `/projekt`;
+                const actualPage = `/projects`;
                 const queryParams = { slug: 'projekt', apiRoute: 'projekt', lang: 'sv' };
                 app.render(req, res, actualPage, queryParams);
             })
