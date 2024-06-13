@@ -8,12 +8,15 @@ const ProjektLink = ({ proj, locale }) => {
 		const slug = postTypes.find((item) => item.name === 'projekt').routes[locale.lang];
 		return `/${locale.slug}${slug}`;
 	}
+  const div = document.createElement("div");
+  div.innerHTML = proj.acf.segment_support;
+  const support = div.textContent || div.innerText || "";
 
 	return (
 		<Link href={`${getSlug()}/${proj.slug}`}>
-			<a className={`card molnbaserade-tjanster`} tabIndex={0}>
+			<a className={`card`} tabIndex={0}>
 				<div className="card-tags">
-					<span>{proj.acf.segment_support}</span>
+					<span>{support}</span>
 				</div>
 				<div className="card-content">
 					<div className="header-container">

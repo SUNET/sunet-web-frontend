@@ -9,9 +9,6 @@ const ProjektMeta = ({ projekt, person }) => {
                 projekt={ projekt }
                 person={ person }
             />
-            <ProjektMetaWiki 
-                projekt={ projekt } 
-            />
         </div>
     )
 }
