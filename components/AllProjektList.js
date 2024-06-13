@@ -28,7 +28,6 @@ class AllProjektList extends Component {
 
 	renderProjekt() {
 		return this.props.projekt
-			.filter(proj => proj.lang === this.props.locale.lang)
 			.map(proj => {
 				
 				return <ProjektLink

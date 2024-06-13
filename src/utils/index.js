@@ -107,5 +107,5 @@ export async function getJiraCustom(lang) {
 export async function getProjekt(lang) {
     const res = await fetch(`${config.apiUrl}projekt.json`);
     const projekt = await res.json();
-    return projekt.filter(item => item.lang === lang || item.lang === undefined);
+    return projekt;
 }
