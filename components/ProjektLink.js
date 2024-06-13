@@ -8,7 +8,7 @@ const ProjektLink = ({ proj, locale }) => {
 		const slug = postTypes.find((item) => item.name === 'projekt').routes[locale.lang];
 		return `/${locale.slug}${slug}`;
 	}
-  const div = document.createElement("div");
+  const div = window.document.createElement("div");
   div.innerHTML = proj.acf.segment_support;
   const support = div.textContent || div.innerText || "";
 
