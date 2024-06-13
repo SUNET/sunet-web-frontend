@@ -38,7 +38,7 @@ class Projekt extends Component {
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-8 offset-lg-2 hero">
-							<div dangerouslySetInnerHTML={ {__html: projektPage.acf.segment_top} } />
+							<div dangerouslySetInnerHTML={ {__html: projektPage.content.rendered} } />
 						</div>
 					</div>
 				</div>
