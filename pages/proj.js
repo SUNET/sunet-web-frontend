@@ -13,7 +13,7 @@ class Projekt extends Component {
 		let { slug, lang } = context.query;
 
         const projekt = await getProjekt(lang)
-		const proj = projekt.find(page => page.slug === slug && page.lang === lang);
+		const proj = projekt.find(page => page.slug === slug);
 		
 	    const title = proj ? proj.title.rendered : "";
 
