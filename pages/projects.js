@@ -25,7 +25,7 @@ class Projekt extends Component {
 	}
 
 	getPage = (slug, lang) => {
-		return this.props.pages.find(page => page.slug === slug && (!lang || page.lang === lang));
+		return this.props.pages.find(page => page.slug === slug);
 	}
 
 	render () {
