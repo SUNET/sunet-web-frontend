@@ -9,8 +9,7 @@ const ProjektLink = ({ proj, locale }) => {
 		const slug = postTypes.find((item) => item.name === 'projekt').routes[locale.lang];
 		return `/${locale.slug}${slug}`;
 	}
-  const div = createElement("div", {}, proj.acf.segment_support);
-  const support = div.textContent || div.innerText || "";
+  const support = proj.acf.segment_support.replace(/<\/[^>]+(>|$)/g, "")
 
 	return (
 		<Link href={`${getSlug()}/${proj.slug}`}>
