@@ -62,6 +62,18 @@ app
                 app.render(req, res, actualPage, queryParams);
             })
 
+            server.get(`/projekt`, (req, res)=>{
+                const actualPage = `/projects`;
+                const queryParams = { slug: 'projekt', apiRoute: 'projekt', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
+            server.get(`/projekt/:slug`, (req, res) =>{
+                const actualPage = "/proj";
+                const queryParams = { slug: req.params.slug, apiRoute: 'projekt', lang: 'sv' };
+                app.render(req, res, actualPage, queryParams);
+            })
+
             server.get(`/om-sunet/aktuellt`, (req, res)=>{
                 const actualPage = `/aktuellt`;
                 const queryParams = { slug: 'aktuellt', apiRoute: 'aktuellt', lang: 'sv' };

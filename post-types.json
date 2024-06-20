@@ -7,6 +7,13 @@
         }
     },
     {
+        "name": "projekt",
+        "routes": {
+            "sv": "projekt",
+            "en": "projekt"
+        }
+    },
+    {
         "name": "evenemang",
         "routes": {
             "sv": "evenemang",
