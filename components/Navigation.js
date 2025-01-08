@@ -31,7 +31,7 @@ class Navigation extends Component {
             segments = path;
         }
         else if (path.length > 2) {
-            segments = path.slice(0, path.length - 2);
+            segments = path.slice(0, path.length - 1);
         }
         return segments.join('');
     }
