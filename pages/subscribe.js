@@ -66,7 +66,7 @@ class NewsletterSubscription extends Component {
                     <div>
                     <p>Vill du hålla dig uppdaterad om vad som händer hos oss på Sunet? Anmäl dig till vårt nyhetsbrev och få de senaste nyheterna direkt i din inkorg!</p>
                     <h2>Starta en prenumeration</h2>
-                    <p>Fyll i din e-postadress för att börja prenumerera. Du behöver också ta del av informationen om behandling av personuppgifter och samtycka till att Vetenskapsrådet, där Sunet är en avdelning, behandlar dina personuppgifter.</p>
+                    <p className="subscription-page-second-paragraph">Fyll i din e-postadress för att börja prenumerera. Du behöver också ta del av informationen om behandling av personuppgifter och samtycka till att Vetenskapsrådet, där Sunet är en avdelning, behandlar dina personuppgifter.</p>
                     <p className="font-weight-bold subscribe-form-title">E-POST:</p>
 
 	      <form name="SubscribeForm" method="post" onSubmit={() => {return validateForm()}} action="https://ui.ungpd.com/Api/Subscriptions/723e8a84-1f5c-4c1e-8837-b4755f4e6244">
