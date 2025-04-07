@@ -13,6 +13,12 @@ div.subscription-page {
   p {
     margin-top: 20px;
   }
+  p.subscription-page-second-paragraph {
+    margin-top: 5px;
+  }
+  p.subscribe-form-title {
+    margin-bottom: 0px;
+  }
   #SubscriberForm_email_error_required {
     display:none;
     color:red;
@@ -27,16 +33,26 @@ div.subscription-page {
   }
 
   input#submit-button {
-    margin-top: 30px;
-    border: 1px solid black;
-    padding: 1rem 2rem;
+    padding: 10px 20px;
+    margin:0 10px 10px 0;
+    background-color: $light;
     border-radius: 20px;
-  }
-
-  input#submit-button:hover {
-    text-decoration: none;
-    color: $pri_orange;
-    border: 1px solid $pri_orange;
+    box-shadow: 0px 5px 17px rgba(89, 89, 89, 0.07);
+    font-weight: bold;
+    @include x-rem(font-size, 1.6);
+    border: 1px solid;
+    transition: all 0.5s ease;
+    white-space:nowrap;
+    
+    &:hover {
+    	color: $pri_orange;
+    	border: 1px solid $pri_orange;
+      text-decoration: underline;
+    }
+    &.active {
+    	color: $pri_orange;
+    	border: 1px solid $pri_orange;
+    }
   }
 
   label#SubscriberForm_email_label {
