@@ -15,6 +15,27 @@ class Navigation extends Component {
         return url.pathname.replace(/\//g, '')
     }
 
+    getBasePath = url => {
+        let pathname;
+        try {
+            pathname = new URL(url).pathname;
+        } catch (err) {
+            pathname = url;
+        }
+        let path = pathname.split('/');
+        if (path.length > 0 && path[path.length - 1] === '') {
+            path = path.slice(0, path.length - 1);
+        }
+        let segments = [];
+        if (path.length == 2 || (path.length === 3 && path[1] === 'en')) {
+            segments = path;
+        }
+        else if (path.length > 2) {
+            segments = path.slice(0, path.length - 1);
+        }
+        return segments.join('');
+    }
+
     isCurrent = (itemPath, path) => {
         return itemPath === path
     }
@@ -50,7 +71,7 @@ class Navigation extends Component {
                 { this.props.nav.items.map(topItem => <NavigationItem 
                     displaySubNavigation={this.props.displaySubNavigation} 
                     pathname={this.props.locale.pathname} 
-                    current={this.props.locale.pathname.indexOf(this.getPath(topItem.url)) !== -1} 
+                    current={this.getBasePath(this.props.locale.pathname).indexOf(this.getPath(topItem.url)) !== -1} 
                     key={topItem.ID} 
                     item={topItem}/>
                 )}

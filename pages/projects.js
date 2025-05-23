@@ -32,13 +32,17 @@ class Projekt extends Component {
 		const {error, slug, lang} = this.props;
 		const projektPage = this.getPage(slug, lang);
 	        if(error || !projektPage) return <Error statusCode={404} />;
+    let hero = projektPage.content.rendered;
+    if (projektPage.acf && projektPage.acf.segment_top) {
+      hero = projektPage.acf.segment_top;
+    }
 
 		return (
 			<Layout {...this.props}>
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-8 offset-lg-2 hero">
-							<div dangerouslySetInnerHTML={ {__html: projektPage.content.rendered} } />
+							<div dangerouslySetInnerHTML={ {__html: hero} } />
 						</div>
 					</div>
 				</div>
